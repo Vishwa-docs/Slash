@@ -98,6 +98,8 @@ def overview() -> dict:
                 "version": a.get("version"),
                 "advisory_id": a.get("advisory_id", ""),
                 "services": a.get("exposed_services", []),
+                # Keep the API shape aligned with the React Overview type.
+                "resolved_live": a.get("resolved_live", []),
             }
         )
     return {
