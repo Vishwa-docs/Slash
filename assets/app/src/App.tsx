@@ -198,7 +198,7 @@ export default function App() {
               corpus <b>{ov.dataset}</b>
               <br />
               {ov.advisories} advisories · {ov.exposures.length > 0
-                ? `${ov.exposures.length} malicious versions live in ${ov.exposures.reduce((n, e) => n + e.resolved_live.length, 0)} lockfiles`
+                ? `${ov.exposures.length} malicious versions live in ${ov.exposures.reduce((n, e) => n + (e.resolved_live?.length ?? 0), 0)} lockfiles`
                 : "no live exposures"}
             </div>
           )}
