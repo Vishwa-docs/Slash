@@ -16,12 +16,13 @@ st.set_page_config(page_title="Slash — dependency intelligence on HydraDB", la
 CSS = (Path(__file__).parent / "assets" / "style.css").read_text()
 st.markdown(f"<style>{CSS}</style>", unsafe_allow_html=True)
 
+from src.examples import demo_examples
 from src.lens import LENSES, lens_by_id
 
-DEMO_QUESTIONS = [
-    "which services are exposed by lodash@4.18.1",
-    "what depends on express",
-    "was lodash resolved while it was live",
+# Keep the demo chips anchored to the checked-in real corpus.
+DEMO_QUESTIONS = [e["question"] for e in demo_examples()[:3]] or [
+    "Is there a typosquat near axios?",
+    "What depends on axios in the corpus?",
 ]
 VERDICT_COLORS = {"danger", "warning", "success", "neutral"}
 
@@ -279,7 +280,7 @@ def run() -> None:
         st.markdown('<div class="section-label">ask</div>', unsafe_allow_html=True)
         q = st.text_input(
             "question",
-            placeholder="which services are exposed by lodash@4.18.1 ?",
+            placeholder="ask about the real dependency corpus…",
             label_visibility="collapsed",
         )
         asked = False
