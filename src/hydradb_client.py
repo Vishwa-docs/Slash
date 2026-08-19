@@ -36,7 +36,11 @@ class HydraDBClient:
         cell_id: str = "cell-0",
     ) -> None:
         self.base_url = base_url.rstrip("/")
-        self.token = Path(token_file).read_text().strip()
+        try:
+            self.token = Path(token_file).read_text().strip()
+        except OSError:
+            # Local UI/API startup must remain usable before HydraDB is provisioned.
+            self.token = ""
         self.namespace = namespace
         self.cell_id = cell_id
 
