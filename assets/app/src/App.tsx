@@ -282,7 +282,7 @@ export default function App() {
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder={pending ? "running…" : "ask the graph, e.g. is olso a typosquat of oslo?"}
+                placeholder={pending ? "running…" : "ask the graph, e.g. is there a typosquat near axios?"}
                 disabled={pending}
                 autoFocus
               />
