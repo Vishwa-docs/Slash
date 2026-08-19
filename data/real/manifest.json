@@ -1,0 +1,17 @@
+{
+ "fetched_at": 1787136830,
+ "npm_version": "10.9.8",
+ "node_version": "v22.23.2",
+ "universe_packages": 125,
+ "package_versions": 3182,
+ "lockfiles": {
+  "api-gateway": 55,
+  "web-console": 4,
+  "data-ingest": 52,
+  "auth-api": 65,
+  "metrics-exporter": 6
+ },
+ "osv_cached_packages": 132,
+ "elapsed_s": 16.0,
+ "dataset_md5": "2023ea5e8a0208755dbf6eaf62bc19c9"
+}

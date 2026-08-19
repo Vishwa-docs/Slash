@@ -1,0 +1,24 @@
+[fraud] intent=EXPOSED_SERVICES abstain=False query_count=14 latency_ms=52.5
+   Q: which merchants are exposed by makeshop@adv-2026-01-1.0.0
+   A: charity-donate, dropship-store, gift-card-co, marketplace-eu, payroll-bridge, wirepay
+[fraud] intent=RESOLVED_WHILE_LIVE abstain=False query_count=14 latency_ms=31.3
+   Q: which intake events involved bexpay while it was compromised
+   A: 3 intake event(s) inside the compromise window
+[fraud] intent=BLAST_RADIUS abstain=False query_count=3 latency_ms=4.8
+   Q: what is the blast radius of makeshop@adv-2026-01-1.0.0
+   A: Blast radius of makeshop@adv-2026-01-1.0.0: 2 inflow state(s) in <=6 hops
+[fraud] intent=MAINTAINER_CONTAGION abstain=False query_count=1 latency_ms=1.7
+   Q: who owns the accounts owned by cust_009
+   A: cust_009 owns 3 account(s): forge, makeshop, quill
+[fraud] intent=TYPOSQUAT_CANDIDATES abstain=False query_count=3 latency_ms=5.3
+   Q: any lookalike accounts near makeshop
+   A: makesohp (score 1.125), makeshop (score 1.0)
+[supply-chain] intent=EXPOSED_SERVICES abstain=False query_count=18 latency_ms=57.5
+   Q: which services are exposed by oslo@adv-2026-01-1.0.0
+   A: gateway, notifications
+[supply-chain] intent=RESOLVED_WHILE_LIVE abstain=False query_count=18 latency_ms=51.3
+   Q: was oslo resolved while live
+   A: 1 lockfile(s) resolved while live
+[fraud] intent=PACKAGE_LOOKUP abstain=True query_count=1 latency_ms=1.4
+   Q: tell me about the weather in jakarta
+   A: Not enough evidence in the graph for this question.

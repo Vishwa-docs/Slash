@@ -1,0 +1,18 @@
+[ANSWER] Which services are exposed by ws@6.2.2?
+   -> api-gateway, metrics-exporter
+   (47ms, 7 queries)
+[ANSWER] Which services are exposed by axios@0.21.1?
+   -> api-gateway, metrics-exporter
+   (29ms, 7 queries)
+[ANSWER] Which apps resolved lodash@4.17.20 while it was live?
+   -> 2 lockfile(s) resolved while live; contradiction: lodash@4.17.20: stored=False, recomputed=True | lodash@4.17.20: stored=False, recomputed=True
+   (33ms, 7 queries)
+[ANSWER] Which services are exposed by minimist@0.0.8?
+   -> data-ingest
+   (27ms, 7 queries)
+[ANSWER] Which services are exposed by jsonwebtoken@8.5.1?
+   -> auth-api
+   (27ms, 7 queries)
+[ABSTAIN] What is the blast radius of lodash@4.17.20?
+   -> 
+   (6ms, 1 queries)

@@ -1,0 +1,39 @@
+# Capability Lock — approved, pinned, and currently enabled.
+# Mirrors .capabilities/registry.yaml for the capabilities that are ACTIVE/APPROVED.
+
+lock:
+  - id: cap.db.hydradb
+    source: "ghcr.io/hydra-db/hydradb"
+    version: latest
+    pinned_commit_or_digest: docker-hub-digest-recorded-launch
+    permissions: {network: [localhost:8443, localhost:7687, localhost:9090], secrets: ["token-file"]}
+    evidence: ".evidence/runs/phase-1/smoke.txt"
+    status: active
+
+  - id: cap.tool.getdesign
+    source: "npx getdesign@latest"
+    version: latest
+    evidence: "DESIGN.md (repo root)"
+    status: active
+
+  - id: cap.skill.graphify
+    source: "graphifyy on PyPI"
+    version: 0.9.46
+    evidence:
+      - "docs/research/hydradb-context-graph/graph.json"
+      - "docs/research/hydradb-context-graph/GRAPH_REPORT.md"
+    status: active
+
+  - id: cap.skill.ponytail
+    source: "vendored .agents/skills/vendor/ponytail"
+    version: full
+    evidence: ".agents/skills/vendor/ponytail/SKILL.md"
+    status: active
+
+  - id: cap.llm.optional
+    source: "user-provided (quarantined)"
+    version: n/a
+    permissions: {network: [], secrets: ["none-until-approved"]}
+    status: quarantined
+
+exceptions: []

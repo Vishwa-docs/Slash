@@ -1,0 +1,4 @@
+exposed: n=4 mean=62ms p50=57ms p95=58ms
+blast: n=4 mean=4ms p50=4ms p95=4ms
+typosquat: n=1 mean=72ms p50=72ms p95=72ms
+contagion: n=1 mean=3ms p50=3ms p95=3ms

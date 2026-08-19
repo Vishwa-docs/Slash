@@ -1,0 +1,9 @@
+SCAFFOLD EVIDENCE SUMMARY (2026-08-19)
+- git init: ok (main branch)
+- getdesign installed: DESIGN.md (terminal-native monospace design system)
+- graphify 0.9.46 built HydraDB context graph: 5867 nodes / 19553 edges / 180 communities
+  -> docs/research/hydradb-context-graph/{graph.json, GRAPH_REPORT.md, graph.html}
+- ponytail + ponytail-* skills vendored -> .agents/skills/vendor/
+- reference docs archived -> docs/reference/
+- control plane scaffolded: AGENTS.md, .capabilities/, .state/, .evidence/, .radar/, changes/CHG-0001/
+- deliverables: vl/PLAN.md, vk/PROMPT.md, DESIGN.md

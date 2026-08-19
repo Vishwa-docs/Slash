@@ -1,0 +1,65 @@
+{
+  "watches": [
+    "oslo",
+    "base",
+    "ioauth",
+    "sync"
+  ],
+  "violations": [
+    {
+      "watch": "oslo",
+      "kind": "typosquat",
+      "name": "olso",
+      "score": 1.0,
+      "nearest_seed": "oslo",
+      "in_degree": 0,
+      "deprecated": true
+    },
+    {
+      "watch": "oslo",
+      "kind": "own_latest_malicious",
+      "name": "oslo",
+      "version": "adv-2026-01-1.0.0",
+      "advisory_id": "ADV-2026-01"
+    },
+    {
+      "watch": "base",
+      "kind": "own_latest_malicious",
+      "name": "base",
+      "version": "adv-2026-02-1.0.0",
+      "advisory_id": "ADV-2026-02"
+    },
+    {
+      "watch": "ioauth",
+      "kind": "typosquat",
+      "name": "ioauht",
+      "score": 1.083,
+      "nearest_seed": "ioauth",
+      "in_degree": 0,
+      "deprecated": true
+    },
+    {
+      "watch": "ioauth",
+      "kind": "own_latest_malicious",
+      "name": "ioauth",
+      "version": "adv-2026-03-1.0.0",
+      "advisory_id": "ADV-2026-03"
+    },
+    {
+      "watch": "sync",
+      "kind": "typosquat",
+      "name": "syncn",
+      "score": 1.139,
+      "nearest_seed": "sync",
+      "in_degree": 0,
+      "deprecated": true
+    },
+    {
+      "watch": "sync",
+      "kind": "own_latest_malicious",
+      "name": "sync",
+      "version": "adv-2026-04-1.0.0",
+      "advisory_id": "ADV-2026-04"
+    }
+  ]
+}

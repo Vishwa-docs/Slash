@@ -1,0 +1,7 @@
+PASS: healthz
+PASS: CREATE probe node
+PASS: MATCH probe node back
+PASS: injection value treated as data (count 0)
+PASS: probe node untouched after injection query
+PASS: DETACH DELETE probe node
+PASS: probe node gone after delete

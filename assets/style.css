@@ -1,0 +1,85 @@
+/* Slash console — DESIGN.md: terminal-native, Berkeley Mono, cream canvas.
+   One dark ingredient (the live-query panel); semantic color only for verdicts. */
+
+:root {
+  --ink: #201d1d;
+  --canvas: #fdfcfc;
+  --hairline: #e5e0dd;
+  --mute: #646262;
+  --dark: #201d1d;
+  --dark-elevated: #302c2c;
+  --on-dark: #fdfcfc;
+  --on-dark-mute: #9a9898;
+  --danger: #ff3b30;
+  --warning: #ff9f0a;
+  --success: #30d158;
+  --accent: #007aff;
+}
+
+html, body, [class*="css"] {
+  font-family: "Berkeley Mono", "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+}
+
+.stApp {
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+h1, h2, h3, h4, .stMarkdown, .stTextInput label, .stCaption {
+  font-family: "Berkeley Mono", "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace !important;
+}
+
+/* hairline sections */
+.section-block {
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.9rem;
+  background: var(--canvas);
+}
+.section-label {
+  color: var(--mute);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+/* live-query console panel — the one dark surface */
+.console-panel {
+  background: var(--dark);
+  color: var(--on-dark);
+  border-radius: 4px;
+  padding: 0.9rem 1rem;
+  font-family: "Berkeley Mono", "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+.console-panel .m { color: var(--on-dark-mute); }
+.console-panel .q { color: var(--success); }
+.console-panel pre { margin: 0; white-space: pre-wrap; }
+.console-panel code { color: var(--on-dark-mute); }
+
+/* verdict pills — semantic color only, 4px radius */
+.verdict-pill {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+}
+.pill-danger { background: var(--danger); }
+.pill-warning { background: var(--warning); }
+.pill-success { background: var(--success); }
+.pill-neutral { background: var(--accent); }
+
+/* ASCII bracket bullets */
+.bullet { color: var(--mute); }
+
+.stButton > button, .stTextInput > div > div > input {
+  font-family: "Berkeley Mono", "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  border-radius: 4px;
+}

@@ -1,0 +1,41 @@
+.........................                                                [100%]
+25 passed in 0.11s
+Traceback (most recent call last):
+  File "<stdin>", line 14, in <module>
+  File "/Users/daver/Desktop/Hackathons/Hack Hydra The HydraDB Open Source Hackathon/Slash/src/pipeline.py", line 37, in answer
+    audit = adjudicate.Auditor().evaluate(plan, result)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/daver/Desktop/Hackathons/Hack Hydra The HydraDB Open Source Hackathon/Slash/src/adjudicate.py", line 54, in evaluate
+    evidence=_evidence_chain(result),
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/daver/Desktop/Hackathons/Hack Hydra The HydraDB Open Source Hackathon/Slash/src/adjudicate.py", line 36, in _evidence_chain
+    row_count=len(res.rows),
+                  ^^^^^^^^
+AttributeError: 'StepResult' object has no attribute 'rows'
+Traceback (most recent call last):
+  File "<stdin>", line 15, in <module>
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pydantic/main.py", line 1026, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'Verdict' object has no attribute 'elapsed_ms'
+[EXPOSED_SERVICES] abstain=False 76ms | notifications, search
+[BLAST_RADIUS] abstain=False 4ms | Blast radius of oslo@adv-2026-01-1.0.0: 1 dependant version(s) in <=6 hops
+Traceback (most recent call last):
+  File "<stdin>", line 14, in <module>
+  File "/Users/daver/Desktop/Hackathons/Hack Hydra The HydraDB Open Source Hackathon/Slash/src/pipeline.py", line 36, in answer
+    result = runner(plan)
+             ^^^^^^^^^^^^
+  File "/Users/daver/Desktop/Hackathons/Hack Hydra The HydraDB Open Source Hackathon/Slash/src/pipeline.py", line 30, in <lambda>
+    IntentClass.RESOLVED_WHILE_LIVE: lambda p: gs.run_resolved_while_live(client, p.package, p.version or ""),
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/daver/Desktop/Hackathons/Hack Hydra The HydraDB Open Source Hackathon/Slash/src/graph_service.py", line 233, in run_resolved_while_live
+    recompute = bool(r["published_at"] <= r["at"] <= r["valid_until"])
+                     ~^^^^^^^^^^^^^^^^
+KeyError: 'published_at'
+[EXPOSED_SERVICES] abstain=False 75ms | notifications, search
+[BLAST_RADIUS] abstain=False 4ms | Blast radius of oslo@adv-2026-01-1.0.0: 1 dependant version(s) in <=6 hops
+[RESOLVED_WHILE_LIVE] abstain=False 53ms | 1 lockfile(s) resolved while live
+[MAINTAINER_CONTAGION] abstain=False 2ms | dev_137 maintains 5 package(s): oslo, oslo-base-open, oslo-rpc-oslo, oslo-url, oslo_log_cache
+[TYPOSQUAT_CANDIDATES] abstain=False 58ms | syc (score 1.107)
+[PACKAGE_LOOKUP] abstain=False 2ms | oslo@adv-2026-01-1.0.0: published 1783468800, malicious=True, typosquat=False
+[UNSUPPORTED] abstain=True 0ms | I can answer blast-radius, exposed-services, resolved-while-live, maintainer-contagion, typosquat, and package-lookup questions.
+[UNSUPPORTED] abstain=True 0ms | I can answer blast-radius, exposed-services, resolved-while-live, maintainer-contagion, typosquat, and package-lookup questions.

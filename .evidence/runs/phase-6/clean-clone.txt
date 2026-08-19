@@ -1,0 +1,36 @@
+=== clean-clone verification (2026-08-19 15:31 UTC): fixed generator + up.sh token refresh
+Step 0: simulated fresh `git clone` (tar of tree excluding .venv/.evidence/.hydradb/__pycache__/caches),
+        then a brand-new HydraDB volume for the clone (shared container stopped first).
+
+--- [1] bring up hydradb with the clone's OWN volume (up.sh):
+[slash] hydradb up (container slash-hydra, healthz OK)
+deps ok (streamlit, plotly, networkx, pydantic)
+
+--- [2] generate (deterministic, twice):
+wrote dataset.json + ground_truth.json (seed=20260812)
+  nodes: 3063  edges: 14516
+  advisories: 4  typosquats: 7  contagion: 4
+deterministic (hash stable): YES
+
+--- [3] ingest (idempotent):
+nodes Package: 607
+nodes PackageVersion: 2001
+nodes Developer: 400
+nodes Service: 15
+nodes Lockfile: 40
+edges DEPENDS_ON: 12029
+edges RESOLVES_TO: 317
+edges USES_LOCKFILE: 40
+edges MAINTAINED_BY: 2130
+
+--- [4] pipeline == app code path:
+EXPOSED: gateway, notifications
+OOV    : I can answer blast-radius, exposed-services, resolved-while-live,
+         maintainer-contagion, typosquat, and package-lookup questions.
+
+--- [5] test suite in the clone:
+36 passed in 4.40s
+
+--- [6] streamlit health:
+streamlit main page HTTP 200
+CLEAN-CLONE-OK

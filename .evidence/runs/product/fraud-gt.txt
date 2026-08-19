@@ -1,0 +1,6 @@
+ADV-2026-01 makeshop@adv-2026-01-1.0.0: blast dependants=2, exposed=['charity-donate', 'dropship-store', 'gift-card-co', 'marketplace-eu', 'payroll-bridge', 'wirepay'] (GT=['charity-donate', 'dropship-store', 'gift-card-co', 'marketplace-eu', 'payroll-bridge', 'wirepay']) match=True, rwl=3 match=True, recompute_agrees=True
+ADV-2026-02 bexpay@adv-2026-02-1.0.0: blast dependants=2, exposed=['crowdfund-hub', 'marketplace-eu', 'payroll-bridge'] (GT=['crowdfund-hub', 'marketplace-eu', 'payroll-bridge']) match=True, rwl=3 match=True, recompute_agrees=True
+contagion cust_009: ['forge', 'makeshop', 'quill'] (GT shared subset ok=True)
+contagion cust_002: ['bexpay', 'ivory', 'novo', 'soleil'] (GT shared subset ok=True)
+typosquat recall=1.00 candidates=['makesohp', 'bxepay', 'makeshop', 'bexpay']
+RESULT=PASS

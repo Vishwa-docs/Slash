@@ -1,0 +1,61 @@
+id: CHG-0001
+title: "Slash — Track 02A supply-chain blast radius on HydraDB"
+type: new-project
+risk_tier: T2
+status: specified
+request_owner: team
+created_at: 2026-08-19
+updated_at: 2026-08-19
+
+problem: >
+  Supply-chain worms spread transitively; a compromised package exposes internal services
+  through reverse-dependency closures that vector/relational systems cannot express.
+  Judges need a working, graph-native product with visible evidence and honest abstention.
+desired_outcome: >
+  A quick-start repository + console that answers blast-radius, exposure, forensics,
+  maintainer-contagion, and typosquat questions against a live HydraDB graph, with
+  traceable evidence chains, first-class abstention, and a scoring harness.
+non_goals:
+  - Track 01 / 03 functionality
+  - Full npm registry mirror
+  - Production SIEM integration
+
+confirmed:
+  - "Track 02A is the target (ADR-0001)."
+  - "Python + Streamlit + Plotly (ADR-0002)."
+  - "Deterministic synthetic dataset + ground truth (ADR-0005)."
+  - "Bounded traversals only (ADR-0007)."
+  - "DESIGN.md is the UI source of truth."
+inferred:
+  - "Coding agent has a small context window -> phases in vk/PROMPT.md."
+  - "Optional LLM should be OFF for the primary demo."
+unknown:
+  - "Whether organizers distribute an official 'older ecosystem graph' file."
+  - "Whether a deployed link is required for scoring (it is optional)."
+conflicts:
+  - "DESIGN.md (terminal-native) vs typical Streamlit widgets -> resolved via custom CSS."
+
+affected:
+  users: ["security-analyst", "tech-lead-judge"]
+  workflows: ["ask-question", "evidence-review", "scoring"]
+  modules: ["src/hydradb_client.py", "src/graph_service.py", "src/intent.py", "src/adjudicate.py", "src/models.py", "app.py"]
+  contracts: ["README quick start", "docs/architecture/hydradb-notes.md subset"]
+  data: ["data/generated/dataset.json", "data/generated/ground_truth.json"]
+  infrastructure: ["hydradb container (docker)", "python venv", "streamlit"]
+  security_boundaries: ["B1..B5 (docs/architecture/trust-boundaries.md)"]
+  operations: ["docs/operations/service.md"]
+
+required_evidence:
+  - command-output
+  - tests
+  - diff-review
+  - screenshots (P5)
+  - eval-table (P6)
+
+links:
+  spec: "docs/product/requirements/index.md"
+  rfc: "docs/architecture/decisions/"
+  adrs: [docs/architecture/decisions/ADR-0001-track-02a.md, docs/architecture/decisions/ADR-0002-stack.md, docs/architecture/decisions/ADR-0003-client-protocol.md, docs/architecture/decisions/ADR-0004-temporal-properties.md, docs/architecture/decisions/ADR-0005-dataset.md, docs/architecture/decisions/ADR-0006-agents.md, docs/architecture/decisions/ADR-0007-bounded-traversal.md]
+  threat_model: "docs/security/threat-model.md"
+  test_plan: "docs/testing/strategy.md"
+  evidence: ".evidence/runs/"

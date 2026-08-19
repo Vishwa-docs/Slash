@@ -1,0 +1,202 @@
+# Capability Registry — Slash
+# Governs which skills, tools, models, and services are allowed. All changes are intentional.
+# See docs/reference/agentic-software-factory-brief.md for the admission policy.
+
+capabilities:
+  - id: cap.dev.python
+    name: python3
+    kind: platform
+    owner: team
+    source: system
+    version: ">=3.11"
+    trust_tier: T1
+    status: active
+    expires: 2026-12-31
+    purpose: "App, dataset scripts, eval, Streamlit."
+    supported_tasks: [build, ingest, eval, test]
+
+  - id: cap.dev.streamlit
+    name: streamlit
+    kind: dependency
+    owner: team
+    source: pypi
+    version: pinned-in-requirements
+    trust_tier: T1
+    status: proposed
+    expires: 2026-12-31
+    purpose: "Console UI (superseded by the React product console; still present as fallback)."
+
+  - id: cap.dev.plotly
+    name: plotly
+    kind: dependency
+    owner: team
+    source: pypi
+    version: pinned-in-requirements
+    trust_tier: T1
+    status: proposed
+    purpose: "Subgraph visualization."
+
+  - id: cap.dev.networkx
+    name: networkx
+    kind: dependency
+    owner: team
+    source: pypi
+    version: pinned-in-requirements
+    trust_tier: T1
+    status: proposed
+    purpose: "Client-side graph analysis complementing HydraDB algo.* procedures."
+
+  - id: cap.dev.pydantic
+    name: pydantic
+    kind: dependency
+    owner: team
+    source: pypi
+    version: pinned-in-requirements
+    trust_tier: T2
+    status: proposed
+    purpose: "Strict schemas for query plans, evidence, verdicts, and optional LLM output."
+
+  - id: cap.dev.pytest
+    name: pytest
+    kind: dependency
+    owner: team
+    source: pypi
+    version: pinned-in-requirements
+    trust_tier: T1
+    status: proposed
+    purpose: "Tests."
+
+  - id: cap.dev.ruff
+    name: ruff
+    kind: dependency
+    owner: team
+    source: pypi
+    version: pinned-in-requirements
+    trust_tier: T1
+    status: proposed
+    purpose: "Lint + format."
+
+  - id: cap.db.hydradb
+    name: hydradb
+    kind: external-service
+    owner: team
+    source: "github.com/hydra-db/hydradb"
+    source_repository: "ghcr.io/hydra-db/hydradb"
+    version: latest
+    trust_tier: T3
+    status: approved
+    expires: 2026-12-31
+    purpose: "Graph database — core of the product. Read+write via HTTP query API and Bolt."
+    permissions:
+      network: {allow: ["localhost:8443", "localhost:7687", "localhost:9090"]}
+      secrets: {token-file: ".hydradb/auth.token"}
+      filesystem:
+        read: ["hydradb/docs/architecture/hydradb-notes.md"]
+    operations: {cleanup: "docker stop and rm container; stateless, re-ingest to repopulate"}
+
+  - id: cap.tool.getdesign
+    name: getdesign
+    kind: tool
+    owner: team
+    source: npx
+    version: latest
+    trust_tier: T2
+    status: active
+    purpose: "Generated DESIGN.md (ui design system)."
+    outputs: [DESIGN.md]
+    operations: {note: "Run `npx getdesign@latest add opencode.ai` to refresh"}
+
+  - id: cap.skill.graphify
+    name: graphify
+    kind: skill
+    owner: team
+    source: "https://github.com/safishamsi/graphify"
+    source_repository: "graphifyy on PyPI"
+    version: 0.9.46
+    trust_tier: T2
+    status: approved
+    expires: 2026-12-31
+    purpose: "Knowledge graph of the HydraDB codebase; query/explain/path tools."
+    outputs:
+      - docs/research/hydradb-context-graph/graph.json
+      - docs/research/hydradb-context-graph/GRAPH_REPORT.md
+      - docs/research/hydradb-context-graph/graph.html
+    operations: {update: "graphify update <hydradb-path>", query: "graphify query \"...\""}
+
+  - id: cap.dev.node
+    name: node/npm
+    kind: platform
+    owner: team
+    source: system (node >= 22)
+    version: ">=22"
+    trust_tier: T1
+    status: active
+    expires: 2026-12-31
+    purpose: "Build the React product console (assets/app): Vite bundling, npm install/lockfile."
+    supported_tasks: [build]
+
+  - id: cap.dev.react
+    name: react-vite
+    kind: dependency
+    owner: team
+    source: "npm (react, react-dom, lucide-react; dev: vite, typescript, @vitejs/plugin-react)"
+    version: locked-in-assets/app/package-lock.json
+    trust_tier: T2
+    status: active
+    expires: 2026-12-31
+    purpose: "Product-grade frontend for the supply chain console — replaces the Streamlit shell."
+    assurance:
+      code_reviewed: true
+      approved_risk_tiers: [T2]
+    restrictions:
+      - "Frontend is static JS/CSS only; the build output (assets/app/dist) is served by the stdlib Python API (src/api.py)."
+      - "No new Python runtime dependency was introduced to enable this."
+      - "No secrets in static assets; all data comes from the HydraDB-backed /api endpoints."
+
+  - id: cap.skill.ponytail
+    name: ponytail
+    kind: skill
+    owner: team
+    source: "~/.claude/skills/ponytail"
+    source_repository: "vendored under .agents/skills/vendor/ponytail"
+    version: "full (default)"
+    trust_tier: T2
+    status: approved
+    purpose: "Lazy-but-correct engineering discipline: stdlib/native first, shortest diff that works."
+    prohibited_tasks:
+      - bypassing validation, security, or error handling
+    operations: {levels: [lite, full, ultra], persistence: session}
+
+  - id: cap.skill.ponytail-audit
+    name: ponytail-audit
+    kind: skill
+    owner: team
+    source: "~/.claude/skills/ponytail-audit"
+    source_repository: "vendored under .agents/skills/vendor/ponytail-audit"
+    version: vendored
+    trust_tier: T2
+    status: approved
+    purpose: "Audit past work for slippage from ponytail discipline."
+  # ponytail-debt / ponytail-gain / ponytail-help / ponytail-review — same provenance, T2, approved.
+
+  - id: cap.llm.optional
+    name: llm-optional
+    kind: model
+    owner: team
+    source: "openai-compatible / user-provided key"
+    version: n/a
+    trust_tier: T3
+    status: quarantined
+    purpose: "Optional Adjudicator/Auditor augmentation. OFF by default; must be disabled for the no-key demo."
+    permissions:
+      network: {allow: []}
+      secrets: {env: "Optional LLM key, never committed"}
+    assurance:
+      code_reviewed: false
+      approved_risk_tiers: [T2]
+    restrictions:
+      - "Only structured outputs validated by Pydantic (models.Verdict)."
+      - "Never executes code. Never alters HydraDB directly."
+      - "LLM refinements cannot change intent class or invent queries (ADR-0006)."
+
+exceptions: []

@@ -1,0 +1,12 @@
+{
+  "index": [
+    {"phase": "phase-1", "path": ".evidence/runs/phase-1/", "contents": ["smoke.txt"], "status": "empty-waiting-build"},
+    {"phase": "phase-2", "path": ".evidence/runs/phase-2/", "contents": ["ingest.txt"], "status": "empty-waiting-build"},
+    {"phase": "phase-3", "path": ".evidence/runs/phase-3/", "contents": ["integration.txt"], "status": "empty-waiting-build"},
+    {"phase": "phase-4", "path": ".evidence/runs/phase-4/", "contents": ["agents.txt"], "status": "empty-waiting-build"},
+    {"phase": "phase-5", "path": ".evidence/runs/phase-5/", "contents": ["screenshots/"], "status": "empty-waiting-build"},
+    {"phase": "phase-6", "path": ".evidence/runs/phase-6/", "contents": ["eval.txt", "smoke-final.txt", "tests-final.txt"], "status": "empty-waiting-build"},
+    {"phase": "scaffold", "path": ".evidence/runs/scaffold/", "contents": ["graphify-report.txt"], "status": "completed"}
+  ],
+  "policy": "Completion claims require a file present here with fresh command output."
+}

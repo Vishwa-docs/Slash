@@ -1,0 +1,3 @@
+PASS: healthz
+PASS: Package nodes readable
+PASS: PackageVersion nodes readable

@@ -1,0 +1,23 @@
+{
+ "fetched_at": 1787144621,
+ "llm_curated": false,
+ "repos": [
+  "axios/axios",
+  "expressjs/express",
+  "lodash/lodash",
+  "markedjs/marked",
+  "fastify/fastify"
+ ],
+ "universe_packages": 4,
+ "package_versions": 4,
+ "nodes": 23,
+ "edges": {
+  "DEPENDS_ON": 0,
+  "RESOLVES_TO": 1,
+  "USES_LOCKFILE": 5,
+  "MAINTAINED_BY": 0
+ },
+ "vulnerable_versions": 1265,
+ "dataset_md5": "8e03cd343c73f49802f46977b699e555",
+ "elapsed_s": 182.0
+}

@@ -1,0 +1,11 @@
+{
+  "name": "data-ingest",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "got": "11.8.5",
+    "node-fetch": "2.6.1",
+    "qs": "6.10.1",
+    "minimist": "0.0.8"
+  }
+}

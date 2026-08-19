@@ -1,0 +1,39 @@
+lookup:
+MATCH (v:PackageVersion {name: $name, version: $version}) RETURN v.id AS id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, v.malicious AS malicious, v.advisory_id AS advisory_id, v.is_typosquat AS is_typosquat
+params={'name': 'oslo', 'version': 'adv-2026-01-1.0.0'}
+
+latest:
+MATCH (v:PackageVersion {name: $name}) RETURN v.id AS id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, v.malicious AS malicious, v.advisory_id AS advisory_id, v.is_typosquat AS is_typosquat ORDER BY v.published_at DESC LIMIT 1
+params={'name': 'oslo'}
+
+parents:
+MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version
+params={'id': 0}
+
+service_edges:
+MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag
+params={'svc': 'gateway'}
+
+service_names:
+MATCH (s:Service) RETURN s.name AS name
+params={}
+
+popular:
+MATCH (n:Package {popular: true}) RETURN n.name AS name, n.id AS id
+params={}
+
+typosq:
+MATCH (v:PackageVersion) WHERE v.popular = false AND (v.deprecated = true OR v.published_at >= $since) RETURN v.id AS id, v.name AS name, v.published_at AS published_at, v.deprecated AS deprecated
+params={'since': 0}
+
+in_degree:
+MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN count(u.id) AS degree
+params={'id': 0}
+
+subgraph_out:
+MATCH (a:PackageVersion {id: $id})-[:DEPENDS_ON*1..2]->(b) RETURN b.id AS id, b.name AS name, b.version AS version
+params={'id': 0}
+
+subgraph_in:
+MATCH (a)-[:DEPENDS_ON]->(b:PackageVersion {id: $id}) RETURN a.id AS id, a.name AS name, a.version AS version
+params={'id': 0}

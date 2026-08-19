@@ -1,0 +1,145 @@
+{
+  "generated_ms": 272.4,
+  "advisories_checked": 4,
+  "advisories_present": 4,
+  "exposures": [
+    {
+      "advisory_id": "ADV-2026-01",
+      "name": "oslo",
+      "version": "adv-2026-01-1.0.0",
+      "services": [
+        "gateway",
+        "notifications"
+      ],
+      "lockfile_count": 1,
+      "appearing": [
+        "gateway-us"
+      ],
+      "resolved_while_live": [
+        {
+          "app": "gateway-us",
+          "service": "gateway",
+          "name": "edgehub",
+          "version": "1.1.1",
+          "resolved_at": 1784332800
+        }
+      ],
+      "recompute_agrees": true,
+      "query_count": 18
+    },
+    {
+      "advisory_id": "ADV-2026-02",
+      "name": "base",
+      "version": "adv-2026-02-1.0.0",
+      "services": [
+        "billing",
+        "catalog",
+        "shipping",
+        "webhooks"
+      ],
+      "lockfile_count": 3,
+      "appearing": [
+        "billing-prod",
+        "shipping-prod",
+        "webhooks-prod"
+      ],
+      "resolved_while_live": [
+        {
+          "app": "billing-prod",
+          "service": "billing",
+          "name": "devtext",
+          "version": "1.1.0",
+          "resolved_at": 1783987200
+        },
+        {
+          "app": "shipping-prod",
+          "service": "shipping",
+          "name": "devtext",
+          "version": "1.1.0",
+          "resolved_at": 1784419200
+        },
+        {
+          "app": "webhooks-prod",
+          "service": "webhooks",
+          "name": "base",
+          "version": "adv-2026-02-1.0.0",
+          "resolved_at": 1783900800
+        }
+      ],
+      "recompute_agrees": true,
+      "query_count": 18
+    },
+    {
+      "advisory_id": "ADV-2026-03",
+      "name": "ioauth",
+      "version": "adv-2026-03-1.0.0",
+      "services": [
+        "analytics",
+        "catalog",
+        "inventory",
+        "notifications",
+        "payments"
+      ],
+      "lockfile_count": 3,
+      "appearing": [
+        "analytics-us",
+        "catalog-prod",
+        "payments-eu"
+      ],
+      "resolved_while_live": [
+        {
+          "app": "analytics-us",
+          "service": "analytics",
+          "name": "ioauth",
+          "version": "adv-2026-03-1.0.0",
+          "resolved_at": 1781827200
+        },
+        {
+          "app": "catalog-prod",
+          "service": "catalog",
+          "name": "ioauth",
+          "version": "adv-2026-03-1.0.0",
+          "resolved_at": 1782259200
+        },
+        {
+          "app": "payments-eu",
+          "service": "payments",
+          "name": "ioauth",
+          "version": "adv-2026-03-1.0.0",
+          "resolved_at": 1782259200
+        }
+      ],
+      "recompute_agrees": true,
+      "query_count": 18
+    },
+    {
+      "advisory_id": "ADV-2026-04",
+      "name": "sync",
+      "version": "adv-2026-04-1.0.0",
+      "services": [
+        "notifications",
+        "search"
+      ],
+      "lockfile_count": 1,
+      "appearing": [
+        "search-prod"
+      ],
+      "resolved_while_live": [
+        {
+          "app": "search-prod",
+          "service": "search",
+          "name": "basedata",
+          "version": "1.0.0",
+          "resolved_at": 1780704000
+        }
+      ],
+      "recompute_agrees": true,
+      "query_count": 18
+    }
+  ],
+  "totals": {
+    "services_exposed": 10,
+    "apps_at_risk": 8,
+    "live_resolutions": 8
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "generated_at": "2026-08-19T12:08:09+00:00",
+  "apps": [
+    {
+      "app": "checkout-svc",
+      "lockfile": "/Users/daver/Desktop/Hackathons/Hack Hydra The HydraDB Open Source Hackathon/Slash/data/scan-fixtures/checkout-svc/package-lock.json",
+      "pins": [
+        {
+          "name": "basedata",
+          "version": "1.0.2",
+          "in_corpus": true,
+          "new_version_of_known": false,
+          "unknown": false,
+          "malicious": false,
+          "advisory_id": null,
+          "deprecated": false,
+          "typosquat_self": false,
+          "popular": false
+        },
+        {
+          "name": "olso",
+          "version": "1.0.1",
+          "in_corpus": false,
+          "new_version_of_known": true,
+          "unknown": false,
+          "malicious": false,
+          "advisory_id": null,
+          "deprecated": false,
+          "typosquat_self": true,
+          "popular": false
+        },
+        {
+          "name": "sync",
+          "version": "adv-2026-04-1.0.0",
+          "in_corpus": true,
+          "new_version_of_known": false,
+          "unknown": false,
+          "malicious": true,
+          "advisory_id": "ADV-2026-04",
+          "deprecated": false,
+          "typosquat_self": false,
+          "popular": true
+        }
+      ],
+      "exposures": [
+        {
+          "name": "sync",
+          "version": "adv-2026-04-1.0.0",
+          "advisory_id": "ADV-2026-04",
+          "services": [
+            "notifications",
+            "search"
+          ],
+          "lockfiles": [
+            {
+              "service": "search",
+              "app": "search-prod",
+              "resolved_at": 1780704000,
+              "was_resolved_while_live": true
+            }
+          ],
+          "recompute_agrees": true
+        }
+      ],
+      "typosquat_flag": [
+        {
+          "name": "syncn",
+          "score": 1.139,
+          "nearest_seed": "sync",
+          "in_degree": 0,
+          "deprecated": true
+        },
+        {
+          "name": "oslo",
+          "score": 0.75,
+          "nearest_seed": "olso",
+          "in_degree": 1,
+          "deprecated": false
+        }
+      ],
+      "deprecated_pins": []
+    },
+    {
+      "app": "merchant-api",
+      "lockfile": "/Users/daver/Desktop/Hackathons/Hack Hydra The HydraDB Open Source Hackathon/Slash/data/scan-fixtures/merchant-api/package-lock.json",
+      "pins": [
+        {
+          "name": "edgehub",
+          "version": "1.1.1",
+          "in_corpus": true,
+          "new_version_of_known": false,
+          "unknown": false,
+          "malicious": false,
+          "advisory_id": null,
+          "deprecated": false,
+          "typosquat_self": false,
+          "popular": false
+        },
+        {
+          "name": "devtext",
+          "version": "1.1.1",
+          "in_corpus": true,
+          "new_version_of_known": false,
+          "unknown": false,
+          "malicious": false,
+          "advisory_id": null,
+          "deprecated": false,
+          "typosquat_self": false,
+          "popular": false
+        },
+        {
+          "name": "oslo",
+          "version": "adv-2026-01-1.0.0",
+          "in_corpus": true,
+          "new_version_of_known": false,
+          "unknown": false,
+          "malicious": true,
+          "advisory_id": "ADV-2026-01",
+          "deprecated": false,
+          "typosquat_self": false,
+          "popular": true
+        }
+      ],
+      "exposures": [
+        {
+          "name": "oslo",
+          "version": "adv-2026-01-1.0.0",
+          "advisory_id": "ADV-2026-01",
+          "services": [
+            "gateway",
+            "notifications"
+          ],
+          "lockfiles": [
+            {
+              "service": "gateway",
+              "app": "gateway-us",
+              "resolved_at": 1784332800,
+              "was_resolved_while_live": true
+            }
+          ],
+          "recompute_agrees": true
+        }
+      ],
+      "typosquat_flag": [
+        {
+          "name": "olso",
+          "score": 1.0,
+          "nearest_seed": "oslo",
+          "in_degree": 0,
+          "deprecated": true
+        },
+        {
+          "name": "edgde",
+          "score": 0.917,
+          "nearest_seed": "edgehub",
+          "in_degree": 0,
+          "deprecated": true
+        }
+      ],
+      "deprecated_pins": []
+    }
+  ],
+  "totals": {
+    "apps": 2,
+    "pins": 6,
+    "in_corpus": 5,
+    "unknown": 0,
+    "malicious_resolved": 2,
+    "deprecated": 0,
+    "typosquat_flag": 4
+  }
+}

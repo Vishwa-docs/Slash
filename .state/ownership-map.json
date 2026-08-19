@@ -1,0 +1,17 @@
+{
+  "ownership": {
+    "product-strategy": "team",
+    "architecture-docs": "team",
+    "plan-prompt": "team",
+    "app-code": "coding-agent (phases per vk/PROMPT.md)",
+    "dataset-and-ground-truth": "coding-agent / team",
+    "eval-numbers": "team (only from .evidence/runs/phase-6/eval.txt)",
+    "hydradb-container-ops": "coding-agent / team",
+    "codeowners": "see CODEOWNERS"
+  },
+  "service_catalog": {
+    "slash-console": {"port": 8501, "owner": "team", "run": "streamlit run app.py"},
+    "hydradb-node": {"ports": "7687/8443/9090", "owner": "team", "run": "bash src/infra/hydradb-up.sh"}
+  },
+  "updated_at": "2026-08-19T00:00:00Z"
+}

@@ -1,0 +1,47 @@
+Slash product API demo battery - run against live HydraDB (generated corpus).
+API base: http://127.0.0.1:8501  (scripts/serve.py on 8501)
+==============================================================================
+Q: Which services are exposed by oslo@adv-2026-01-1.0.0?
+   intent=EXPOSED_SERVICES  abstain=False  queries=18  latency=66.9ms
+   A: gateway, notifications
+   payload: {"found": true, "node_id": 17526, "name": "oslo", "version": "adv-2026-01-1.0.0", "services": ["gateway", "notifications"], "paths": [{"service": "gateway", "app": "gateway-us", "name": "edgehub", "version": "1.1.1", "resolved_at": 1784332800, "flag": false}, {"service": "notifications", "app": "notifications-eu", "name": "edgehub", "version": "1.1.1", "resolved_at": 1781222400, "flag": false}]}
+
+Q: Which apps resolved oslo@adv-2026-01-1.0.0 while it was live?
+   intent=RESOLVED_WHILE_LIVE  abstain=False  queries=18  latency=59.8ms
+   A: 1 lockfile(s) resolved while live
+   payload: {"found": true, "node_id": 17526, "name": "oslo", "version": "adv-2026-01-1.0.0", "services": ["gateway", "notifications"], "paths": [], "lockfiles": [{"app": "gateway-us", "service": "gateway", "name": "edgehub", "version": "1.1.1", "resolved_at": 1784332800}], "recompute_agrees": true, "contradictions": []}
+
+Q: Which packages share a maintainer with dev_154?
+   intent=MAINTAINER_CONTAGION  abstain=False  queries=1  latency=2.5ms
+   A: dev_154 maintains 5 package(s): oslo, oslo-base-open, oslo-rpc-oslo, oslo-url, oslo_log_cache
+   payload: {"found": true, "developer": "dev_154", "packages": ["oslo", "oslo-base-open", "oslo-rpc-oslo", "oslo-url", "oslo_log_cache"]}
+
+Q: Is olso a typosquat of oslo?
+   intent=TYPOSQUAT_CANDIDATES  abstain=False  queries=3  latency=57.8ms
+   A: olso (score 1.25), oslo (score 1.0)
+   payload: {"found": true, "seeds": ["olso", "oslo"], "candidates": [{"id": 17566, "name": "olso", "nearest_seed": "olso", "score": 1.25, "in_degree": 0, "deprecated": true}, {"id": 17526, "name": "oslo", "nearest_seed": "oslo", "score": 1.0, "in_degree": 1, "deprecated": false}]}
+
+Q: What is the blast radius of oslo@adv-2026-01-1.0.0?
+   intent=BLAST_RADIUS  abstain=False  queries=2  latency=3.6ms
+   A: Blast radius of oslo@adv-2026-01-1.0.0: 1 dependant version(s) in <=6 hops
+   payload: {"found": true, "node_id": 17526, "name": "oslo", "version": "adv-2026-01-1.0.0", "services": [], "paths": [], "dependant_count": 1, "levels": [[{"id": 1119, "name": "edgehub", "version": "1.1.1"}]]}
+
+Q: Which services are exposed by base@adv-2026-02-1.0.0?
+   intent=EXPOSED_SERVICES  abstain=False  queries=18  latency=61.2ms
+   A: billing, catalog, shipping, webhooks
+   payload: {"found": true, "node_id": 17533, "name": "base", "version": "adv-2026-02-1.0.0", "services": ["billing", "catalog", "shipping", "webhooks"], "paths": [{"service": "billing", "app": "billing-prod", "name": "devtext", "version": "1.1.0", "resolved_at": 1783987200, "flag": false}, {"service": "catalog", "app": "catalog-prod", "name": "devtext", "version": "1.1.0", "resolved_at": 1782259200, "flag": 
+
+Q: Which services are exposed by ioauth@adv-2026-03-1.0.0?
+   intent=EXPOSED_SERVICES  abstain=False  queries=18  latency=64.5ms
+   A: analytics, catalog, inventory, notifications, payments
+   payload: {"found": true, "node_id": 17541, "name": "ioauth", "version": "adv-2026-03-1.0.0", "services": ["analytics", "catalog", "inventory", "notifications", "payments"], "paths": [{"service": "analytics", "app": "analytics-us", "name": "ioauth", "version": "adv-2026-03-1.0.0", "resolved_at": 1781827200, "flag": true}, {"service": "catalog", "app": "catalog-prod", "name": "ioauth", "version": "adv-2026-0
+
+Q: Which services are exposed by sync@adv-2026-04-1.0.0?
+   intent=EXPOSED_SERVICES  abstain=False  queries=18  latency=69.3ms
+   A: notifications, search
+   payload: {"found": true, "node_id": 17552, "name": "sync", "version": "adv-2026-04-1.0.0", "services": ["notifications", "search"], "paths": [{"service": "notifications", "app": "notifications-eu", "name": "sync", "version": "adv-2026-04-1.0.0", "resolved_at": 1781222400, "flag": false}, {"service": "search", "app": "search-prod", "name": "basedata", "version": "1.0.0", "resolved_at": 1780704000, "flag": f
+
+Q: Tell me about the weather in jakarta
+   intent=PACKAGE_LOOKUP  abstain=True  queries=1  latency=2.1ms
+   A: Not enough evidence in the graph for this question.
+   payload: {"found": false}

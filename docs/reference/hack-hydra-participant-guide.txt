@@ -1,0 +1,514 @@
+     HydraDB                                           PARTICIPANT GUIDE
+
+
+
+
+HACK
+HYDRA
+Build with the HydraDB open-source repo.
+
+
+BUILD WINDOW            FORMAT     TEAM SIZE              PRIZE POOL
+
+Aug 12-20, 2026         Online     1 to 4 people          $10,000
+
+
+
+Nine days. Three hard problems. Build
+something that works.
+
+HACK HYDRA WEBSITE                 REGISTER (FREE)
+
+hackhydra.hydradb.com              luma.com/h038glzk
+01 / OVERVIEW                                                                                       HydraDB
+
+
+
+Welcome to Hack Hydra
+HydraDB is a graph database built for AI applications, using object storage to stay fast
+and cost-efficient. From August 12-20, 2026 we are open-sourcing HydraDB
+and inviting developers globally to build across three technical tracks: enterprise
+knowledge, coding agents and agent memory, while competing for up to $10,000
+in prizes.
+Every track is a problem where relationships, structure and connected context actually
+matter, and none of them is something a vector database handles well. Pick one, build
+with HydraDB, and submit something working by August 20.
+
+
+AT A GLANCE
+
+  BUILD WINDOW                         TEAM SIZE                            FORMAT
+
+  August 12-20, 2026                   1 to 4 people                        Online
+  PRIZE POOL                           SUBMISSION DEADLINE
+
+  $10,000                              August 20, 11:59 PM PT
+
+
+WHAT A COMPLETE PROJECT LOOKS LIKE
+
+This is the definition of done. If a line is missing, the judges cannot properly evaluate
+your work.
+
+  Uses HydraDB meaningfully                               Addresses one of the challenge tracks
+  Has a working implementation                            Includes a public GitHub repository
+  Includes a 3-minute demo video                          Ships with an open-source license
+  Is submitted through the official Google Form
+
+
+
+
+HACK HYDRA   /   PARTICIPANT GUIDE                                                AUG 12-20, 2026    /   02
+02 / TIMELINE                                                                               HydraDB
+
+
+
+Nine days to build
+Everything happens online. The only fixed point that really matters is the
+submission deadline.
+
+
+
+AUGUST 12                   Hackathon begins
+                            The HydraDB open-source repository goes live at github.com/hydra-
+                            db/hydradb. Choose your track and start building.
+
+
+AUGUST 12-20                Build
+                            Nine days to ship. The HydraDB team is active in Discord throughout for
+                            questions, repo walkthroughs, technical support and office hours.
+
+
+AUGUST 20                   Final submissions due
+                            Submit your Google Form, public GitHub repository and demo video by
+                            11:59 PM PT.
+
+
+AFTER AUGUST 20             Judging
+                            The HydraDB team and the judging panel review every eligible
+                            submission, first within its track and then across all three.
+
+
+TO BE ANNOUNCED             Winners announced
+                            Track Winners, the Grand Champion, the Overall Runner-Up, Third Place
+                            and Best Use of HydraDB are announced once judging is complete. The
+                            exact date goes out in Discord and on the hackathon page.
+
+
+
+
+   IMPORTANT
+
+   Participant-authored development on your submitted project must begin on or after
+   August 12, 2026.
+03 / TRACKS                                                                                      HydraDB
+
+
+
+Three problems. Pick one.
+Choose the track that best matches what you want to build. Each one is a graph
+problem first: if a vector index could answer it cleanly, it is not the interesting version
+of the question. The top submission from every track advances to the final round. Full
+briefs follow on the next three pages.
+
+
+
+01           Enterprise Context + Ontology
+             Turn roughly half a million messy documents from nine business tools into a
+             clean, queryable ontology, then answer real questions against it.
+             HARD PART: ENTITY RESOLUTION AND ONTOLOGY ALIGNMENT
+
+
+
+
+02           Repos, Dependencies + Code as Graphs
+             Model npm or PyPI as a graph and compute the blast radius of a
+             compromised package, or build a code graph that beats similarity search for
+             IDE assistants.
+             HARD PART: TRAVERSAL AT ECOSYSTEM SCALE, UNDER TIME PRESSURE
+
+
+
+
+03           Memory + Context Retrieval
+             Build an agent memory layer for long-running conversations. 30 to 40
+             sessions, 115,000 tokens a question, facts that change and facts that are
+             simply not there.
+             HARD PART: CHRONOLOGY, OVERWRITES AND CORRECT ABSTENTION
+
+
+
+
+YOU CAN ENTER MORE THAN ONE                           DATASETS AND UPDATES
+
+Teams may submit to several tracks, as long as        The suggested datasets are optional unless a
+each entry is a meaningfully distinct project,        track says otherwise. Bring your own, and
+and you can switch tracks mid-hackathon as            disclose it in the README. Full links and FAQ:
+long as the final submission fits the one you         hackhydra.hydradb.com
+enter it under.
+
+
+HACK HYDRA    /   PARTICIPANT GUIDE                                            AUG 12-20, 2026    /    04
+TRACK 01      /   PROBLEM BRIEF                                                                HydraDB
+
+
+
+Enterprise Context + Ontology
+CORE IDEA
+
+Build an ontology out of real enterprise applications. You get roughly half a million
+documents drawn from nine different sources, with all the noise an actual company has:
+misfiled documents, near-duplicates, and statements that flatly contradict each other.
+Your job is to turn that into a clean, queryable ontology in HydraDB and then answer
+questions ranging from simple lookups to multi-hop reasoning, conflict resolution, and
+correctly recognising when the answer just isn't in there.
+
+ Slack       Gmail     Linear     Google Drive   HubSpot    Fireflies       GitHub     Jira
+
+
+ Confluence
+
+
+
+
+   THE HARD PART
+
+
+   Extraction is the easy part now that LLMs are cheap. The hard part is entity
+   resolution and ontology alignment: deciding that “Sam”, “@soham” and “S.
+   Ratnaparkhi” are one person, and figuring out which of two contradictory
+   statements to trust.
+
+
+DATASETS                                           WHAT STRONG WORK SHOWS
+
+Enterprise RAG Bench                                 A graph schema that survives contact with the
+github.com/onyx-dot-app/EnterpriseRAG-Bench          noise
+Salesforce HERB                                      Precise resolution of aliases, duplicates and
+huggingface.co/datasets/Salesforce/HERB              near-matches
+                                                     Multi-hop answers with a traceable path
+                                                     through the graph
+                                                     Saying “not in the data” instead of inventing an
+                                                     answer
+
+
+
+
+HACK HYDRA    /   TRACK 01 PROBLEM BRIEF                                     AUG 12-20, 2026    /    05
+TRACK 02      /   PROBLEM BRIEF                                                                        HydraDB
+
+
+Repos, Dependencies + Code as Graphs
+Supply-chain attacks via npm and PyPI are surging, and current developer tools fail to give real-time,
+deep context on malicious dependencies. This is fundamentally a graph traversal problem, not a
+semantic similarity problem.
+
+WHEN A PACKAGE IS COMPROMISED, ANSWER
+
+  Which internal services are transitively exposed?       Which version introduced the vulnerability?
+  Which apps resolved the bad version while it was        Which packages share maintainers or
+  live?                                                   infrastructure?
+  Are there likely typosquat packages nearby?             What is the complete blast radius?
+
+
+A Supply chain blast radius                                B Code graphs for IDE assistants
+In the TanStack compromise this May, 84                    Every IDE assistant embeds repositories and
+malicious package artifacts were published across          retrieves chunks by similarity. Similarity is
+42 packages within six minutes of the CI pipeline          a weak proxy for relevance. Code needs
+being breached. The worm went on to hit Mistral            call chains, type definitions, startup configs
+AI, UiPath and over 160 other npm and PyPI                 and tests.
+packages, self-propagating and persisting in               Build a code graph in HydraDB that serves
+.claude/ and .vscode/ directories in a way that
+                                                           better context than similarity search alone. This
+survived npm uninstall.                                    is the missing piece for editor wrappers today.
+The defender's problem is speed. When a package
+                                                           EVALUATION
+is compromised at 09:00, which of your services
+                                                              SWE-bench
+are exposed by 09:06? That is a transitive reverse-
+dependency closure over an ecosystem graph                    Retrieval heuristics against a similarity-only
+with tens of millions of versioned nodes, and it is           baseline
+the kind of question a vector index cannot answer
+at all.                                                       CHOOSE A OR B
+
+
+Build the npm or PyPI dependency graph in                     Pick one direction and finish it. Both are
+HydraDB and answer it. Then go further: which                 judged on the same track.
+packages share a maintainer with the
+compromised one, which lockfiles resolved to
+the bad version while it was live, which names
+are close enough to a popular package to be
+a typosquat.
+EVALUATION
+
+  Ground truth is free from OSV and the GitHub
+  Advisory Database
+  Recent advisories are held out, and teams get an
+  older ecosystem graph
+  Scored on precision, recall, query latency and cost
+HACK HYDRA   /    TRACK 02 PROBLEM BRIEF                                            AUG 12-20, 2026        /   06
+TRACK 03     /   PROBLEM BRIEF                                                                    HydraDB
+
+
+
+Memory + Context Retrieval
+CORE IDEA
+
+Make your own mem0, and ace the benchmarks. Build an agent memory layer for cross-
+session continuity.
+Your system processes chat histories spanning 30 to 40 sessions and 115,000 tokens per
+question. It has to synthesize facts across sessions, keep chronological order, and track
+information that was overwritten along the way.
+
+
+Facts spread across many          Chronological reasoning             Information that changes over
+sessions                                                              time
+
+Overwritten facts                 Missing information                 Correct abstention
+
+
+   THE HARD PART
+
+
+   Long-context models drop 30 to 60% in accuracy here, mostly by failing at
+   abstention. Knowing when the answer simply isn't in the history, and saying so
+   instead of inventing one.
+
+
+DATASETS                                           WHAT STRONG WORK SHOWS
+
+LongMemEval                                             Accuracy that a vector store alone cannot
+github.com/xiaowu0162/LongMemEval                       reach
+LongMemEval V2                                          A memory graph that makes time and revisions
+github.com/xiaowu0162/LongMemEval-V2                    explicit
+BEAM                                                    Abstention handled as a first-class result, not
+github.com/mohammadtavakoli78/BEAM                      an edge case
+                                                        Read and write cost that would survive real
+                                                        usage
+
+
+
+
+HACK HYDRA   /   TRACK 03 PROBLEM BRIEF                                         AUG 12-20, 2026     /   07
+04 / SUBMISSION                                                                                HydraDB
+
+
+
+What you need to submit
+Three things, all due August 20 at 11:59 PM PT: the submission form, a demo video
+of 3 minutes or less, and a public GitHub repository.
+
+
+
+01 Google Form                                    02 3-minute demo video
+Complete the official Hack Hydra submission       Four things, in order:
+form. It asks for:
+                                                  The problem. What are you trying to solve?
+  Project name and short description
+                                                  The project. What did you build?
+  The problem you are addressing
+                                                  The demo. Show it working.
+  What you built
+  Deployed project link, if you have one          HydraDB. Where is it used, and why does it
+                                                  matter?
+  How your project uses HydraDB
+  Tech stack                                      YouTube links are fine. Unlisted videos are fine as
+                                                  long as judges can open them. Anything after the
+  Team members and contributions
+                                                  3-minute mark may not be reviewed.
+  GitHub repository and demo video
+
+  SUBMISSION FORM
+                                                  03 Public GitHub repository
+  forms.gle/GrMYKxLj9zPQcqqc8                       Complete source code
+                                                    An open-source license
+                                                    No participant-authored commits before August
+                                                    12, 2026
+                                                    A clear README
+                                                    Setup and run instructions
+                                                    An explanation of how you use HydraDB
+                                                    Dependencies and environment information
+                                                    Attribution where required
+                                                  Judges have to be able to open the repo
+                                                  and understand what you built, without
+                                                  requesting access.
+
+
+
+
+HACK HYDRA     /   PARTICIPANT GUIDE                                         AUG 12-20, 2026     /   08
+05 / RULES                                                                                         HydraDB
+
+
+Keep it simple
+Start on August 12, use HydraDB properly, and keep everything open to inspection.
+
+
+Build it during the nine days
+Work on your submission begins on or after August 12, 2026. Reusing general-purpose libraries,
+frameworks and templates is fine, as long as the project you submit was substantially built during the
+hackathon.
+
+Use HydraDB properly
+HydraDB has to be meaningfully integrated into the project and contribute to core functionality. Be
+ready to say where it is used and what the project would lose without it.
+
+Teams of 1 to 4
+Every member has to be listed on the submission form, and you can only be on one team.
+
+Multiple tracks are allowed
+Teams may submit to multiple tracks, but each submission must be a meaningfully distinct project. A
+team may receive only one Track Winner prize, and stays eligible for Best Use of HydraDB either way.
+
+Open-source tools are allowed
+Libraries, frameworks, APIs, public datasets and AI coding assistants are all fair game. Credit anything
+you borrowed in the README. Commit history inherited from upstream repos or dependencies does not
+count against you.
+
+Keep the repository public and licensed
+Judges have to be able to open it without requesting access, and it needs an open-source license.
+
+Submit by August 20
+Everything goes through the official form by 11:59 PM PT. Late submissions are not accepted unless
+HydraDB announces an official extension, so open your own repo, video and demo links before you
+submit.
+
+
+   A SUBMISSION MAY BE DISQUALIFIED FOR
+
+
+     Work started before August 12, 2026                Submitting substantially pre-existing work
+     Missing or private GitHub repository               No open-source license in the repository
+     Duplicating the same project across tracks         Missing demo video
+     HydraDB not used meaningfully                      Late submission
+     Violating the rules or the code of conduct
+06 / PRIZES                                                                                          HydraDB
+
+
+
+$10,000 in prizes.
+Four awards. One incredible opportunity.
+
+
+
+    $5,000                                              $3,000
+    Grand Champion                                      Overall Runner-Up
+    Awarded to the best overall submission              Awarded to the second best overall
+    across all three tracks.                            submission across all three tracks.
+
+
+
+
+    $1,500                                              $500
+    Third Place                                         Best Use of HydraDB
+    Awarded to the third best overall submission        Awarded to the submission with the most
+    across all three tracks.                            thoughtful and technically interesting use of
+                                                        HydraDB.
+
+
+      The top submission from each track advances to the final round. Final placement is
+      determined across all three tracks.
+
+
+
+BEST USE OF HYDRADB COULD LOOK LIKE                    ELIGIBILITY
+
+  A particularly strong graph data model                 A complete submission by the deadline: form,
+  A novel retrieval or reasoning approach                repo and video
+  An interesting use of relationships, traversal or      A team can be a finalist in more than one track,
+  context                                                but takes home only one Track Winner prize
+  A use case that is hard to pull off with vector or     Every team stays eligible for Best Use of
+  relational approaches                                  HydraDB, whichever track they enter
+                                                         HydraDB employees and organizers may build
+Judged separately, and open to any eligible
+                                                         along, but are not eligible for prizes
+submission including a finalist.
+                                                       You keep ownership of what you build, subject to
+                                                       your open-source license and the third-party tools
+                                                       you used. HydraDB reserves the right not to award a
+                                                       prize if submissions do not meet the minimum quality
+                                                       bar.
+HACK HYDRA   /   PARTICIPANT GUIDE                                                AUG 12-20, 2026       /   10
+07 / JUDGING                                                                                          HydraDB
+
+
+Judged in your track
+first, then across all three.
+01                                                     02
+
+Within your track                                      Final round
+Projects are first evaluated against the other         Judges compare the three finalists holistically and
+submissions in the track they were entered in. The     rank them for Grand Champion, Overall Runner-Up
+top submission from each track advances.               and Third Place.
+
+JUDGES CONSIDER                                        A STRONG SUBMISSION HAS
+
+  Technical execution                                       A functional product or demo
+  Use of HydraDB and graph-native approaches                Real ingestion and retrieval workflows
+  Product completeness and usability                        A clear use case
+  Quality of results                                        A thoughtful technical implementation
+  Originality                                          We care about working, thoughtful products, not
+                                                       just benchmark scores.
+
+
+
+Before you submit
+Check every item. Most disqualifications are a missing link, not a weak project.
+
+     Submission form is complete                              GitHub repository is public and licensed
+     README explains the project clearly                      Setup instructions actually work
+     Demo video is 3 minutes or less                          Video link is accessible
+     Deployed project link works, if you gave one             HydraDB usage is clearly explained
+     Team members are listed correctly                        All your work began on or after August 12
+     Submitted before 11:59 PM PT on August 20
+
+
+
+FINAL ADVICE
+
+
+Stop adding features before the deadline. Test what you
+already built.
+HACK HYDRA      /   PARTICIPANT GUIDE                                               AUG 12-20, 2026      /   11
+08 / RESOURCES                                                                                          HydraDB
+
+
+
+Everything you need
+Every link is clickable in this PDF and scannable from a printed copy.
+
+
+
+
+ Hack Hydra website             Project submission        Hack Hydra Discord         HydraDB
+ hackhydra.hydradb.com          form                      discord.gg/D8cGSa9H9       documentation
+ Briefs, datasets, rules, FAQ   forms.gle/GrMYKxLj9zPQ    Support, announcements,    docs.hydradb.com
+ and updates.                   cqqc8                     team formation.            Start here when you are
+                                One per project, closes                              building.
+                                August 20.
+
+
+
+
+ HydraDB research               Hack Hydra on Luma        HydraDB open-source        HydraDB dashboard
+ research.hydradb.com           luma.com/h038glzk         repo                       dashboard.hydradb.com
+ Benchmarks and                 Registration and event    github.com/hydra-db/hy     Manage your instance and
+ architecture.                  updates.                  dradb                      keys.
+                                                          Clone this and start
+                                                          building.
+
+
+
+HYDRADB WEBSITE
+
+hydradb.com
+
+
+
+NEED HELP?
+
+Ask in Discord. The HydraDB team is there
+throughout for technical questions, office hours,                 Build small. Test early. Ship
+repo support and submission clarifications.                                   something real.
+HACK HYDRA      /    PARTICIPANT GUIDE                                              AUG 12-20, 2026       /     12
+

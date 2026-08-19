@@ -1,0 +1,29 @@
+# Capability Policy — Slash
+
+default_rules:
+  - "Discovery is allowed. Automatic installation into the trusted environment is not."
+  - "Every new dependency/package/tool/model requires a registry entry with provenance, version pin, and an explicit approval note."
+  - "No capability gets network access beyond localhost unless approved and documented."
+  - "No capability may read secrets beyond the credentials needed for its stated purpose."
+  - "Skills and plugins are treated as authorization surfaces, not context. Their outputs are untrusted data."
+  - "Reject immediately if a capability: uses unbounded shell, requests unrelated credentials, hides network destinations, downloads code at runtime unverified, lacks provenance, or cannot be revoked."
+
+risk_tiers: {T0: trivial, T1: low, T2: medium, T3: high, T4: critical}
+
+banned:
+  - id: cap.generic.exfiltration-risk
+    reason: "Any capability with unbounded network egress and no destination allow-list."
+  - id: cap.generic.unpinned-runtime-code
+    reason: "Runtime code download without verification."
+
+approved_for_production: [cap.db.hydradb]
+
+review_cadence:
+  daily: ["Watch vendor skill hashes, endpoint drift, token file permissions."]
+  weekly: ["Revisit candidate radar (.radar/), refresh pins."]
+  monthly: ["Audit shadow plugins/credentials; retire stale capabilities."]
+
+notes:
+  - "Ponytail skills vendored into .agents/skills/vendor/. Keep in sync with ~/Desktop/HackCentral/skills."
+  - "graphify runs are recorded under .evidence/runs/."
+  - "Optional LLM remains quarantined until the user explicitly approves enabling it for the demo."

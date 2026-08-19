@@ -1,0 +1,9 @@
+# Global owners for all files (hackathon team of record)
+*       @team
+
+# Plan + prompt are the product of record
+/vl/    @team
+/vk/    @team
+
+# Docs must not be edited without updating their "source of truth"
+/docs/  @team

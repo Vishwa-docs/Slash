@@ -1,0 +1,38 @@
+TYPOSQUATS: [
+ {
+  "name": "iio",
+  "target": "io",
+  "package_version_id": 17560
+ },
+ {
+  "name": "vent",
+  "target": "event",
+  "package_version_id": 17563
+ },
+ {
+  "name": "olso",
+  "target": "oslo",
+  "package_version_id": 17566
+ },
+ {
+  "name": "ioauht",
+  "target": "ioauth",
+  "package_version_id": 17569
+ },
+ {
+  "name": "vmn",
+  "target": "vm",
+  "package_version_id": 17572
+ },
+ {
+  "name": "edgde",
+  "target": "edge",
+  "package_version_id": 17575
+ },
+ {
+  "name": "syncn",
+  "target": "sync",
+  "package_version_id": 17578
+ }
+]
+CONTAGION keys: [{'advisory_id': 'ADV-2026-01', 'developer_handle': 'dev_154', 'shared_packages': ['oslo-base-open', 'oslo-rpc-oslo', 'oslo-url']}, {'advisory_id': 'ADV-2026-02', 'developer_handle': 'dev_087', 'shared_packages': ['authjob', 'authmetapub', 'base-edge']}, {'advisory_id': 'ADV-2026-03', 'developer_handle': 'dev_240', 'shared_packages': ['io_port', 'io_sdk', 'io_task_geo']}, {'advisory_id': 'ADV-2026-04', 'developer_handle': 'dev_197', 'shared_packages': ['sdk', 'sdk-task', 'sdk-torch-route']}]

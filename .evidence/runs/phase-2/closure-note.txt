@@ -1,0 +1,2 @@
+forward var-length from fixed id: [{'paths': 0}]
+NOTE: reverse/starred-incoming variable-length unsupported; use level-by-level BFS (edge direction dependant->dependency).

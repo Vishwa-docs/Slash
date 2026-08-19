@@ -1,0 +1,15 @@
+{
+  "experiments": [
+    {
+      "id": "EXP-0001",
+      "title": "Bounded variable-length reverse closure on HydraDB (*1..6) vs NetworkX client-side",
+      "status": "planned",
+      "phase": "P3",
+      "owner": "coding-agent",
+      "goal": "Confirm which hop depths stay under 1s p95 on the reference dataset with the live container.",
+      "success": "Latency table in docs/research/scoring.md; query pinned into graph_service.py.",
+      "note": "Do not benchmark against NetworkX 'correctness' — NetworkX is the sanity-check oracle only."
+    }
+  ],
+  "updated_at": "2026-08-19T00:00:00Z"
+}

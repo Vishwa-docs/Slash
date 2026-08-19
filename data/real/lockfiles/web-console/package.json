@@ -1,0 +1,10 @@
+{
+  "name": "web-console",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "lodash": "4.17.20",
+    "marked": "4.0.10",
+    "debug": "4.3.1"
+  }
+}

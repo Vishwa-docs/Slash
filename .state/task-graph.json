@@ -1,0 +1,114 @@
+{
+  "task_graph": {
+    "current": "P8",
+    "tasks": [
+      {
+        "id": "P0",
+        "name": "Scaffold + planning (AGENTS/PLAN/PROMPT/DESIGN/control plane)",
+        "status": "completed",
+        "depends": [],
+        "owner": "planner",
+        "evidence": ".evidence/runs/scaffold/"
+      },
+      {
+        "id": "P1",
+        "name": "Infrastructure",
+        "status": "completed",
+        "depends": [
+          "P0"
+        ],
+        "owner": "coding-agent",
+        "docs": [
+          "docs/architecture/hydradb-notes.md"
+        ],
+        "evidence": ".evidence/runs/phase-1/"
+      },
+      {
+        "id": "P2",
+        "name": "Schema + dataset + ingest",
+        "status": "completed",
+        "depends": [
+          "P1"
+        ],
+        "owner": "coding-agent",
+        "evidence": ".evidence/runs/phase-2/"
+      },
+      {
+        "id": "P3",
+        "name": "Query layer",
+        "status": "completed",
+        "depends": [
+          "P2"
+        ],
+        "owner": "coding-agent",
+        "evidence": ".evidence/runs/phase-3/"
+      },
+      {
+        "id": "P4",
+        "name": "Agents + abstention",
+        "status": "completed",
+        "depends": [
+          "P3"
+        ],
+        "owner": "coding-agent",
+        "evidence": ".evidence/runs/phase-4/"
+      },
+      {
+        "id": "P5",
+        "name": "UI",
+        "status": "completed",
+        "depends": [
+          "P3",
+          "P4"
+        ],
+        "owner": "coding-agent",
+        "evidence": ".evidence/runs/phase-5/"
+      },
+      {
+        "id": "P6",
+        "name": "Eval + README + video + submit",
+        "status": "completed",
+        "depends": [
+          "P4",
+          "P5"
+        ],
+        "owner": "team",
+        "evidence": ".evidence/runs/phase-6/"
+      },
+      {
+        "id": "P7",
+        "name": "Real data feed (npm + OSV) on live HydraDB",
+        "status": "completed",
+        "depends": [
+          "P6"
+        ],
+        "owner": "coding-agent",
+        "evidence": ".evidence/runs/real-data/"
+      },
+      {
+        "id": "P8",
+        "name": "Product console: stdlib JSON API + React frontend + API tests",
+        "status": "completed",
+        "depends": [
+          "P6"
+        ],
+        "owner": "coding-agent",
+        "evidence": ".evidence/runs/product/"
+      },
+      {
+        "id": "P9",
+        "name": "Domain lenses: one query engine for supply-chain + fraud/AML (ADR-0010)",
+        "status": "completed",
+        "depends": [
+          "P8"
+        ],
+        "owner": "coding-agent",
+        "docs": [
+          "docs/architecture/decisions/ADR-0010-lenses.md"
+        ],
+        "evidence": ".evidence/runs/product/"
+      }
+    ]
+  },
+  "updated_at": "2026-08-19"
+}

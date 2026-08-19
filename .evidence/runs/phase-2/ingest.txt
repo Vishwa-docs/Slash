@@ -1,0 +1,16 @@
+count(PackageVersion): 2001
+count(Package): 607
+count(Developer): 400
+count(Service): 15
+count(Lockfile): 40
+count(malicious): 4
+count(is_typosquat): 7
+recheck PackageVersion: 2001
+recheck Package: 607
+recheck Developer: 400
+recheck Service: 15
+recheck Lockfile: 40
+recheck malicious: 4
+recheck is_typosquat: 7
+recheck DEPENDS_ON_edges: 12160
+recheck RESOLVES_TO_edges: 311

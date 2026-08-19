@@ -1,0 +1,12 @@
+# Runtime
+streamlit>=1.36,<2
+plotly>=5.20,<6
+networkx>=3.2,<4
+pydantic>=2.7,<3
+
+# Dev / test / lint
+pytest>=8,<9
+ruff>=0.4,<1
+
+# NOTE: no LLM SDK at all by default. Optional LLM augmentation (if the team ever
+# approves it) must be added as an extra, validated with Pydantic schemas, and kept OFF.

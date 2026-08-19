@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: slash
+  title: Slash
+  description: Blast-radius intelligence for the software supply chain on HydraDB (Hack Hydra 2026, Track 02A).
+  annotations:
+    github.com/project-slug: <org>/slash
+  tags:
+    - hackathon
+    - graph-database
+    - supply-chain-security
+    - hydradb
+spec:
+  type: website
+  lifecycle: experimental
+  owner: team
+  system: hack-hydra-2026
+  providesApis:
+    - slash-console-ui

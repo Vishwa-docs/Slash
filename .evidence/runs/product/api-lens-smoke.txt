@@ -1,0 +1,7 @@
+$ PYTHONPATH=$SRC .venv/bin/python scripts/serve.py --port 8599 --lens fraud
+  lens: Fraud & AML
+  health: {"ok": true}
+  POST /api/ask {question:"which merchants are exposed by makeshop@adv-2026-01-1.0.0", lens:"fraud"}
+    intent=EXPOSED_SERVICES  answer="charity-donate, dropship-store, ..."  abstain=false  query_count=14
+  POST /api/ask {question:"which services are exposed by oslo@adv-2026-01-1.0.0"}   (lens omitted -> supply-chain)
+    intent=EXPOSED_SERVICES  answer="gateway, notifications"  abstain=false

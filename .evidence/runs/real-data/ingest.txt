@@ -1,0 +1,9 @@
+nodes Package: 130
+nodes PackageVersion: 3182
+nodes Developer: 82
+nodes Service: 5
+nodes Lockfile: 5
+edges DEPENDS_ON: 2625
+edges RESOLVES_TO: 182
+edges USES_LOCKFILE: 5
+edges MAINTAINED_BY: 8151

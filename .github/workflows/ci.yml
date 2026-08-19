@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Unit tests (no container)
+        run: pytest tests/unit -q
+      # Integration tests need HydraDB; uncomment when a self-hosted runner with a
+      # running container is available, or run locally:
+      # - name: Start HydraDB
+      #   run: bash src/infra/hydradb-up.sh && sleep 5
+      # - name: Integration tests
+      #   run: pytest tests/integration -q
+      - name: Lint
+        run: ruff check . && ruff format --check .

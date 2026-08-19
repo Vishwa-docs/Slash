@@ -1,0 +1,19 @@
+....F..                                                                  [100%]
+=================================== FAILURES ===================================
+____________________________ test_typosquat_recall _____________________________
+
+client = <src.hydradb_client.HydraDBClient object at 0x107256f10>
+
+    def test_typosquat_recall(client):
+        res = run_typosquat_candidates(client, top_k=15)
+        planted = {t["name"] for t in GT["typosquats"]}
+        top = {c["name"] for c in res["candidates"]}
+        recall = len(planted & top) / len(planted)
+>       assert recall >= 0.8, f"typosquat recall {recall:.2f} < 0.8 in top-15"
+E       AssertionError: typosquat recall 0.00 < 0.8 in top-15
+E       assert 0.0 >= 0.8
+
+tests/integration/test_queries.py:73: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_queries.py::test_typosquat_recall - AssertionEr...
+1 failed, 6 passed in 1.23s

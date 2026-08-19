@@ -1,0 +1,27 @@
+# Slash watchlist — packages you care about, and the threat surface around them.
+#
+# [watch] entries name a dependency your org relies on. `slash monitor` then:
+#   - looks for near-name lookalikes (typosquats) around each watch name, and
+#   - checks whether the own latest version turned malicious or deprecated.
+#
+# Thresholds: score 0-1 for name similarity (0.75+ is suspicious), plus up to
+# +0.25 for "orphan + deprecated" signals. Raise min_score to cut noise.
+
+[monitor]
+watchlist = "core"
+
+[[watch]]
+name = "oslo"
+min_score = 0.75
+
+[[watch]]
+name = "base"
+min_score = 0.80
+
+[[watch]]
+name = "ioauth"
+min_score = 0.80
+
+[[watch]]
+name = "sync"
+min_score = 0.80

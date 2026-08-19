@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+*.token
+.auth_token
+auth.token
+
+# HydraDB store (object storage + cache, local dev)
+.hydradb/
+.hydradb-*/
+
+# Data (large generated fixtures stay local unless tiny)
+data/raw/*
+data/processed/*
+data/generated/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/generated/.gitkeep
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+node_modules/
+
+# Logs
+*.log
+
+# graphify internals (keep graph.json / GRAPH_REPORT.md / graph.html, drop cache)
+docs/research/hydradb-context-graph/cache/
+docs/research/hydradb-context-graph/.graphify_*
