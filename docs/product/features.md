@@ -14,7 +14,7 @@
 | F5 | **Typosquat candidates** | Graph signals (low in-degree, no maintainer edges, recent `published_at`, orphaned) + name edit-distance vs `popular` packages | Scoring in Python; graph supplies the signals |
 | F6 | **Honest abstention** | Subgraph density + intent coverage gate | First-class verdict type, UI badge |
 | F7 | **Evidence chain** | Every verdict carries the Cypher + rows + latency rendered in UI | Judges see the exact traversal |
-| F8 | **Deterministic data pipeline** | `scripts/gen_dataset.py` + `ingest.py` with planted ground truth | Reproducible, no external network needed |
+| F8 | **Reproducible real-data pipeline** | `scripts/fetch_github.py` + `ingest.py` with committed GitHub/npm/OSV snapshot | Reproducible offline, zero fabricated records |
 
 ## Should (differentiators)
 
@@ -50,7 +50,7 @@
 
 All query steps live in `src/graph_service.py` as pure `plan_*` builders returning `(cypher, params)`.
 Every query is parameterized (`$name`, `$version`, `$id`, `$dev`), bounded (`*1..6` ceiling), and
-executed with per-step latency capture (evidence chain). Verified against `data/generated/ground_truth.json`
+executed with per-step latency capture (evidence chain). Verified against `data/github/ground_truth.json`
 in `tests/integration/test_queries.py` (7 tests green, `.evidence/runs/phase-3/`).
 
 | Feature | Rendered query (anchored form) | Notes |

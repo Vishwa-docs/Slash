@@ -12,7 +12,7 @@ from the live graph.
 from __future__ import annotations
 
 import json
-from typing import Callable
+from collections.abc import Callable
 
 from src.hydradb_client import HydraDBClient
 
@@ -31,16 +31,20 @@ def build_cyclonedx(
     app: str,
     services: list[str],
     rows: list[dict],
-    lens: str = "supply-chain",
+    lens: str = "dependency-graph",
     serial: str = SERIAL,
     now: Callable[[], str] | None = None,
 ) -> dict:
     if now is None:
         import datetime
 
-        now = lambda: datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        now = lambda: datetime.datetime.now(datetime.timezone.utc).strftime(
+            "%Y-%m-%dT%H:%M:%SZ"
+        )
     components = []
-    for r in sorted(rows, key=lambda x: (x.get("name") or "") + (x.get("version") or "")):
+    for r in sorted(
+        rows, key=lambda x: (x.get("name") or "") + (x.get("version") or "")
+    ):
         name, version = r["name"], r["version"]
         props = []
         if r.get("malicious"):

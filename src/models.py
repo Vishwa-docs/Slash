@@ -1,4 +1,10 @@
-"""Pydantic models for the Slash agent pipeline (deterministic, no LLM)."""
+"""Pydantic models for the Slash agent pipeline.
+
+The core Resolver→Auditor→Adjudicator path is grounded in the graph (the graph is
+the ground truth); an optional LLM (per-request key or GROQ_API_KEY) refines
+entities and writes the executive summary. When the graph cannot answer, the
+pipeline attempts a self-heal before reporting the gap.
+"""
 
 from __future__ import annotations
 
@@ -42,4 +48,10 @@ class Verdict(BaseModel):
     reason: str = ""
     latency_ms: float = 0.0
     query_count: int = 0
+    healed: bool = (
+        False  # answered after a successful self-heal materialized missing data
+    )
+    reported: bool = (
+        False  # could not be answered/healed; gap written to the support report
+    )
     summary: str = ""  # optional LLM executive summary (ADR-0011); "" when off

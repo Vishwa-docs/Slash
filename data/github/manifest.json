@@ -1,23 +1,72 @@
 {
- "fetched_at": 1787144621,
+ "fetched_at": 1787209991,
  "llm_curated": false,
  "repos": [
-  "axios/axios",
-  "expressjs/express",
-  "lodash/lodash",
-  "markedjs/marked",
-  "fastify/fastify"
+  {
+   "full_name": "axios/axios",
+   "default_branch": "main",
+   "stars": 0,
+   "updated_at": ""
+  },
+  {
+   "full_name": "expressjs/express",
+   "default_branch": "main",
+   "stars": 0,
+   "updated_at": ""
+  },
+  {
+   "full_name": "fastify/fastify",
+   "default_branch": "main",
+   "stars": 0,
+   "updated_at": ""
+  },
+  {
+   "full_name": "jaredhanson/passport",
+   "default_branch": "main",
+   "stars": 0,
+   "updated_at": ""
+  },
+  {
+   "full_name": "lodash/lodash",
+   "default_branch": "main",
+   "stars": 0,
+   "updated_at": ""
+  },
+  {
+   "full_name": "markedjs/marked",
+   "default_branch": "main",
+   "stars": 0,
+   "updated_at": ""
+  },
+  {
+   "full_name": "processing/p5.js",
+   "default_branch": "main",
+   "stars": 0,
+   "updated_at": ""
+  },
+  {
+   "full_name": "typicode/lowdb",
+   "default_branch": "main",
+   "stars": 0,
+   "updated_at": ""
+  },
+  {
+   "full_name": "websockets/ws",
+   "default_branch": "main",
+   "stars": 0,
+   "updated_at": ""
+  }
  ],
- "universe_packages": 4,
- "package_versions": 4,
- "nodes": 23,
+ "universe_packages": 219,
+ "package_versions": 1692,
+ "nodes": 2230,
  "edges": {
-  "DEPENDS_ON": 0,
-  "RESOLVES_TO": 1,
-  "USES_LOCKFILE": 5,
-  "MAINTAINED_BY": 0
+  "DEPENDS_ON": 177,
+  "RESOLVES_TO": 256,
+  "USES_LOCKFILE": 9,
+  "MAINTAINED_BY": 5272
  },
- "vulnerable_versions": 1265,
- "dataset_md5": "8e03cd343c73f49802f46977b699e555",
- "elapsed_s": 182.0
+ "dataset_md5": "a54565fbfc1ef98e480d1fbacc68380e",
+ "elapsed_s": 0.3,
+ "offline": true
 }

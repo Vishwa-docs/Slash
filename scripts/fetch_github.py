@@ -26,6 +26,7 @@ import base64
 import concurrent.futures as cf
 import hashlib
 import json
+import os
 import ssl
 import sys
 import time
@@ -236,7 +237,103 @@ def vuln_aliases(vuln: dict) -> list[str]:
 # ---- main ---------------------------------------------------------------------
 
 
+# ---- ground truth -------------------------------------------------------------
+
+
+def write_ground_truth(
+    nodes: list[dict], edges: dict[str, list[dict]], pkg_versions: dict, osv: dict
+) -> None:
+    """Advisory ground truth computed from the very graph data we wrote.
+
+    Honest labels only: a version is `malicious` iff upstream OSV says so;
+    `exposed_services` lists EVERY service whose lockfile resolves it; nothing
+    is planted.
+    """
+    gt: dict = {"advisories": [], "repos": []}
+    depends_on = edges.get("DEPENDS_ON", [])
+    resolves_to = edges.get("RESOLVES_TO", [])
+    lockfile_name = {
+        n["id"]: n["properties"]["name"] for n in nodes if n["label"] == "Lockfile"
+    }
+
+    def blast_closure(seed: int, max_hops: int = 6) -> set[int]:
+        """Same reverse DEPENDS_ON closure the query engine computes (F2)."""
+        by_target: dict[int, list[int]] = {}
+        for e in depends_on:
+            by_target.setdefault(e["target"], []).append(e["source"])
+        closure: set[int] = {seed}
+        frontier = {seed}
+        for _ in range(max_hops):
+            nxt = {s for t in frontier for s in by_target.get(t, [])} - closure
+            if not nxt:
+                break
+            closure |= nxt
+            frontier = nxt
+        return closure
+
+    for name, vs in pkg_versions.items():
+        for ver, nid in vs.items():
+            vuln = next(
+                (
+                    v
+                    for v in osv.get(name, [])
+                    if any(
+                        fetch_real._satisfies(ver, fetch_real._affected_expr(a))
+                        for a in v.get("affected", [])
+                        if a.get("package", {}).get("name") == name
+                    )
+                ),
+                None,
+            )
+            if not vuln:
+                continue
+            exposed = []
+            closure = blast_closure(nid)
+            resolving = {e["source"] for e in resolves_to if e["target"] in closure}
+            if resolving:
+                exposed = sorted(
+                    lockfile_name.get(lock_id)
+                    for lock_id in resolving
+                    if lockfile_name.get(lock_id)
+                )
+            gt["advisories"].append(
+                {
+                    "name": name,
+                    "version": ver,
+                    "malicious_node_id": nid,
+                    "advisory_id": "|".join(v for v in vuln_aliases(vuln) if v),
+                    "exposed_services": exposed,
+                }
+            )
+    (GITHUB / "ground_truth.json").write_text(json.dumps(gt, indent=1))
+
+
+def load_offline() -> tuple[list[dict], dict, dict, dict]:
+    """Reconstruct the build in-memory objects from the committed snapshot.
+
+    This is the no-network path: the dataset + OSV cache are read back from
+    data/github exactly as the live run produced them, so --offline rebuilds a
+    byte-identical graph + ground truth without touching GitHub/npm/OSV.
+    """
+    dataset = json.loads((GITHUB / "dataset.json").read_text())
+    osv = {
+        rec["package"]: rec["vulns"]
+        for rec in json.loads((GITHUB / "osv" / "advisories.json").read_text())
+    }
+    pkg_versions: dict[str, dict[str, int]] = {}
+    for n in dataset["nodes"]:
+        if n["label"] == "PackageVersion":
+            pkg_versions.setdefault(n["properties"]["name"], {})[
+                n["properties"]["version"]
+            ] = n["id"]
+    return dataset["nodes"], dataset["edges"], pkg_versions, osv
+
+
+# ---- main ---------------------------------------------------------------------
+
+
 def main() -> int:
+
     ap = argparse.ArgumentParser(
         description="build the real GitHub-project corpus (data/github)"
     )
@@ -246,10 +343,83 @@ def main() -> int:
         help="LLM-curate a few repos too (GROQ_API_KEY)",
     )
     ap.add_argument("--max-repos", type=int, default=10)
+    ap.add_argument(
+        "--offline",
+        action="store_true",
+        help="rebuild the committed snapshot + ground truth with zero network",
+    )
     args = ap.parse_args()
 
-    start, fetched_at = time.time(), int(time.time())
+    start = time.time()
     GITHUB.mkdir(parents=True, exist_ok=True)
+
+    if args.offline:
+        nodes, edges, pkg_versions, osv = load_offline()
+        # Ground truth covers the FULL committed graph (corpus + committed project
+        # snapshots), exactly like `scripts/refresh_ground_truth.py`, so --offline
+        # reproduces the committed ground_truth.json byte-identically on a clean clone.
+        # The reported/manifest metrics stay the corpus metrics (nodes/edges/md5).
+        try:
+            from scripts.refresh_ground_truth import (
+                merged_graph,
+            )
+            from scripts.refresh_ground_truth import (
+                merged_osv as merged_osv_all,
+            )
+            from scripts.refresh_ground_truth import (
+                pkg_versions as merged_pkg_versions,
+            )
+
+            m_nodes, m_edges = merged_graph()
+            m_osv = merged_osv_all()
+            write_ground_truth(m_nodes, m_edges, merged_pkg_versions(m_nodes), m_osv)
+        except Exception as e:  # noqa: BLE001 - fall back to corpus-only when projects are absent
+            print(
+                f"  ! merged ground truth unavailable ({e}); using corpus only",
+                file=sys.stderr,
+            )
+            write_ground_truth(nodes, edges, pkg_versions, osv)
+        dataset = {"nodes": nodes, "edges": edges}
+        service_repos = sorted(
+            {
+                n["properties"]["name"]
+                for n in nodes
+                if n["label"] == "Service" and n.get("properties", {}).get("name")
+            }
+        )
+        (GITHUB / "manifest.json").write_text(
+            json.dumps(
+                {
+                    "fetched_at": int(os.stat(GITHUB / "dataset.json").st_mtime),
+                    "llm_curated": args.with_llm,
+                    "repos": [
+                        {
+                            "full_name": r,
+                            "default_branch": "main",
+                            "stars": 0,
+                            "updated_at": "",
+                        }
+                        for r in service_repos
+                    ],
+                    "universe_packages": len(pkg_versions),
+                    "package_versions": sum(len(v) for v in pkg_versions.values()),
+                    "nodes": len(nodes),
+                    "edges": {k: len(v) for k, v in edges.items()},
+                    "dataset_md5": hashlib.md5(
+                        json.dumps(dataset).encode()
+                    ).hexdigest(),
+                    "elapsed_s": round(time.time() - start, 1),
+                    "offline": True,
+                },
+                indent=1,
+            )
+        )
+        print(
+            f"offline rebuild: nodes={len(nodes)} edges={sum(len(v) for v in edges.values())}"
+        )
+        return 0
+
+    fetched_at = int(time.time())
 
     repo_cache = _load_repo_cache()
     repos = select_repos(args.with_llm, args.max_repos)
@@ -345,6 +515,9 @@ def main() -> int:
                 continue
             seen_versions.add((name, v))
             adv = vuln_versions.get(name, set())
+            aliases = sorted(
+                {a for vuln in osv.get(name, []) for a in vuln_aliases(vuln)}
+            )
             nodes.append(
                 {
                     "label": "PackageVersion",
@@ -357,13 +530,7 @@ def main() -> int:
                         "deprecated": bool(meta.get("deprecated")),
                         "popular": name in TARGETS,
                         "malicious": v in adv,
-                        "advisory_id": "|".join(
-                            sorted(
-                                vuln_aliases(x) for x in osv.get(name, []) if v in adv
-                            )
-                        )
-                        if v in adv
-                        else "",
+                        "advisory_id": "|".join(aliases) if v in adv else "",
                         "is_typosquat": False,
                         "maintainers": mnt,
                     },
@@ -554,44 +721,7 @@ def main() -> int:
         )
     )
 
-    # ground truth computed from the very data we just wrote
-    gt = {"advisories": [], "repos": [r["full_name"] for r in repos]}
-    for name, vs in pkg_versions.items():
-        for ver, nid in vs.items():
-            vuln = next(
-                (
-                    v
-                    for v in osv.get(name, [])
-                    if any(
-                        fetch_real._satisfies(ver, fetch_real._affected_expr(a))
-                        for a in v.get("affected", [])
-                    )
-                ),
-                None,
-            )
-            if not vuln:
-                continue
-            lock_name = {e["target"]: e["source"] for e in edges["RESOLVES_TO"]}.get(
-                nid
-            )
-            exposed = []
-            if lock_name is not None:
-                locked_app = [
-                    n["properties"]["name"] for n in nodes if n["id"] == lock_name
-                ]
-                if locked_app:
-                    exposed = [locked_app[0]]
-            if vuln:
-                gt["advisories"].append(
-                    {
-                        "name": name,
-                        "version": ver,
-                        "malicious_node_id": nid,
-                        "advisory_id": "|".join(v for v in vuln_aliases(vuln) if v),
-                        "exposed_services": exposed,
-                    }
-                )
-    (GITHUB / "ground_truth.json").write_text(json.dumps(gt, indent=1))
+    write_ground_truth(nodes, edges, pkg_versions, osv)
 
     print(f"done in {time.time() - start:.1f}s")
     print(

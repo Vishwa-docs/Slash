@@ -48,7 +48,7 @@ footer{margin-top:28px;color:#6b6664;font-size:11px;border-top:1px solid #e3dfdb
 </style></head><body>
 <h1>slash scan</h1><div class="meta">__META__</div>
 __BODY__
-<footer>Slash &mdash; deterministic supply chain blast radius on HydraDB. Every finding above came from the graph;
+<footer>Slash &mdash; dependency intelligence on real GitHub data, computed in HydraDB. Every finding above came from the graph;
 pins marked "unknown to corpus" mean this version is not in the scanned corpus, not that it is safe.</footer>
 </body></html>"""
 
@@ -59,7 +59,9 @@ pins marked "unknown to corpus" mean this version is not in the scanned corpus, 
 def find_lockfiles(directory: Path) -> list[Path]:
     if directory.is_file() and directory.name == "package-lock.json":
         return [directory]
-    return sorted(p for p in directory.rglob("package-lock.json") if "node_modules" not in p.parts)
+    return sorted(
+        p for p in directory.rglob("package-lock.json") if "node_modules" not in p.parts
+    )
 
 
 def parse_package_lock(path: Path) -> tuple[str, dict[str, str]]:
@@ -84,7 +86,9 @@ def parse_package_lock(path: Path) -> tuple[str, dict[str, str]]:
 
 
 def corpus_manifest() -> dict:
-    nodes = json.loads((ROOT / "data" / "generated" / "dataset.json").read_text()).get("nodes", [])
+    nodes = json.loads((ROOT / "data" / "github" / "dataset.json").read_text()).get(
+        "nodes", []
+    )
     versions_by_name: dict[str, set[str]] = {}
     malicious: dict[tuple, dict] = {}
     typosquat_names: set[str] = set()
@@ -102,7 +106,11 @@ def corpus_manifest() -> dict:
                 typosquat_names.add(p.get("name"))
             if p.get("deprecated"):
                 deprecated_versions.add((p.get("name"), p.get("version")))
-    popular = {n["properties"]["name"] for n in nodes if n["label"] == "Package" and n["properties"].get("popular")}
+    popular = {
+        n["properties"]["name"]
+        for n in nodes
+        if n["label"] == "Package" and n["properties"].get("popular")
+    }
     return {
         "versions_by_name": versions_by_name,
         "malicious": malicious,
@@ -128,7 +136,9 @@ def classify_pins(pins: dict[str, str], manifest: dict) -> list[dict]:
                 "new_version_of_known": known and not known_ver,
                 "unknown": not known,
                 "malicious": (name, version) in manifest["malicious"],
-                "advisory_id": manifest["malicious"].get((name, version), {}).get("advisory_id"),
+                "advisory_id": manifest["malicious"]
+                .get((name, version), {})
+                .get("advisory_id"),
                 "deprecated": (name, version) in manifest["deprecated_versions"],
                 "typosquat_self": name in manifest["typosquat_names"],
                 "popular": name in manifest["popular"],
@@ -183,7 +193,9 @@ def scan_dir(client: HydraDBClient, directory: Path, only: str | None = None) ->
                                 "service": lf["service"],
                                 "app": lf["app"],
                                 "resolved_at": lf["resolved_at"],
-                                "was_resolved_while_live": lf["was_resolved_while_live"],
+                                "was_resolved_while_live": lf[
+                                    "was_resolved_while_live"
+                                ],
                             }
                             for lf in r.get("lockfiles", [])
                         ],
@@ -210,7 +222,9 @@ def scan_dir(client: HydraDBClient, directory: Path, only: str | None = None) ->
             "pins": total_pins,
             "in_corpus": sum(1 for a in apps for p in a["pins"] if p["in_corpus"]),
             "unknown": sum(1 for a in apps for p in a["pins"] if p["unknown"]),
-            "malicious_resolved": sum(1 for a in apps for p in a["pins"] if p["malicious"]),
+            "malicious_resolved": sum(
+                1 for a in apps for p in a["pins"] if p["malicious"]
+            ),
             "deprecated": sum(1 for a in apps for p in a["pins"] if p["deprecated"]),
             "typosquat_flag": sum(len(a["typosquat_flag"]) for a in apps),
         },
@@ -222,8 +236,8 @@ def scan_dir(client: HydraDBClient, directory: Path, only: str | None = None) ->
 
 def render_html(report: dict) -> str:
     t = report["totals"]
-    stat = (
-        lambda k, v, cls: f'<div class="stat"><div class="k">{k}</div>'
+    stat = lambda k, v, cls: (
+        f'<div class="stat"><div class="k">{k}</div>'
         f'<div class="v {cls}">{v}</div></div>'
     )
     grid = (
@@ -249,36 +263,44 @@ def render_html(report: dict) -> str:
                     badge = '<span class="badge b--warn">deprecated</span>'
                 elif p["typosquat_self"]:
                     badge = '<span class="badge b--warn">known typosquat</span>'
-            rows.append(f'<div class="pin">{badge} <code>{p["name"]}@{p["version"]}</code></div>')
+            rows.append(
+                f'<div class="pin">{badge} <code>{p["name"]}@{p["version"]}</code></div>'
+            )
         for e in a["exposures"]:
             rows.append(
                 f'<div class="find"><span class="badge b--danger">exposed</span>'
-                f'<div>{e["advisory_id"]}: <code>{e["name"]}@{e["version"]}</code> reaches '
-                f'{" ".join(e["services"]) or "no services"} '
-                f'via {len(e["lockfiles"])} lockfile resolution(s)</div></div>'
+                f"<div>{e['advisory_id']}: <code>{e['name']}@{e['version']}</code> reaches "
+                f"{' '.join(e['services']) or 'no services'} "
+                f"via {len(e['lockfiles'])} lockfile resolution(s)</div></div>"
             )
         for tq in a["typosquat_flag"]:
             rows.append(
                 f'<div class="find"><span class="badge b--danger">typosquat</span>'
-                f'<div><code>{tq["name"]}</code> (score {tq["score"]}) looks like '
-                f'<code>{tq["nearest_seed"]}</code> — {tq["in_degree"]} dependants, '
-                f'{"deprecated" if tq["deprecated"] else "recent"}.</div></div>'
+                f"<div><code>{tq['name']}</code> (score {tq['score']}) looks like "
+                f"<code>{tq['nearest_seed']}</code> — {tq['in_degree']} dependants, "
+                f"{'deprecated' if tq['deprecated'] else 'recent'}.</div></div>"
             )
         if not rows:
-            rows = ['<div class="find"><span class="badge b--ok">clean</span><div>no findings</div></div>']
+            rows = [
+                '<div class="find"><span class="badge b--ok">clean</span><div>no findings</div></div>'
+            ]
         app_html.append(
             f'<div class="app"><h3>{a["app"]}</h3><div class="meta">{a["lockfile"]}</div>'
             + "".join(rows)
             + "</div>"
         )
-    return FLAG_HTML.replace("__META__", "read-only scan · import your lockfiles, we map your blast radius").replace(
-        "__BODY__", grid + "".join(app_html)
-    )
+    return FLAG_HTML.replace(
+        "__META__", "read-only scan · point us at a real lockfile, we map its exposure"
+    ).replace("__BODY__", grid + "".join(app_html))
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Slash supply-chain scanner")
-    ap.add_argument("--dir", default=str(ROOT / "data" / "scan-fixtures"), help="directory or package-lock.json")
+    ap.add_argument(
+        "--dir",
+        default=str(ROOT / "data" / "scan-fixtures"),
+        help="directory or package-lock.json",
+    )
     ap.add_argument("--out", help="write JSON report to path")
     ap.add_argument("--html", help="write shareable HTML report to path")
     args = ap.parse_args()
@@ -287,13 +309,17 @@ def main() -> int:
     report = scan_dir(client, Path(args.dir))
     report["generated_at"] = None
     t = report["totals"]
-    print(f"slash scan: {t['apps']} app(s), {t['pins']} pins "
-          f"({t['in_corpus']} in corpus, {t['unknown']} unknown), "
-          f"{t['malicious_resolved']} malicious resolved, {t['typosquat_flag']} typosquat flag(s)")
+    print(
+        f"slash scan: {t['apps']} app(s), {t['pins']} pins "
+        f"({t['in_corpus']} in corpus, {t['unknown']} unknown), "
+        f"{t['malicious_resolved']} malicious resolved, {t['typosquat_flag']} typosquat flag(s)"
+    )
     if args.out:
         import datetime
 
-        report["generated_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+        report["generated_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat(
+            timespec="seconds"
+        )
         Path(args.out).write_text(json.dumps(report, indent=2))
         print(f"json report -> {args.out}")
     if args.html:

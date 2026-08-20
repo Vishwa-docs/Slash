@@ -30,6 +30,9 @@ data/generated/*
 !data/processed/.gitkeep
 !data/generated/.gitkeep
 
+# Runtime support-report artifact (self-heal gap log)
+data/report/
+
 # OS / editor
 .DS_Store
 *.swp
@@ -43,3 +46,5 @@ node_modules/
 # graphify internals (keep graph.json / GRAPH_REPORT.md / graph.html, drop cache)
 docs/research/hydradb-context-graph/cache/
 docs/research/hydradb-context-graph/.graphify_*
+# npm lockfile materialization temp (recreated by projects.generate_project)
+data/projects/tmp/

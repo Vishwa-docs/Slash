@@ -8,7 +8,7 @@
 |---|---|---|---|---|
 | B1 | User input → Intent | Our prompt template + classifier | Free-text question | Classifier is deterministic; LLM refine runs only on already-classified params, wrapped by Pydantic validation |
 | B2 | Cypher → HydraDB | Cypher produced by `graph_service.py` builders only | Never user text spliced into Cypher | No f-string interpolation of user input into queries — strictly parameterized |
-| B3 | Dataset files → Ingest | `scripts/gen_dataset.py` output | Imported SBOM/advisory files, if used | Validate schema before ingest; cap record counts |
+| B3 | Dataset files → Ingest | `scripts/fetch_github.py` output (`data/github`) | Imported SBOM/advisory files, if used | Validate schema before ingest; cap record counts |
 | B4 | HydraDB → Client | HydraDB node | Query results (potentially malformed) | Client parses rows with strict schemas; a malformed row fails the query, not the app |
 | B5 | Optional LLM → Adjudicator | Structured-output contract (Pydantic schema) | Raw LLM text | Re-validate LLM JSON against the verdict schema; on failure, fall back to the deterministic path |
 

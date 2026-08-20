@@ -1,0 +1,825 @@
+{
+  "generated_at": "2026-08-20T12:08:00+00:00",
+  "apps": [
+    {
+      "app": "checkout-svc",
+      "lockfile": "data/scan-fixtures/checkout-svc/package-lock.json",
+      "pins": [
+        {
+          "name": "@arethetypeswrong/cli",
+          "version": "0.18.5",
+          "in_corpus": true,
+          "new_version_of_known": false,
+          "unknown": false,
+          "malicious": false,
+          "advisory_id": null,
+          "deprecated": false,
+          "typosquat_self": false,
+          "popular": false
+        },
+        {
+          "name": "chalk",
+          "version": "6.0.0",
+          "in_corpus": true,
+          "new_version_of_known": false,
+          "unknown": false,
+          "malicious": true,
+          "advisory_id": "MAL-2025-46969",
+          "deprecated": false,
+          "typosquat_self": false,
+          "popular": false
+        }
+      ],
+      "exposures": [
+        {
+          "name": "chalk",
+          "version": "6.0.0",
+          "advisory_id": "MAL-2025-46969",
+          "services": [
+            "axios/axios",
+            "fastify/fastify",
+            "lodash/lodash",
+            "markedjs/marked",
+            "processing/p5.js"
+          ],
+          "lockfiles": [
+            {
+              "service": "axios/axios",
+              "app": "axios/axios",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "axios/axios",
+              "app": "axios/axios",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "fastify/fastify",
+              "app": "fastify/fastify",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "fastify/fastify",
+              "app": "fastify/fastify",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "lodash/lodash",
+              "app": "lodash/lodash",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "lodash/lodash",
+              "app": "lodash/lodash",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "lodash/lodash",
+              "app": "lodash/lodash",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "lodash/lodash",
+              "app": "lodash/lodash",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "markedjs/marked",
+              "app": "markedjs/marked",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "processing/p5.js",
+              "app": "processing/p5.js",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            }
+          ],
+          "recompute_agrees": true
+        }
+      ],
+      "typosquat_flag": [
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        }
+      ],
+      "deprecated_pins": []
+    },
+    {
+      "app": "merchant-api",
+      "lockfile": "data/scan-fixtures/merchant-api/package-lock.json",
+      "pins": [
+        {
+          "name": "@arethetypeswrong/cli",
+          "version": "0.18.5",
+          "in_corpus": true,
+          "new_version_of_known": false,
+          "unknown": false,
+          "malicious": false,
+          "advisory_id": null,
+          "deprecated": false,
+          "typosquat_self": false,
+          "popular": false
+        },
+        {
+          "name": "chalk",
+          "version": "6.0.0",
+          "in_corpus": true,
+          "new_version_of_known": false,
+          "unknown": false,
+          "malicious": true,
+          "advisory_id": "MAL-2025-46969",
+          "deprecated": false,
+          "typosquat_self": false,
+          "popular": false
+        },
+        {
+          "name": "debug",
+          "version": "4.4.3",
+          "in_corpus": true,
+          "new_version_of_known": false,
+          "unknown": false,
+          "malicious": true,
+          "advisory_id": "CVE-2017-16137|CVE-2017-20165|CVE-2025-59144",
+          "deprecated": false,
+          "typosquat_self": false,
+          "popular": false
+        }
+      ],
+      "exposures": [
+        {
+          "name": "chalk",
+          "version": "6.0.0",
+          "advisory_id": "MAL-2025-46969",
+          "services": [
+            "axios/axios",
+            "fastify/fastify",
+            "lodash/lodash",
+            "markedjs/marked",
+            "processing/p5.js"
+          ],
+          "lockfiles": [
+            {
+              "service": "axios/axios",
+              "app": "axios/axios",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "axios/axios",
+              "app": "axios/axios",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "fastify/fastify",
+              "app": "fastify/fastify",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "fastify/fastify",
+              "app": "fastify/fastify",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "lodash/lodash",
+              "app": "lodash/lodash",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "lodash/lodash",
+              "app": "lodash/lodash",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "lodash/lodash",
+              "app": "lodash/lodash",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "lodash/lodash",
+              "app": "lodash/lodash",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "markedjs/marked",
+              "app": "markedjs/marked",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "processing/p5.js",
+              "app": "processing/p5.js",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            }
+          ],
+          "recompute_agrees": true
+        },
+        {
+          "name": "debug",
+          "version": "4.4.3",
+          "advisory_id": "CVE-2017-16137|CVE-2017-20165|CVE-2025-59144",
+          "services": [
+            "Vishwa-docs/reefguard-coral-hackathon",
+            "axios/axios",
+            "expressjs/express",
+            "fastify/fastify",
+            "jaredhanson/passport",
+            "markedjs/marked",
+            "sindresorhus/conf",
+            "typicode/lowdb",
+            "websockets/ws"
+          ],
+          "lockfiles": [
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "Vishwa-docs/reefguard-coral-hackathon",
+              "app": "Vishwa-docs/reefguard-coral-hackathon",
+              "resolved_at": 1787219314,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "axios/axios",
+              "app": "axios/axios",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "axios/axios",
+              "app": "axios/axios",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "axios/axios",
+              "app": "axios/axios",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "axios/axios",
+              "app": "axios/axios",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "expressjs/express",
+              "app": "expressjs/express",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "expressjs/express",
+              "app": "expressjs/express",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "expressjs/express",
+              "app": "expressjs/express",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "expressjs/express",
+              "app": "expressjs/express",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "expressjs/express",
+              "app": "expressjs/express",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "expressjs/express",
+              "app": "expressjs/express",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "expressjs/express",
+              "app": "expressjs/express",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "expressjs/express",
+              "app": "expressjs/express",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "fastify/fastify",
+              "app": "fastify/fastify",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "jaredhanson/passport",
+              "app": "jaredhanson/passport",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "markedjs/marked",
+              "app": "markedjs/marked",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "markedjs/marked",
+              "app": "markedjs/marked",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "markedjs/marked",
+              "app": "markedjs/marked",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "markedjs/marked",
+              "app": "markedjs/marked",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "markedjs/marked",
+              "app": "markedjs/marked",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "markedjs/marked",
+              "app": "markedjs/marked",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "sindresorhus/conf",
+              "app": "sindresorhus/conf",
+              "resolved_at": 1787219543,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "typicode/lowdb",
+              "app": "typicode/lowdb",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "websockets/ws",
+              "app": "websockets/ws",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            },
+            {
+              "service": "websockets/ws",
+              "app": "websockets/ws",
+              "resolved_at": 1787209967,
+              "was_resolved_while_live": true
+            }
+          ],
+          "recompute_agrees": true
+        }
+      ],
+      "typosquat_flag": [
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        },
+        {
+          "name": "mocha",
+          "score": 0.75,
+          "nearest_seed": "chalk",
+          "in_degree": 0,
+          "deprecated": false
+        }
+      ],
+      "deprecated_pins": []
+    }
+  ],
+  "totals": {
+    "apps": 2,
+    "pins": 5,
+    "in_corpus": 5,
+    "unknown": 0,
+    "malicious_resolved": 3,
+    "deprecated": 0,
+    "typosquat_flag": 32
+  }
+}

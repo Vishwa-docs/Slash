@@ -1,18 +1,2194 @@
 {
  "advisories": [
   {
-   "name": "lodash",
-   "version": "4.18.1",
-   "malicious_node_id": 684381628749139474,
-   "advisory_id": "CVE-2020-28500",
+   "name": "webpack",
+   "version": "5.99.1",
+   "malicious_node_id": 30196225541693530,
+   "advisory_id": "CVE-2025-68157",
    "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.99.4",
+   "malicious_node_id": 75209772581772945,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.101.0",
+   "malicious_node_id": 106983682753403505,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.101.2",
+   "malicious_node_id": 109877753817043983,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.99.7",
+   "malicious_node_id": 208913750688574868,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.104.0",
+   "malicious_node_id": 267719267411955034,
+   "advisory_id": "CVE-2025-68458",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.100.1",
+   "malicious_node_id": 283908978127331821,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.99.2",
+   "malicious_node_id": 354566532797663380,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.99.9",
+   "malicious_node_id": 358378945823618045,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.100.2",
+   "malicious_node_id": 475243136344475584,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.101.1",
+   "malicious_node_id": 638955529750709240,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.102.1",
+   "malicious_node_id": 704521687922833289,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.99.5",
+   "malicious_node_id": 743490094326477153,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.100.0",
+   "malicious_node_id": 767776112829057698,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.99.6",
+   "malicious_node_id": 857062991059816332,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.99.8",
+   "malicious_node_id": 880715179378872226,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.101.3",
+   "malicious_node_id": 884407694337955122,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.99.3",
+   "malicious_node_id": 946926540418114755,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.103.0",
+   "malicious_node_id": 1017218498347263389,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "webpack",
+   "version": "5.102.0",
+   "malicious_node_id": 1117497300841361638,
+   "advisory_id": "CVE-2025-68157",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.2.2",
+   "malicious_node_id": 5180491513136336,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.5.5",
+   "malicious_node_id": 20206373853569511,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.3.1",
+   "malicious_node_id": 77743016709570272,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.5.3",
+   "malicious_node_id": 98532073780050276,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.5.2",
+   "malicious_node_id": 132119580586459425,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.1.1",
+   "malicious_node_id": 148837822726036989,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.2.1",
+   "malicious_node_id": 233682222882418742,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.1.3",
+   "malicious_node_id": 278657459393570805,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.0.0-alpha.1",
+   "malicious_node_id": 302160540280932012,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.1.0",
+   "malicious_node_id": 366726915388509709,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.5.4",
+   "malicious_node_id": 384395687889492465,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.5.6",
+   "malicious_node_id": 391923611685649211,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": [
+    "sindresorhus/conf",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.2.6",
+   "malicious_node_id": 424106269213839394,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.3.0",
+   "malicious_node_id": 463061604721989441,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.2.5",
+   "malicious_node_id": 712550109844267896,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.4.1",
+   "malicious_node_id": 737571219741616843,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.0.0",
+   "malicious_node_id": 785426024877464923,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.5.1",
+   "malicious_node_id": 906369865018985451,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.0.0-alpha.2",
+   "malicious_node_id": 913854626135386541,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.5.0",
+   "malicious_node_id": 926617594386471282,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.4.0",
+   "malicious_node_id": 941869080320947033,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.0.1",
+   "malicious_node_id": 948488185074868540,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.2.3",
+   "malicious_node_id": 967600966719635838,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.1.2",
+   "malicious_node_id": 1070885364272420576,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.0.0-alpha.0",
+   "malicious_node_id": 1095780635327762986,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-plugin-prettier",
+   "version": "5.2.4",
+   "malicious_node_id": 1100110578653943407,
+   "advisory_id": "MAL-2025-6023",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.16",
+   "malicious_node_id": 14413955591850696,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.9",
+   "malicious_node_id": 27900673179856912,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.3",
+   "malicious_node_id": 74849425090562241,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.4.1",
+   "malicious_node_id": 102443264406314323,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.14",
+   "malicious_node_id": 165574406538544812,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.2",
+   "malicious_node_id": 172514917457497143,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.7",
+   "malicious_node_id": 186254752797417731,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.4",
+   "malicious_node_id": 219921249061418136,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.5",
+   "malicious_node_id": 225764751628739111,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "11.0.1",
+   "malicious_node_id": 276135780576684136,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.2.5",
+   "malicious_node_id": 285998267360036340,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.0",
+   "malicious_node_id": 306083853287237806,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.2.6",
+   "malicious_node_id": 393812157062468493,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.2.7",
+   "malicious_node_id": 518048542489695487,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.10",
+   "malicious_node_id": 567824852076003714,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.12",
+   "malicious_node_id": 606128922104750197,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "11.0.3",
+   "malicious_node_id": 773097981758440954,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.8",
+   "malicious_node_id": 786233678764590369,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.4.2",
+   "malicious_node_id": 871145641078006809,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.4.0",
+   "malicious_node_id": 896013790503093644,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "11.0.2",
+   "malicious_node_id": 898605245519915922,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.4.4",
+   "malicious_node_id": 942147122261868694,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.15",
+   "malicious_node_id": 943565799005369418,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.13",
+   "malicious_node_id": 998360679248031410,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.11",
+   "malicious_node_id": 1032226471738561003,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.1",
+   "malicious_node_id": 1049845591833445362,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "11.0.0",
+   "malicious_node_id": 1068461483473650012,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.4.3",
+   "malicious_node_id": 1124533555774801924,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.3.6",
+   "malicious_node_id": 1140596209381308513,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "glob",
+   "version": "10.4.5",
+   "malicious_node_id": 1148251403190211111,
+   "advisory_id": "CVE-2025-64756",
+   "exposed_services": []
+  },
+  {
+   "name": "bootstrap",
+   "version": "5.3.8",
+   "malicious_node_id": 16360882589972718,
+   "advisory_id": "CVE-2025-1647",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "joi",
+   "version": "18.0.1",
+   "malicious_node_id": 84546379274836408,
+   "advisory_id": "CVE-2026-48038",
+   "exposed_services": []
+  },
+  {
+   "name": "joi",
+   "version": "18.1.2",
+   "malicious_node_id": 164809388429514043,
+   "advisory_id": "CVE-2026-48038",
+   "exposed_services": []
+  },
+  {
+   "name": "joi",
+   "version": "18.0.2",
+   "malicious_node_id": 372008820396967182,
+   "advisory_id": "CVE-2026-48038",
+   "exposed_services": []
+  },
+  {
+   "name": "joi",
+   "version": "18.1.1",
+   "malicious_node_id": 466037045175561563,
+   "advisory_id": "CVE-2026-48038",
+   "exposed_services": []
+  },
+  {
+   "name": "joi",
+   "version": "18.1.0",
+   "malicious_node_id": 1076740734617893045,
+   "advisory_id": "CVE-2026-48038",
+   "exposed_services": []
+  },
+  {
+   "name": "joi",
+   "version": "18.2.0",
+   "malicious_node_id": 1101405974833776918,
+   "advisory_id": "CVE-2026-48038",
+   "exposed_services": []
+  },
+  {
+   "name": "async",
+   "version": "3.0.1",
+   "malicious_node_id": 348528952372679118,
+   "advisory_id": "CVE-2021-43138",
+   "exposed_services": []
+  },
+  {
+   "name": "async",
+   "version": "3.1.0",
+   "malicious_node_id": 555161320766993507,
+   "advisory_id": "CVE-2021-43138",
+   "exposed_services": []
+  },
+  {
+   "name": "async",
+   "version": "2.6.3",
+   "malicious_node_id": 595721638768807182,
+   "advisory_id": "CVE-2021-43138",
+   "exposed_services": []
+  },
+  {
+   "name": "async",
+   "version": "3.1.1",
+   "malicious_node_id": 598060908347633420,
+   "advisory_id": "CVE-2021-43138",
+   "exposed_services": []
+  },
+  {
+   "name": "async",
+   "version": "3.0.0",
+   "malicious_node_id": 613992989693585290,
+   "advisory_id": "CVE-2021-43138",
+   "exposed_services": []
+  },
+  {
+   "name": "async",
+   "version": "3.2.1",
+   "malicious_node_id": 659076886656818193,
+   "advisory_id": "CVE-2021-43138",
+   "exposed_services": []
+  },
+  {
+   "name": "async",
+   "version": "3.0.1-0",
+   "malicious_node_id": 765448709730695093,
+   "advisory_id": "CVE-2021-43138",
+   "exposed_services": []
+  },
+  {
+   "name": "async",
+   "version": "3.2.0",
+   "malicious_node_id": 1076238797427111070,
+   "advisory_id": "CVE-2021-43138",
+   "exposed_services": []
+  },
+  {
+   "name": "marked",
+   "version": "18.0.1",
+   "malicious_node_id": 115459897986019879,
+   "advisory_id": "CVE-2026-41680",
+   "exposed_services": []
+  },
+  {
+   "name": "marked",
+   "version": "18.0.0",
+   "malicious_node_id": 677658780474908954,
+   "advisory_id": "CVE-2026-41680",
+   "exposed_services": [
+    "markedjs/marked"
+   ]
+  },
+  {
+   "name": "brace-expansion",
+   "version": "5.0.6",
+   "malicious_node_id": 30940194610650220,
+   "advisory_id": "CVE-2026-13149",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "expressjs/express",
+    "fastify/fastify",
+    "jaredhanson/passport",
+    "lodash/lodash",
+    "markedjs/marked",
+    "processing/p5.js",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "chalk",
+   "version": "4.1.1",
+   "malicious_node_id": 33549807652936377,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "2.1.0",
+   "malicious_node_id": 66731531903220330,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.1.2",
+   "malicious_node_id": 114984238901386214,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "2.0.1",
+   "malicious_node_id": 130210998316590011,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "2.3.1",
+   "malicious_node_id": 142106199635402345,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "2.2.0",
+   "malicious_node_id": 165663812325562430,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "3.0.0-beta.2",
+   "malicious_node_id": 180464622007517308,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.3.0",
+   "malicious_node_id": 185811062795832899,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.4.0",
+   "malicious_node_id": 227633706283091422,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "1.1.3",
+   "malicious_node_id": 278494199395293972,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "3.0.0",
+   "malicious_node_id": 284461860732634808,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.1.0",
+   "malicious_node_id": 285041724994530830,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.6.0",
+   "malicious_node_id": 359332021254521469,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "2.0.0",
+   "malicious_node_id": 416937400873158415,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.0.1",
+   "malicious_node_id": 418827560641621986,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "4.0.0",
+   "malicious_node_id": 427348775107095884,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.0.0",
+   "malicious_node_id": 506240296189315728,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "6.0.0",
+   "malicious_node_id": 516526713293360403,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": [
+    "axios/axios",
+    "fastify/fastify",
+    "lodash/lodash",
+    "markedjs/marked",
+    "processing/p5.js"
+   ]
+  },
+  {
+   "name": "chalk",
+   "version": "2.2.2",
+   "malicious_node_id": 522265112625124150,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.4.1",
+   "malicious_node_id": 548092710406014618,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.2.0",
+   "malicious_node_id": 557771801628743743,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.6.2",
+   "malicious_node_id": 591986706661932952,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": [
+    "fastify/fastify",
+    "processing/p5.js"
+   ]
+  },
+  {
+   "name": "chalk",
+   "version": "5.5.0",
+   "malicious_node_id": 636215940331536386,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "2.4.1",
+   "malicious_node_id": 651654269196355839,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "2.3.2",
+   "malicious_node_id": 780248639198427593,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "2.3.0",
+   "malicious_node_id": 822057918843061461,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "2.4.2",
+   "malicious_node_id": 951401001976421910,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "5.1.1",
+   "malicious_node_id": 991488170537527196,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "4.1.2",
+   "malicious_node_id": 1073451709530941566,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "chalk",
+   "version": "2.4.0",
+   "malicious_node_id": 1075562176432518252,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "3.0.0-beta.1",
+   "malicious_node_id": 1098633183171188790,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "chalk",
+   "version": "4.1.0",
+   "malicious_node_id": 1132834667073377594,
+   "advisory_id": "MAL-2025-46969",
+   "exposed_services": []
+  },
+  {
+   "name": "body-parser",
+   "version": "2.2.2",
+   "malicious_node_id": 34750840607946180,
+   "advisory_id": "CVE-2026-12590",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "axios/axios"
+   ]
+  },
+  {
+   "name": "body-parser",
+   "version": "2.2.1",
+   "malicious_node_id": 1074666640067822684,
+   "advisory_id": "CVE-2026-12590",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "2.2.2",
+   "malicious_node_id": 40157435430863721,
+   "advisory_id": "CVE-2019-10775",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "4.1.0",
+   "malicious_node_id": 172592119989246837,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "3.2.1",
+   "malicious_node_id": 221612882360726305,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "3.3.1",
+   "malicious_node_id": 273950070312110298,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "3.3.0",
+   "malicious_node_id": 351160345515834440,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "4.1.2",
+   "malicious_node_id": 409992183749928877,
+   "advisory_id": "CVE-2019-10775",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "3.1.0",
+   "malicious_node_id": 488222334237944543,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "4.0.1",
+   "malicious_node_id": 692836177104397615,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "3.3.2",
+   "malicious_node_id": 726562348572107494,
+   "advisory_id": "CVE-2019-10775",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "3.0.0",
+   "malicious_node_id": 730518565391768336,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "4.0.0",
+   "malicious_node_id": 856008171836011018,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "4.0.2",
+   "malicious_node_id": 858538806333209967,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "3.2.2",
+   "malicious_node_id": 934180147646569131,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "3.2.0",
+   "malicious_node_id": 1002396225714226164,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "4.1.1",
+   "malicious_node_id": 1027962350568613334,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "ecstatic",
+   "version": "3.1.1",
+   "malicious_node_id": 1041676604459575963,
+   "advisory_id": "GHSA-9q64-mpxx-87fg",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-config-prettier",
+   "version": "10.0.2",
+   "malicious_node_id": 46937717959490492,
+   "advisory_id": "MAL-2025-6022",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-config-prettier",
+   "version": "10.1.3",
+   "malicious_node_id": 109243235355759922,
+   "advisory_id": "MAL-2025-6022",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-config-prettier",
+   "version": "10.1.8",
+   "malicious_node_id": 270036718855569491,
+   "advisory_id": "MAL-2025-6022",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "sindresorhus/conf",
+    "typicode/lowdb",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "eslint-config-prettier",
+   "version": "10.0.1",
+   "malicious_node_id": 285237057262765962,
+   "advisory_id": "MAL-2025-6022",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-config-prettier",
+   "version": "10.1.2",
+   "malicious_node_id": 512555429383297294,
+   "advisory_id": "MAL-2025-6022",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-config-prettier",
+   "version": "10.1.5",
+   "malicious_node_id": 950609638720572107,
+   "advisory_id": "MAL-2025-6022",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-config-prettier",
+   "version": "10.0.3",
+   "malicious_node_id": 985193216391289332,
+   "advisory_id": "MAL-2025-6022",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-config-prettier",
+   "version": "10.1.1",
+   "malicious_node_id": 1108782729851632601,
+   "advisory_id": "MAL-2025-6022",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-config-prettier",
+   "version": "10.1.0",
+   "malicious_node_id": 1139587825108849055,
+   "advisory_id": "MAL-2025-6022",
+   "exposed_services": []
+  },
+  {
+   "name": "eslint-config-prettier",
+   "version": "10.1.4",
+   "malicious_node_id": 1151878440604926672,
+   "advisory_id": "MAL-2025-6022",
+   "exposed_services": []
+  },
+  {
+   "name": "@vitest/browser",
+   "version": "4.1.9",
+   "malicious_node_id": 48755312623744106,
+   "advisory_id": "CVE-2026-73653",
+   "exposed_services": []
+  },
+  {
+   "name": "napi-postinstall",
+   "version": "0.3.4",
+   "malicious_node_id": 59707696277609960,
+   "advisory_id": "MAL-2025-6025",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "jquery",
+   "version": "3.4.1",
+   "malicious_node_id": 111401147855498475,
+   "advisory_id": "CVE-2020-11022",
+   "exposed_services": []
+  },
+  {
+   "name": "@babel/core",
+   "version": "7.29.0",
+   "malicious_node_id": 269417961548565106,
+   "advisory_id": "CVE-2026-49356",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "undici",
+   "version": "7.25.0",
+   "malicious_node_id": 72491803531559765,
+   "advisory_id": "CVE-2026-6733",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "undici",
+   "version": "8.1.0",
+   "malicious_node_id": 126447709045155246,
+   "advisory_id": "CVE-2026-6733",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.6.0",
+   "malicious_node_id": 180487487856015237,
+   "advisory_id": "CVE-2026-13697",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.0.2",
+   "malicious_node_id": 358867588334424091,
+   "advisory_id": "CVE-2026-6733",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.2.0",
+   "malicious_node_id": 414596024702265455,
+   "advisory_id": "CVE-2026-6733",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.4.1",
+   "malicious_node_id": 452326309138311444,
+   "advisory_id": "CVE-2026-6733",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.3.0",
+   "malicious_node_id": 507584299152023272,
+   "advisory_id": "CVE-2026-6733",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.7.0",
+   "malicious_node_id": 724040029667144347,
+   "advisory_id": "CVE-2026-13697",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.0.1",
+   "malicious_node_id": 786813841762476433,
+   "advisory_id": "CVE-2026-6733",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.4.0",
+   "malicious_node_id": 843794530006975856,
+   "advisory_id": "CVE-2026-6733",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.5.0",
+   "malicious_node_id": 917574854183607149,
+   "advisory_id": "CVE-2026-13697",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.0.3",
+   "malicious_node_id": 925092986963410790,
+   "advisory_id": "CVE-2026-6733",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.0.0",
+   "malicious_node_id": 1040860905955224965,
+   "advisory_id": "CVE-2026-6733",
+   "exposed_services": []
+  },
+  {
+   "name": "undici",
+   "version": "8.8.0",
+   "malicious_node_id": 1041156844842119348,
+   "advisory_id": "CVE-2026-13697",
+   "exposed_services": []
+  },
+  {
+   "name": "ajv",
+   "version": "8.12.0",
+   "malicious_node_id": 80118389706065983,
+   "advisory_id": "CVE-2025-69873",
+   "exposed_services": []
+  },
+  {
+   "name": "ajv",
+   "version": "8.16.0",
+   "malicious_node_id": 153193195566438559,
+   "advisory_id": "CVE-2025-69873",
+   "exposed_services": []
+  },
+  {
+   "name": "ajv",
+   "version": "8.17.1",
+   "malicious_node_id": 323078151686109764,
+   "advisory_id": "CVE-2025-69873",
+   "exposed_services": []
+  },
+  {
+   "name": "ajv",
+   "version": "8.13.0",
+   "malicious_node_id": 581260375741145782,
+   "advisory_id": "CVE-2025-69873",
+   "exposed_services": []
+  },
+  {
+   "name": "ajv",
+   "version": "8.15.0",
+   "malicious_node_id": 736172050973836346,
+   "advisory_id": "CVE-2025-69873",
+   "exposed_services": []
+  },
+  {
+   "name": "ajv",
+   "version": "8.14.0",
+   "malicious_node_id": 771494080590485489,
+   "advisory_id": "CVE-2025-69873",
+   "exposed_services": []
+  },
+  {
+   "name": "@cacheable/memory",
+   "version": "2.0.9",
+   "malicious_node_id": 93024149343652864,
+   "advisory_id": "MAL-2026-11558",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "sharp",
+   "version": "0.34.5",
+   "malicious_node_id": 119304513664220516,
+   "advisory_id": "GHSA-f88m-g3jw-g9cj",
+   "exposed_services": [
+    "Vishwa-docs/reefguard-coral-hackathon"
+   ]
+  },
+  {
+   "name": "keyv",
+   "version": "4.5.4",
+   "malicious_node_id": 127313074579905459,
+   "advisory_id": "MAL-2026-11524",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "keyv",
+   "version": "5.6.0",
+   "malicious_node_id": 443308946547858567,
+   "advisory_id": "MAL-2026-11524",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "dojo",
+   "version": "1.16.3",
+   "malicious_node_id": 128160877278726626,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.17.0-pre",
+   "malicious_node_id": 140176000809550978,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.15.1",
+   "malicious_node_id": 419334364924130766,
+   "advisory_id": "CVE-2020-5258",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.16.4",
+   "malicious_node_id": 454616106339613031,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.17.0",
+   "malicious_node_id": 464295830446800936,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.15.2",
+   "malicious_node_id": 601646833295639054,
+   "advisory_id": "CVE-2020-5258",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.16.0",
+   "malicious_node_id": 669521333359753721,
+   "advisory_id": "CVE-2020-5258",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.15.4",
+   "malicious_node_id": 671459269940593109,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.17.1",
+   "malicious_node_id": 690532299069902815,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.15.6",
+   "malicious_node_id": 731477896018277846,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.16.2",
+   "malicious_node_id": 794693206825096643,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.15.5",
+   "malicious_node_id": 859166523177454015,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.17.2",
+   "malicious_node_id": 899801478272679326,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.16.5",
+   "malicious_node_id": 957549891079310001,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.17.3",
+   "malicious_node_id": 985163568617653630,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": [
+    "lodash/lodash"
+   ]
+  },
+  {
+   "name": "dojo",
+   "version": "1.16.1",
+   "malicious_node_id": 1068581889303294126,
+   "advisory_id": "CVE-2020-5258",
+   "exposed_services": []
+  },
+  {
+   "name": "dojo",
+   "version": "1.15.3",
+   "malicious_node_id": 1100455428229714188,
+   "advisory_id": "CVE-2021-23450",
+   "exposed_services": []
+  },
+  {
+   "name": "strip-ansi",
+   "version": "6.0.1",
+   "malicious_node_id": 131492997726675032,
+   "advisory_id": "MAL-2025-46980",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "expressjs/express",
+    "fastify/fastify",
+    "jaredhanson/passport",
+    "lodash/lodash",
+    "markedjs/marked",
+    "processing/p5.js",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "strip-ansi",
+   "version": "7.2.0",
+   "malicious_node_id": 187258368630912003,
+   "advisory_id": "MAL-2025-46980",
+   "exposed_services": [
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "@angular/common",
+   "version": "21.2.13",
+   "malicious_node_id": 136462730025100603,
+   "advisory_id": "CVE-2026-54266",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "lodash",
+   "version": "4.17.23",
+   "malicious_node_id": 143075286726727345,
+   "advisory_id": "CVE-2025-13465|CVE-2026-2950",
+   "exposed_services": []
+  },
+  {
+   "name": "lodash",
+   "version": "4.17.20",
+   "malicious_node_id": 200303306608252242,
+   "advisory_id": "CVE-2020-28500",
+   "exposed_services": [
+    "lodash/lodash"
+   ]
+  },
+  {
+   "name": "lodash",
+   "version": "4.17.21",
+   "malicious_node_id": 569313483389184567,
+   "advisory_id": "CVE-2025-13465|CVE-2026-2950",
+   "exposed_services": []
+  },
+  {
+   "name": "debug",
+   "version": "4.4.3",
+   "malicious_node_id": 149381962773754617,
+   "advisory_id": "CVE-2025-59144",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "axios/axios",
+    "expressjs/express",
+    "fastify/fastify",
+    "jaredhanson/passport",
+    "markedjs/marked",
+    "sindresorhus/conf",
+    "typicode/lowdb",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "debug",
+   "version": "4.4.0",
+   "malicious_node_id": 391019643376713827,
+   "advisory_id": "CVE-2025-59144",
+   "exposed_services": []
+  },
+  {
+   "name": "debug",
+   "version": "4.4.1",
+   "malicious_node_id": 973914344244345066,
+   "advisory_id": "CVE-2025-59144",
+   "exposed_services": []
+  },
+  {
+   "name": "@angular/core",
+   "version": "21.2.13",
+   "malicious_node_id": 152585324761796319,
+   "advisory_id": "CVE-2026-52725",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "js-yaml",
+   "version": "4.1.1",
+   "malicious_node_id": 660576683677351536,
+   "advisory_id": "CVE-2026-59869",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "find-my-way",
+   "version": "9.6.0",
+   "malicious_node_id": 548174492925895923,
+   "advisory_id": "CVE-2026-47219",
+   "exposed_services": []
+  },
+  {
+   "name": "postcss",
+   "version": "8.4.31",
+   "malicious_node_id": 170059075639933046,
+   "advisory_id": "CVE-2026-45623",
+   "exposed_services": [
+    "Vishwa-docs/reefguard-coral-hackathon"
+   ]
+  },
+  {
+   "name": "postcss",
+   "version": "8.5.12",
+   "malicious_node_id": 1085639635522257764,
+   "advisory_id": "CVE-2026-69153",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "node-forge",
+   "version": "1.3.1",
+   "malicious_node_id": 208686329432489118,
+   "advisory_id": "CVE-2026-33896",
+   "exposed_services": []
+  },
+  {
+   "name": "node-forge",
+   "version": "1.3.2",
+   "malicious_node_id": 464300976576082669,
+   "advisory_id": "CVE-2026-33896",
+   "exposed_services": []
+  },
+  {
+   "name": "node-forge",
+   "version": "1.3.3",
+   "malicious_node_id": 939463238804847925,
+   "advisory_id": "CVE-2026-33896",
+   "exposed_services": []
+  },
+  {
+   "name": "@angular/compiler",
+   "version": "21.2.13",
+   "malicious_node_id": 239756280694297442,
+   "advisory_id": "CVE-2026-54265",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "fast-uri",
+   "version": "3.1.2",
+   "malicious_node_id": 247446664487774470,
+   "advisory_id": "CVE-2026-13676",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "fastify/fastify",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "synckit",
+   "version": "0.11.13",
+   "malicious_node_id": 250851677358333615,
+   "advisory_id": "MAL-2025-6026",
+   "exposed_services": [
+    "sindresorhus/conf",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "synckit",
+   "version": "0.11.12",
+   "malicious_node_id": 1032240372090837128,
+   "advisory_id": "MAL-2025-6026",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "vitest",
+   "version": "4.1.9",
+   "malicious_node_id": 271144950696584964,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "5.0.0-beta.2",
+   "malicious_node_id": 292334468090130097,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "4.1.10",
+   "malicious_node_id": 332580340361157095,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "5.0.0-rc.2",
+   "malicious_node_id": 407419862643210750,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "5.0.0-rc.1",
+   "malicious_node_id": 589684091196577657,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "4.1.6",
+   "malicious_node_id": 595827551136232464,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "vitest",
+   "version": "5.0.0-beta.5",
+   "malicious_node_id": 641732078218789996,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "5.0.0-beta.3",
+   "malicious_node_id": 695111384995053774,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "4.1.11",
+   "malicious_node_id": 765641683421188975,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "5.0.0-beta.6",
+   "malicious_node_id": 873651982564430851,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "5.0.0-beta.7",
+   "malicious_node_id": 923524991147950601,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "5.0.0-beta.4",
+   "malicious_node_id": 952086237597052582,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": []
+  },
+  {
+   "name": "vitest",
+   "version": "2.1.9",
+   "malicious_node_id": 952435644537058455,
+   "advisory_id": "CVE-2026-47429",
+   "exposed_services": [
+    "Vishwa-docs/reefguard-coral-hackathon"
+   ]
+  },
+  {
+   "name": "vitest",
+   "version": "5.0.0-beta.1",
+   "malicious_node_id": 1127096336120640315,
+   "advisory_id": "CVE-2025-24964",
+   "exposed_services": [
+    "axios/axios",
+    "processing/p5.js"
+   ]
+  },
+  {
+   "name": "request",
+   "version": "2.88.2",
+   "malicious_node_id": 276417150050442101,
+   "advisory_id": "CVE-2023-28155",
+   "exposed_services": [
+    "lodash/lodash"
+   ]
+  },
+  {
+   "name": "request",
+   "version": "2.88.0",
+   "malicious_node_id": 527921302589345295,
+   "advisory_id": "CVE-2023-28155",
+   "exposed_services": []
+  },
+  {
+   "name": "is-arrayish",
+   "version": "0.2.1",
+   "malicious_node_id": 296677954953470859,
+   "advisory_id": "CVE-2025-59331",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "@hono/node-server",
+   "version": "1.19.14",
+   "malicious_node_id": 317271588804904365,
+   "advisory_id": "GHSA-frvp-7c67-39w9",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "supports-color",
+   "version": "8.1.1",
+   "malicious_node_id": 330674523584149724,
+   "advisory_id": "MAL-2025-46981",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "supports-color",
+   "version": "7.2.0",
+   "malicious_node_id": 1022354376146808136,
+   "advisory_id": "MAL-2025-46981",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "sigstore",
+   "version": "4.1.0",
+   "malicious_node_id": 344012468854164955,
+   "advisory_id": "CVE-2026-48815",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "nanoid",
+   "version": "3.3.12",
+   "malicious_node_id": 379941968151004224,
+   "advisory_id": "CVE-2026-67214",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "ansi-regex",
+   "version": "6.3.0",
+   "malicious_node_id": 380418452348960318,
+   "advisory_id": "MAL-2025-46966",
+   "exposed_services": [
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "ansi-regex",
+   "version": "6.2.2",
+   "malicious_node_id": 894688997460299732,
+   "advisory_id": "MAL-2025-46966",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "expressjs/express",
+    "fastify/fastify",
+    "jaredhanson/passport",
+    "lodash/lodash",
+    "markedjs/marked",
+    "processing/p5.js",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "flat-cache",
+   "version": "4.0.1",
+   "malicious_node_id": 386639888733259048,
+   "advisory_id": "MAL-2026-11971",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "dompurify",
+   "version": "3.4.5",
+   "malicious_node_id": 389499599913109160,
+   "advisory_id": "CVE-2026-75838",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "slice-ansi",
+   "version": "7.1.2",
+   "malicious_node_id": 430853072334360570,
+   "advisory_id": "MAL-2025-46979",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "vite",
+   "version": "7.3.2",
+   "malicious_node_id": 448757935090146099,
+   "advisory_id": "CVE-2026-53571",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "vite",
+   "version": "5.4.21",
+   "malicious_node_id": 582127124886228637,
+   "advisory_id": "CVE-2026-39365",
+   "exposed_services": [
+    "Vishwa-docs/reefguard-coral-hackathon"
+   ]
+  },
+  {
+   "name": "color-convert",
+   "version": "2.0.1",
+   "malicious_node_id": 514185694475109390,
+   "advisory_id": "CVE-2025-59162",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "expressjs/express",
+    "fastify/fastify",
+    "jaredhanson/passport",
+    "lodash/lodash",
+    "markedjs/marked",
+    "processing/p5.js",
+    "sindresorhus/conf",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "wrap-ansi",
+   "version": "8.1.0",
+   "malicious_node_id": 522116271271788407,
+   "advisory_id": "MAL-2025-46983",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "expressjs/express",
+    "fastify/fastify",
+    "jaredhanson/passport",
+    "lodash/lodash",
+    "markedjs/marked",
+    "processing/p5.js",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "@pkgr/core",
+   "version": "0.3.6",
+   "malicious_node_id": 526063109979864650,
+   "advisory_id": "MAL-2025-6021",
+   "exposed_services": [
+    "sindresorhus/conf",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "@pkgr/core",
+   "version": "0.2.9",
+   "malicious_node_id": 772846076480786067,
+   "advisory_id": "MAL-2025-6021",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "requirejs",
+   "version": "2.3.6",
+   "malicious_node_id": 527725651883366332,
+   "advisory_id": "CVE-2024-38999",
+   "exposed_services": []
+  },
+  {
+   "name": "color-name",
+   "version": "1.1.4",
+   "malicious_node_id": 538627853789663147,
+   "advisory_id": "CVE-2025-59145",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "lodash/lodash",
+    "processing/p5.js",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "hono",
+   "version": "4.12.19",
+   "malicious_node_id": 560778319520827138,
+   "advisory_id": "CVE-2026-47676",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "shell-quote",
+   "version": "1.8.3",
+   "malicious_node_id": 576469372392407977,
+   "advisory_id": "CVE-2026-13311",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "esbuild",
+   "version": "0.27.3",
+   "malicious_node_id": 974188641393371462,
+   "advisory_id": "GHSA-g7r4-m6w7-qqqr",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "esbuild",
+   "version": "0.21.5",
+   "malicious_node_id": 1023122279844930072,
+   "advisory_id": "GHSA-67mh-4wv8-2f99",
+   "exposed_services": [
+    "Vishwa-docs/reefguard-coral-hackathon"
+   ]
+  },
+  {
+   "name": "file-entry-cache",
+   "version": "8.0.0",
+   "malicious_node_id": 605823439807803528,
+   "advisory_id": "MAL-2026-11970",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "piscina",
+   "version": "5.1.4",
+   "malicious_node_id": 625580231638473567,
+   "advisory_id": "CVE-2026-55388",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "@keyv/bigmap",
+   "version": "1.3.1",
+   "malicious_node_id": 694905689927417055,
+   "advisory_id": "MAL-2026-12007",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "@sigstore/core",
+   "version": "3.2.0",
+   "malicious_node_id": 705161475922102591,
+   "advisory_id": "CVE-2026-48758",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "next",
+   "version": "15.5.23",
+   "malicious_node_id": 723512871662491803,
+   "advisory_id": "CVE-2025-59472",
+   "exposed_services": [
+    "Vishwa-docs/reefguard-coral-hackathon"
+   ]
+  },
+  {
+   "name": "supports-hyperlinks",
+   "version": "4.4.0",
+   "malicious_node_id": 741287796393850358,
+   "advisory_id": "MAL-2025-46982",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "supports-hyperlinks",
+   "version": "3.2.0",
+   "malicious_node_id": 1043230390783368364,
+   "advisory_id": "MAL-2025-46982",
+   "exposed_services": [
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "cacheable",
+   "version": "2.3.5",
+   "malicious_node_id": 769859604796168858,
+   "advisory_id": "MAL-2026-11963",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "tar",
+   "version": "7.5.15",
+   "malicious_node_id": 800209079039784441,
+   "advisory_id": "CVE-2026-59873",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "ansi-styles",
+   "version": "6.2.3",
+   "malicious_node_id": 804636829696558053,
+   "advisory_id": "MAL-2025-46967",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "expressjs/express",
+    "fastify/fastify",
+    "jaredhanson/passport",
+    "lodash/lodash",
+    "markedjs/marked",
+    "processing/p5.js",
+    "sindresorhus/conf",
+    "websockets/ws"
+   ]
+  },
+  {
+   "name": "ansi-styles",
+   "version": "4.3.0",
+   "malicious_node_id": 875785375634771328,
+   "advisory_id": "MAL-2025-46967",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "immutable",
+   "version": "5.1.5",
+   "malicious_node_id": 893296440023469141,
+   "advisory_id": "CVE-2026-59879",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "@sigstore/verify",
+   "version": "3.1.0",
+   "malicious_node_id": 909863599125012008,
+   "advisory_id": "CVE-2026-48816",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "hbs",
+   "version": "4.2.1",
+   "malicious_node_id": 924695022864011079,
+   "advisory_id": "CVE-2021-32822",
+   "exposed_services": [
+    "expressjs/express"
+   ]
+  },
+  {
+   "name": "ip-address",
+   "version": "10.2.0",
+   "malicious_node_id": 930909724702956973,
+   "advisory_id": "CVE-2026-54272",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "tinymce",
+   "version": "8.5.1",
+   "malicious_node_id": 1006780052199004267,
+   "advisory_id": "CVE-2026-47759",
+   "exposed_services": [
+    "TEAMMATES/teammates"
+   ]
+  },
+  {
+   "name": "error-ex",
+   "version": "1.3.4",
+   "malicious_node_id": 1016593399608788739,
+   "advisory_id": "CVE-2025-59330",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "sindresorhus/conf"
+   ]
+  },
+  {
+   "name": "@cacheable/utils",
+   "version": "2.4.1",
+   "malicious_node_id": 1025421509657291915,
+   "advisory_id": "MAL-2026-11561",
+   "exposed_services": [
+    "TEAMMATES/teammates",
+    "Vishwa-docs/reefguard-coral-hackathon",
+    "sindresorhus/conf"
+   ]
   }
  ],
- "repos": [
-  "axios/axios",
-  "expressjs/express",
-  "lodash/lodash",
-  "markedjs/marked",
-  "fastify/fastify"
- ]
+ "repos": []
 }

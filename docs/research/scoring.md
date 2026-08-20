@@ -3,11 +3,13 @@
 > Source of truth: `changes/CHG-0001/test-plan/` + these live numbers from `.evidence/runs/phase-6/eval.txt`.
 
 ## Ground truth
-`data/generated/ground_truth.json` records, per advisory:
-- the malicious `PackageVersion` (`name`, `version`, window),
-- the true exposed service set (transitive reverse-dependency closure within our 6-hop ceiling),
-- the true "resolved-while-live" lockfile set,
-- the planted typosquats.
+`data/github/ground_truth.json` records, per advisory (all labels derived from real
+GitHub/OSV data — nothing planted):
+- the malicious `PackageVersion` (`name`, `version`, node id, OSV/CVE advisory id),
+- the true exposed service set = services whose lockfile resolves the malicious
+  version or a transitive dependent of it (the same reverse-closure semantics the
+  query engine uses, within its 6-hop ceiling),
+- the true "resolved-while-live" recompute flag (F3), verified at query time.
 
 ## Metrics
 | Metric | Definition | Target |
@@ -19,22 +21,23 @@
 | Cost | queries-per-question and (if LLM on) tokens | cap + report |
 
 ## Procedure
-1. Hold out a subset of advisories as "recent" (simulating the track's held-out rule).
+1. Close over a subset of advisories as "recent" to simulate the track's held-out rule
+   (preferring advisories the corpus actually exposes, so P/R has a real truth set).
 2. Run Slash **without** ground truth visibility.
 3. Compute metrics; render table into README + this file.
 
-## Results (auto-generated 2026-08-19 10:08 UTC)
-Held-out advisories: ADV-2026-02, ADV-2026-01 (2 latest by published_at).
+## Results (auto-generated 2026-08-20 12:56 UTC)
+Held-out advisories: CVE-2025-24964, MAL-2025-46983 (2 latest by version).
 
 | advisory | query_precision | query_recall | query_f1 | resolved_while_live_f1 | recompute_agrees | latency_ms | queries |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ADV-2026-02 | 1.00 | 1.00 | 1.00 | 1.00 | true | 77 | 18 |
-| ADV-2026-01 | 1.00 | 1.00 | 1.00 | 1.00 | true | 56 | 18 |
+| CVE-2025-24964 | 1.00 | 1.00 | 1.00 | - | true | 437 | 14 |
+| MAL-2025-46983 | 1.00 | 1.00 | 1.00 | - | true | 521 | 57 |
 
 ### Summary
 - Mean precision 1.00 · mean recall 1.00 · mean F1 1.00
-- p95 per-question latency 96 ms (budget < 1 s)
-- 36 queries across 2 questions (18.0 / question)
+- p95 per-question latency 592 ms (budget < 1 s)
+- 71 queries across 2 questions (35.5 / question)
 - Token cost: 0 (deterministic pipeline — no LLM in the loop)
 
 Raw run: `.evidence/runs/phase-6/eval.txt`.

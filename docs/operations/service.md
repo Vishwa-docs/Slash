@@ -3,7 +3,8 @@
 > Source of truth: `docs/architecture/containers.md`, `docs/architecture/hydradb-notes.md`.
 
 ## Topology (local demo)
-- One HydraDB container (`slash-hydra`) + one Python venv running Streamlit on `8501`.
+- One HydraDB container (`slash-hydra`) + one Python process serving the React console + product
+  API on `8501` (`scripts/serve.py`).
 - Deployed link (optional, strongly nice): single host via `deploy/docker-compose.yml`.
 
 ## Start / stop
@@ -12,9 +13,13 @@
 bash src/infra/hydradb-up.sh          # pull + run with the documented env contract
 docker stop slash-hydra
 
-# App
-source .venv/bin/activate
-streamlit run app.py                   # http://localhost:8501
+# App (React SPA + product API in one process)
+python scripts/serve.py --port 8501    # open http://127.0.0.1:8501
+
+# Reset the graph deterministically (removes stale nodes/edges from earlier runs),
+# then re-ingest the committed corpus (+ project snapshots on next serve.py boot):
+bash src/infra/hydradb-up.sh stop && rm -rf .hydradb/store/* .hydradb/cache/*
+bash src/infra/hydradb-up.sh && python scripts/ingest.py
 
 # All-in-one (once composed)
 docker compose -f deploy/docker-compose.yml up

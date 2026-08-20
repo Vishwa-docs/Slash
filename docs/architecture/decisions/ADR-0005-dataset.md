@@ -1,5 +1,8 @@
 # ADR-0005 — Deterministic synthetic ecosystem + planted ground truth
 
+> **Superseded by [ADR-0015](ADR-0015-real-data-corpus.md)** — the corpus is now real
+> GitHub/OSV data; the generator described below was deleted.
+
 - **Status:** accepted
 - **Date:** 2026-08-19
 - **Owner:** team

@@ -25,7 +25,9 @@ from src.sbom import sbom_for
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Export CycloneDX SBOM from the Slash graph")
+    ap = argparse.ArgumentParser(
+        description="Export CycloneDX SBOM from the Slash graph"
+    )
     ap.add_argument("--app", required=True, help="app name (Lockfile.app)")
     ap.add_argument("--out", help="write SBOM to path (default stdout)")
     args = ap.parse_args()
@@ -39,7 +41,9 @@ def main() -> int:
     text = json.dumps(payload, indent=2)
     if args.out:
         Path(args.out).write_text(text)
-        print(f"sbom ({result['components']} components, services: {', '.join(result['services'])}) -> {args.out}")
+        print(
+            f"sbom ({result['components']} components, services: {', '.join(result['services'])}) -> {args.out}"
+        )
     else:
         print(text)
     return 0

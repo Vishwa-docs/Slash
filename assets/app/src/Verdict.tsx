@@ -197,12 +197,15 @@ export function VerdictCard({ answer }: { answer: AskResponse }) {
         {answer.abstain ? (
           <>
             <div className="flag-abstain">
-              <TerminalSquare size={13} /> abstain
+              <TerminalSquare size={13} /> not found · reported
             </div>
             <p className="answer-text">{answer.reason}</p>
           </>
         ) : (
-          <p className="answer-text">{answer.answer}</p>
+          <>
+            <p className="answer-text">{answer.answer}</p>
+            {answer.healed && <div className="reason">answered after self-heal materialized the missing data</div>}
+          </>
         )}
 
         {!answer.abstain && renderPayload(answer.intent, p)}

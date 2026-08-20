@@ -6,7 +6,47 @@ export interface Health {
 export interface Example {
   question: string;
   hint: string;
-  tag: string;
+  tag?: string;
+}
+
+export interface ProjectSummary {
+  id: string;
+  repo: string;
+  url: string;
+  demo: boolean;
+  generated_at: number;
+  stats: {
+    nodes: number;
+    versions: number;
+    services: number;
+    malicious: number;
+    advisories: number;
+    edges: number;
+  };
+  advisory_count: number;
+}
+
+export interface Session {
+  id: string;
+  title: string;
+  created_at: number;
+  turns: SessionTurn[];
+}
+
+export interface ProjectOverview {
+  project: { id: string; repo: string; url: string; demo: boolean };
+  dataset: string;
+  stats: {
+    nodes: number;
+    versions: number;
+    services: number;
+    malicious: number;
+    advisories: number;
+    edges: number;
+  };
+  advisories: Array<{ name: string; version: string; advisory_id: string }>;
+  examples: Example[];
+  sessions: Session[];
 }
 
 export interface Overview {
@@ -19,8 +59,8 @@ export interface Overview {
   exposures: Array<{
     name: string;
     version: string;
+    advisory_id: string;
     services: string[];
-    resolved_live: string[];
   }>;
   examples: Example[];
 }
@@ -76,8 +116,11 @@ export interface AskResponse {
   question: string;
   intent: string;
   answer: string;
+  summary: string;
   abstain: boolean;
   reason: string;
+  healed: boolean;
+  reported: boolean;
   latency_ms: number;
   query_count: number;
   evidence_chain: EvidenceStep[];
@@ -150,11 +193,11 @@ async function json<T>(url: string, init?: RequestInit): Promise<T> {
 export const api = {
   health: () => json<Health>("/api/health"),
   overview: () => json<Overview>("/api/overview"),
-  ask: (question: string) =>
+  ask: (question: string, llmKey?: string) =>
     json<AskResponse>("/api/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question }),
+      body: JSON.stringify({ question, llm_key: llmKey }),
     }),
   subgraph: (name: string, version: string) =>
     json<SubgraphResponse>("/api/subgraph", {
@@ -163,6 +206,38 @@ export const api = {
       body: JSON.stringify({ name, version }),
     }),
   report: () => json<ExposureReport>("/api/report"),
+  projects: () => json<{ projects: ProjectSummary[] }>("/api/projects"),
+  addProject: (url: string) =>
+    json<{ id: string; repo: string; stats: object }>("/api/projects", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url }),
+    }),
+  projectOverview: (id: string) => json<ProjectOverview>(`/api/projects/${encodeURIComponent(id)}`),
+  newSession: (id: string) =>
+    json<Session>(`/api/projects/${encodeURIComponent(id)}/sessions`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    }),
+  projectAsk: (id: string, question: string, sessionId: string | null, llmKey?: string) =>
+    json<AskResponse>(`/api/projects/${encodeURIComponent(id)}/ask`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question, session_id: sessionId, llm_key: llmKey }),
+    }),
+  projectScan: (id: string) =>
+    json<ExposureReport>(`/api/projects/${encodeURIComponent(id)}/scan`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    }),
+  keyCheck: (key: string) =>
+    json<{ ok: boolean }>("/api/keycheck", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ llm_key: key }),
+    }),
 };
 
 export function nodeKey(name?: string | null, version?: string | null): string {

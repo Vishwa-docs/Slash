@@ -96,7 +96,7 @@ export function ReportCard({ report, onClose }: { report: ExposureReport; onClos
 
         <p className="reason" style={{ marginTop: 12 }}>
           generated from the graph · every resolution above re-checked against the
-          publish/validity window semantics · no LLM, no SaaS account
+          publish/validity window semantics
         </p>
       </div>
     </div>

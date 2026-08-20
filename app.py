@@ -1,8 +1,8 @@
 """Slash console — Streamlit UI (DESIGN.md: mono, cream canvas, hairline, one dark panel).
 
-`streamlit run app.py`; deterministic without any key, LLM-assisted when the
-GROQ_API_KEY env var is set. Guarded under __main__ so tests/unit
-/test_ui_smoke.py can import this module without launching.
+`streamlit run app.py`; works without any key, LLM-assisted when a
+GROQ_API_KEY / per-request key is supplied. Guarded under __main__ so
+tests/unit/test_ui_smoke.py can import this module without launching.
 """
 
 from __future__ import annotations
@@ -11,7 +11,9 @@ from pathlib import Path
 
 import streamlit as st
 
-st.set_page_config(page_title="Slash — dependency intelligence on HydraDB", layout="wide")
+st.set_page_config(
+    page_title="Slash — dependency intelligence on HydraDB", layout="wide"
+)
 
 CSS = (Path(__file__).parent / "assets" / "style.css").read_text()
 st.markdown(f"<style>{CSS}</style>", unsafe_allow_html=True)
@@ -21,8 +23,9 @@ from src.lens import LENSES, lens_by_id
 
 # Keep the demo chips anchored to the checked-in real corpus.
 DEMO_QUESTIONS = [e["question"] for e in demo_examples()[:3]] or [
+    "Which services are exposed by debug@4.4.3?",
     "Is there a typosquat near axios?",
-    "What depends on axios in the corpus?",
+    "What is the blast radius of debug@4.4.3?",
 ]
 VERDICT_COLORS = {"danger", "warning", "success", "neutral"}
 
@@ -249,7 +252,7 @@ def _thought_process(verdict) -> None:
         "thought process — Researcher → Auditor → Adjudicator", expanded=True
     ):
         st.markdown(
-            f"<span class='bullet'>[r]</span> <b>Researcher</b> (deterministic resolver "
+            f"<span class='bullet'>[r]</span> <b>Researcher</b> (base resolver "
             f"+ optional LLM refinement): intent <code>{verdict.intent.value}</code><br>"
             f"<span class='bullet'>[a]</span> <b>Auditor</b>: density, temporal recompute, contradictions<br>"
             f"<span class='bullet'>[h]</span> <b>Healer</b>: attempts to construct/fix the "
@@ -270,7 +273,7 @@ def run() -> None:
     lens = lens_by_id(lens_label)
     st.markdown(
         f"<h1 style='margin-bottom:0'>Slash <span style='color:#646262'>· {lens.title.lower()} on HydraDB</span></h1>"
-        "<div class='section-label'>real github + npm + osv · deterministic core "
+        "<div class='section-label'>github + npm + osv · graph-derived core "
         "· llm-assisted when GROQ_API_KEY is set</div>",
         unsafe_allow_html=True,
     )
@@ -284,7 +287,10 @@ def run() -> None:
             label_visibility="collapsed",
         )
         asked = False
-        llm_on = st.checkbox("llm summary (groq)", value=bool(__import__("os").environ.get("GROQ_API_KEY")))
+        llm_on = st.checkbox(
+            "llm summary (groq)",
+            value=bool(__import__("os").environ.get("GROQ_API_KEY")),
+        )
         if st.button("⏎ run", type="primary"):
             asked = True
         for i, dq in enumerate(DEMO_QUESTIONS):

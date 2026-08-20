@@ -3,8 +3,7 @@
 Everything is read from the committed real-GitHub corpus snapshot
 (``data/github``, built by ``scripts/fetch_github.py``): real repos, real
 packages, real published versions and real OSV/CVE advisories. The console
-renders instantly and deterministically from this snapshot — no traversal
-required to draw the dashboard.
+renders instantly from this snapshot — no traversal required to draw the dashboard.
 
 If the corpus has not been built yet (no ``data/github/manifest.json``), every
 accessor returns empty/neutral values so the UI degrades gracefully instead of
@@ -38,42 +37,55 @@ def demo_examples() -> list[dict]:
     produced, so the chips and the graph always agree.
     """
     gt = _load(GROUND_TRUTH)
+    advisories = gt.get("advisories", [])
+    # lead with advisories that actually have live exposures in the corpus,
+    # most-consequential first (largest exposed-service fan-out)
+    ordered = sorted(
+        (a for a in advisories if a.get("exposed_services")),
+        key=lambda a: (-len(a.get("exposed_services", [])), a.get("advisory_id", "")),
+    )
     examples: list[dict] = []
-    for adv in gt.get("advisories", [])[:4]:
+    for adv in ordered[:3]:
         name, ver = adv.get("name"), adv.get("version")
         alias = (adv.get("advisory_id") or "").split("|")[0]
         if not name or not ver:
             continue
-        example = f"Which repos are exposed by {name}@{ver}?"
         if adv.get("exposed_services"):
-            example = f"Which services are exposed by {name}@{ver}?"
-        examples.append(
-            {
-                "question": example,
-                "hint": f"real advisory {alias or 'OSV'} in the corpus exposure",
-                "tag": "exposed",
-            }
-        )
+            examples.append(
+                {
+                    "question": f"Which services are exposed by {name}@{ver}?",
+                    "hint": f"advisory {alias or 'OSV'} in the corpus exposure",
+                    "tag": "exposed",
+                }
+            )
+        else:
+            examples.append(
+                {
+                    "question": f"Which repos are exposed by {name}@{ver}?",
+                    "hint": f"advisory {alias or 'OSV'} in the corpus exposure",
+                    "tag": "exposed",
+                }
+            )
         examples.append(
             {
                 "question": f"Which repos resolved {name}@{ver} while it was live?",
-                "hint": "lockfile resolution history for the real advisory",
+                "hint": "lockfile resolution history for the advisory",
                 "tag": "resolved",
             }
         )
     examples += [
         {
             "question": "Is there a typosquat near axios?",
-            "hint": "edit-distance lookalikes over real package names",
+            "hint": "edit-distance lookalikes over npm package names",
             "tag": "typosquat",
         },
         {
             "question": "What is the latest version of express?",
-            "hint": "package lookup against the real registry metadata",
+            "hint": "package lookup against the registry metadata",
             "tag": "lookup",
         },
         {
-            "question": "What depends on axios in the corpus?",
+            "question": "What is the blast radius of debug@4.4.3?",
             "hint": "transitive dependants — the core graph question",
             "tag": "blast",
         },
@@ -103,7 +115,7 @@ def overview() -> dict:
             }
         )
     return {
-        "dataset": "data/github (real GitHub repos + npm + OSV)",
+        "dataset": "global corpus (GitHub repos + npm + OSV)",
         "repos": manifest.get("repos", []),
         "fetched_at": manifest.get("fetched_at"),
         "dataset_md5": manifest.get("dataset_md5", ""),

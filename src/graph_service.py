@@ -8,7 +8,7 @@ capture per-step latency for the evidence chain.
 Every builder/executor takes a `lens` (defaults to SUPPLY_CHAIN, byte-identical
 output to the pre-lens queries). The five primitives are schema-agnostic: a
 different Lens swaps node labels/relations + vocabulary so the same engine
-answers supply-chain *and* fraud/AML graphs.
+answers dependency-graph *and* fraud/AML graphs.
 
 Bounded to the documented OpenCypher subset. Because HydraDB rejects
 `x.id IN $list` and UNWIND->node lookups, reverse closures are computed one

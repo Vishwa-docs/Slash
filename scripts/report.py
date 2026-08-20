@@ -32,15 +32,21 @@ def main() -> int:
     client = HydraDBClient()
     report = exposure_report(client)
     t = report["totals"]
-    print(f"exposure report: {report['advisories_checked']} advisories checked, "
-          f"{report['advisories_present']} present in graph")
-    print(f"  services exposed: {t['services_exposed']} · apps at risk: {t['apps_at_risk']} · "
-          f"live resolutions: {t['live_resolutions']}")
+    print(
+        f"exposure report: {report['advisories_checked']} advisories checked, "
+        f"{report['advisories_present']} present in graph"
+    )
+    print(
+        f"  services exposed: {t['services_exposed']} · apps at risk: {t['apps_at_risk']} · "
+        f"live resolutions: {t['live_resolutions']}"
+    )
     if report["advisories_present"]:
         for r in report["exposures"]:
-            print(f"  {r['advisory_id']}: {r['name']}@{r['version']} -> "
-                  f"{', '.join(r['services']) or 'none'} "
-                  f"({r['lockfile_count']} live resolution(s), recompute_agrees={r['recompute_agrees']})")
+            print(
+                f"  {r['advisory_id']}: {r['name']}@{r['version']} -> "
+                f"{', '.join(r['services']) or 'none'} "
+                f"({r['lockfile_count']} live resolution(s), recompute_agrees={r['recompute_agrees']})"
+            )
     if args.out:
         Path(args.out).write_text(json.dumps(report, indent=2))
         print(f"report -> {args.out}")

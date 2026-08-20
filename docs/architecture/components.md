@@ -57,7 +57,7 @@ Renders per DESIGN.md: mono type, cream canvas, hairline sections, dark "console
 live Cypher, semantic colors for verdicts, Plotly subgraph, thought-process panel, latency/cost badges.
 
 ## Scripts
-- `scripts/gen_dataset.py` — deterministic ecosystem generator + `ground_truth.json`.
+- `scripts/fetch_github.py` — real GitHub/npm/OSV corpus builder + advisory ground truth (offline replay via `--offline`).
 - `scripts/ingest.py` — `UNWIND` batch loader; idempotent.
 - `scripts/eval.py` — held-out advisory precision/recall, latency, cost → `docs/research/scoring.md`.
 - `scripts/smoke.sh` — health check + round-trip smoke test (evidence capture).

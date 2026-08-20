@@ -27,7 +27,7 @@ def main() -> int:
         "--lens",
         choices=["supply-chain", "fraud"],
         default="supply-chain",
-        help="graph lens to serve (default: supply-chain)",
+        help="graph lens to serve (default: dependency-graph)",
     )
     args = ap.parse_args()
 
@@ -36,7 +36,7 @@ def main() -> int:
     server = make_server(client, host=args.host, port=args.port, lens=lens)
     print("  _   _           _     _   ")
     print(" | | | | __ _ ___| |__ | |_ ")
-    print(" | |_| |/ _` / __| '_ \\| __| supply chain blast radius console")
+    print(" | |_| |/ _` / __| '_ \\| __| dependency console on GitHub + npm + OSV data")
     print(" |  _  | (_| \\__ \\ | | | |_ ")
     print(" |_| |_|\\__,_|___/_| |_|\\__| on HydraDB")
     print(

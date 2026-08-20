@@ -1,7 +1,7 @@
-"""Deterministic Researcher: question -> QueryPlan. No LLM required.
+"""Researcher: question -> QueryPlan.
 
-Keyword/entity patterns over normalized tokens. Optional LLM refinement is out
-of scope (no key at runtime), per ADR-0006.
+Keyword/entity patterns over normalized tokens. Optional LLM refinement is
+opportunistic (per ADR-0006), never required at runtime.
 """
 
 from __future__ import annotations
@@ -30,6 +30,11 @@ STOPWORDS = {
     "which",
     "who",
     "show",
+    "version",
+    "versions",
+    "latest",
+    "newest",
+    "current",
     "tell",
     "me",
     "about",

@@ -12,3 +12,5 @@ factory-brief tree which had both locations).
 | ADR-0005 | Deterministic synthetic dataset + ground truth | accepted |
 | ADR-0006 | Deterministic intent router, optional LLM refine | accepted |
 | ADR-0007 | Bounded traversals *1..6 | accepted |
+| ADR-0010 | Domain lenses: one query engine, many connected graphs | accepted |
+| ADR-0015 | Real-data corpus (supersedes ADR-0005) | accepted |

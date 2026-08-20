@@ -38,10 +38,15 @@ def diff(o: dict, n: dict) -> dict:
         _pairs(o["malicious"], "name") - _pairs(n["malicious"], "name"),
         key=lambda kv: (kv[0], kv[1]),
     )
-    new_typosq = sorted(_keys(n["typosquat_names"], "") - _keys(o["typosquat_names"], ""))
-    gone_typosq = sorted(_keys(o["typosquat_names"], "") - _keys(n["typosquat_names"], ""))
+    new_typosq = sorted(
+        _keys(n["typosquat_names"], "") - _keys(o["typosquat_names"], "")
+    )
+    gone_typosq = sorted(
+        _keys(o["typosquat_names"], "") - _keys(n["typosquat_names"], "")
+    )
     new_deprecated = sorted(
-        _pairs(n["deprecated_versions"], "name") - _pairs(o["deprecated_versions"], "name"),
+        _pairs(n["deprecated_versions"], "name")
+        - _pairs(o["deprecated_versions"], "name"),
         key=lambda kv: (kv[0], kv[1]),
     )
     new_apps = sorted(set(n["lockfile_apps"]) - set(o["lockfile_apps"]))
@@ -54,9 +59,20 @@ def diff(o: dict, n: dict) -> dict:
                 "removed": len(gone_packages),
                 "now": len(n["package_names"]),
             },
-            "malicious": {"added": len(new_malicious), "removed": len(gone_malicious), "now": len(n["malicious"])},
-            "typosquat_names": {"added": len(new_typosq), "removed": len(gone_typosq), "now": len(n["typosquat_names"])},
-            "deprecated": {"added": len(new_deprecated), "now": len(n["deprecated_versions"])},
+            "malicious": {
+                "added": len(new_malicious),
+                "removed": len(gone_malicious),
+                "now": len(n["malicious"]),
+            },
+            "typosquat_names": {
+                "added": len(new_typosq),
+                "removed": len(gone_typosq),
+                "now": len(n["typosquat_names"]),
+            },
+            "deprecated": {
+                "added": len(new_deprecated),
+                "now": len(n["deprecated_versions"]),
+            },
             "appearances": {"apps": {"added": new_apps, "now": n["lockfile_apps"]}},
         },
         "new_packages": new_packages,
@@ -72,7 +88,7 @@ def diff(o: dict, n: dict) -> dict:
 def render_digest(d: dict) -> str:
     s = d["summary"]
     lines = [
-        f"supply-chain delta: {d['older']['label']} -> {d['newer']['label']} ({d['newer']['snapshot_at']})",
+        f"dependency-graph delta: {d['older']['label']} -> {d['newer']['label']} ({d['newer']['snapshot_at']})",
         f"  packages: +{s['packages']['added']} / -{s['packages']['removed']}  (now {s['packages']['now']})",
         f"  malicious versions: +{s['malicious']['added']} / -{s['malicious']['removed']}  (now {s['malicious']['now']})",
         f"  typosquat names: +{s['typosquat_names']['added']} / -{s['typosquat_names']['removed']}  (now {s['typosquat_names']['now']})",
@@ -84,7 +100,9 @@ def render_digest(d: dict) -> str:
     if d["new_typosquat_names"]:
         lines.append("  NEW TYPOSQUAT NAMES: " + ", ".join(d["new_typosquat_names"]))
     if s["appearances"]["apps"]["added"]:
-        lines.append("  NEW APPS IN SCOPE: " + ", ".join(s["appearances"]["apps"]["added"]))
+        lines.append(
+            "  NEW APPS IN SCOPE: " + ", ".join(s["appearances"]["apps"]["added"])
+        )
     return "\n".join(lines)
 
 

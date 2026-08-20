@@ -3,8 +3,12 @@
 - **Status:** accepted
 - **Date:** 2026-08-19
 - **Owner:** team
-- **Links:** `src/lens.py`, `scripts/gen_fraud_dataset.py`, `src/schema.py` (fraud
-  section), `tests/integration/test_fraud_lens.py`
+- **Links:** `src/lens.py`, `src/schema.py`, `src/graph_service.py`, `src/api.py`
+
+> **Update (2026-08-20, ADR-0015):** the synthetic fraud dataset (`gen_fraud_dataset.py`,
+> `data/fraud/`) was deleted as part of the real-data pivot. The lens layer remains, but
+> only the flagship `dependency-graph` lens ships; the fraud vocabulary fields are dormant
+> until a real fraud/AML corpus is added.
 
 ## Context
 Slash's five answer primitives (blast radius, exposed surfaces, resolved-inside-a-
@@ -22,9 +26,8 @@ vertical duplicates hundreds of lines and lets the two copies drift.
   cypher-string diff against the pre-lens plans).
 - One search/pipeline layer: `src/intent.py` and `src/adjudicate.py` accept a lens and
   pick vocabulary from it; no new query primitives were added for fraud.
-- Fraud ships its own dataset generator (`scripts/gen_fraud_dataset.py`,
-  `data/fraud/{dataset,ground_truth}.json`) and schema property sets
-  (`src/schema.py` FRAUD_* maps) consumed by the existing idempotent ingester.
+- New verticals ship their own dataset + schema property sets (`src/schema.py` maps)
+  consumed by the existing idempotent ingester.
 - The web console (`app.py`) and product API (`src/api.py`, `scripts/serve.py --lens`)
   expose a lens selector; `/api/ask` and `/api/subgraph` accept an optional `lens`.
 

@@ -8,7 +8,7 @@
 ecosystem definition (JSON)            ground_truth.json (advisories, blast radii, typosquats)
       │                                        │
       v                                        v
-scripts/gen_dataset.py  ──────────────────►   data/generated/dataset.json, ground_truth.json
+scripts/fetch_github.py  ──────────────────►   data/github/{dataset,ground_truth,manifest}.json + osv/
       │
       v
 scripts/ingest.py   (UNWIND $rows AS row ... MERGE ...; 500 rows/batch; idempotent)

@@ -1,0 +1,290 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:00000000-0000-0000-0000-000000000001",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-08-20T12:51:49Z",
+    "tools": [
+      {
+        "vendor": "slash",
+        "name": "slash",
+        "version": "dependency-graph"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "bom-ref": "lodash/lodash",
+      "name": "lodash/lodash",
+      "version": "dependency-graph"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "async@3.2.6",
+      "name": "async",
+      "version": "3.2.6",
+      "purl": "pkg:npm/async@3.2.6"
+    },
+    {
+      "type": "library",
+      "bom-ref": "benchmark@2.1.4",
+      "name": "benchmark",
+      "version": "2.1.4",
+      "purl": "pkg:npm/benchmark@2.1.4"
+    },
+    {
+      "type": "library",
+      "bom-ref": "chalk@6.0.0",
+      "name": "chalk",
+      "version": "6.0.0",
+      "purl": "pkg:npm/chalk@6.0.0",
+      "properties": [
+        {
+          "name": "slash:malicious",
+          "value": "true"
+        },
+        {
+          "name": "slash:advisory",
+          "value": "MAL-2025-46969"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "cheerio@1.2.0",
+      "name": "cheerio",
+      "version": "1.2.0",
+      "purl": "pkg:npm/cheerio@1.2.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "codecov.io@0.1.6",
+      "name": "codecov.io",
+      "version": "0.1.6",
+      "purl": "pkg:npm/codecov.io@0.1.6"
+    },
+    {
+      "type": "library",
+      "bom-ref": "coveralls@3.1.1",
+      "name": "coveralls",
+      "version": "3.1.1",
+      "purl": "pkg:npm/coveralls@3.1.1"
+    },
+    {
+      "type": "library",
+      "bom-ref": "curl-amd@0.8.12",
+      "name": "curl-amd",
+      "version": "0.8.12",
+      "purl": "pkg:npm/curl-amd@0.8.12"
+    },
+    {
+      "type": "library",
+      "bom-ref": "docdown@0.7.3",
+      "name": "docdown",
+      "version": "0.7.3",
+      "purl": "pkg:npm/docdown@0.7.3"
+    },
+    {
+      "type": "library",
+      "bom-ref": "dojo@1.17.3",
+      "name": "dojo",
+      "version": "1.17.3",
+      "purl": "pkg:npm/dojo@1.17.3",
+      "properties": [
+        {
+          "name": "slash:malicious",
+          "value": "true"
+        },
+        {
+          "name": "slash:advisory",
+          "value": "CVE-2008-6681|CVE-2010-2273|CVE-2015-5654|CVE-2020-5258|CVE-2021-23450"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "ecstatic@4.1.4",
+      "name": "ecstatic",
+      "version": "4.1.4",
+      "purl": "pkg:npm/ecstatic@4.1.4",
+      "properties": [
+        {
+          "name": "slash:deprecated",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "fs-extra@11.4.0",
+      "name": "fs-extra",
+      "version": "11.4.0",
+      "purl": "pkg:npm/fs-extra@11.4.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "glob@13.0.6",
+      "name": "glob",
+      "version": "13.0.6",
+      "purl": "pkg:npm/glob@13.0.6"
+    },
+    {
+      "type": "library",
+      "bom-ref": "istanbul@0.4.5",
+      "name": "istanbul",
+      "version": "0.4.5",
+      "purl": "pkg:npm/istanbul@0.4.5",
+      "properties": [
+        {
+          "name": "slash:deprecated",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "jquery@4.0.0",
+      "name": "jquery",
+      "version": "4.0.0",
+      "purl": "pkg:npm/jquery@4.0.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "jscs@3.0.7",
+      "name": "jscs",
+      "version": "3.0.7",
+      "purl": "pkg:npm/jscs@3.0.7",
+      "properties": [
+        {
+          "name": "slash:deprecated",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "lodash-doc-globals@0.1.2",
+      "name": "lodash-doc-globals",
+      "version": "0.1.2",
+      "purl": "pkg:npm/lodash-doc-globals@0.1.2"
+    },
+    {
+      "type": "library",
+      "bom-ref": "lodash@4.17.20",
+      "name": "lodash",
+      "version": "4.17.20",
+      "purl": "pkg:npm/lodash@4.17.20",
+      "properties": [
+        {
+          "name": "slash:malicious",
+          "value": "true"
+        },
+        {
+          "name": "slash:advisory",
+          "value": "CVE-2018-16487|CVE-2018-3721|CVE-2019-1010266|CVE-2019-10744|CVE-2020-28500|CVE-2020-8203|CVE-2021-23337|CVE-2025-13465|CVE-2026-2950|CVE-2026-4800"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "markdown-doctest@1.1.0",
+      "name": "markdown-doctest",
+      "version": "1.1.0",
+      "purl": "pkg:npm/markdown-doctest@1.1.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "optional-dev-dependency@2.0.1",
+      "name": "optional-dev-dependency",
+      "version": "2.0.1",
+      "purl": "pkg:npm/optional-dev-dependency@2.0.1",
+      "properties": [
+        {
+          "name": "slash:deprecated",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "platform@1.3.6",
+      "name": "platform",
+      "version": "1.3.6",
+      "purl": "pkg:npm/platform@1.3.6"
+    },
+    {
+      "type": "library",
+      "bom-ref": "qunit-extras@3.0.0",
+      "name": "qunit-extras",
+      "version": "3.0.0",
+      "purl": "pkg:npm/qunit-extras@3.0.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "qunitjs@2.4.1",
+      "name": "qunitjs",
+      "version": "2.4.1",
+      "purl": "pkg:npm/qunitjs@2.4.1",
+      "properties": [
+        {
+          "name": "slash:deprecated",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "request@2.88.2",
+      "name": "request",
+      "version": "2.88.2",
+      "purl": "pkg:npm/request@2.88.2",
+      "properties": [
+        {
+          "name": "slash:malicious",
+          "value": "true"
+        },
+        {
+          "name": "slash:advisory",
+          "value": "CVE-2017-16026|CVE-2023-28155"
+        },
+        {
+          "name": "slash:deprecated",
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "requirejs@2.3.8",
+      "name": "requirejs",
+      "version": "2.3.8",
+      "purl": "pkg:npm/requirejs@2.3.8"
+    },
+    {
+      "type": "library",
+      "bom-ref": "sauce-tunnel@2.5.0",
+      "name": "sauce-tunnel",
+      "version": "2.5.0",
+      "purl": "pkg:npm/sauce-tunnel@2.5.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "webpack@5.109.2",
+      "name": "webpack",
+      "version": "5.109.2",
+      "purl": "pkg:npm/webpack@5.109.2"
+    }
+  ],
+  "properties": [
+    {
+      "name": "slash:services",
+      "value": "lodash/lodash"
+    },
+    {
+      "name": "slash:generated-from",
+      "value": "HydraDB"
+    }
+  ]
+}

@@ -27,7 +27,7 @@ def test_out_of_vocabulary_abstains(question):
 
 
 def test_empty_evidence_abstains():
-    plan = classify("what is the blast radius of oslo@adv-2026-01-1.0.0")
+    plan = classify("what depends on express")
     audit = Auditor().evaluate(plan, {"found": False, "steps": [], "elapsed_ms": 1.0})
     verdict = Adjudicator().verdict(audit)
     assert verdict.abstain is True
@@ -35,7 +35,7 @@ def test_empty_evidence_abstains():
 
 
 def test_valid_exposed_answer_not_abstained():
-    plan = classify("which services are exposed by oslo")
+    plan = classify("which services are exposed by express")
     result = {
         "found": True,
         "services": ["gateway", "notifications"],
@@ -52,14 +52,14 @@ def test_valid_exposed_answer_not_abstained():
 
 
 def test_contradiction_surfaces_both_facts():
-    plan = classify("was oslo resolved while live")
+    plan = classify("was lodash resolved while live")
     result = {
         "found": True,
-        "lockfiles": [{"app": "notifications-prod"}],
+        "lockfiles": [{"app": "expressjs/express"}],
         "contradictions": [
             {
-                "name": "oslo",
-                "version": "1.0.0",
+                "name": "lodash",
+                "version": "4.17.21",
                 "at": 100,
                 "stored_flag": False,
                 "recomputed_flag": True,

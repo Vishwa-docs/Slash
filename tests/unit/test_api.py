@@ -77,7 +77,7 @@ def test_ask_requires_question(base):
 
 def test_ask_fails_cleanly_when_db_down(base):
     with pytest.raises(urllib.error.HTTPError) as err:
-        _post(base, "/api/ask", {"question": "What is the blast radius of oslo?  "})
+        _post(base, "/api/ask", {"question": "What depends on axios?  "})
     assert err.value.code == 503
     body = json.loads(err.value.read())
     assert "error" in body
@@ -92,10 +92,10 @@ def test_static_serves_index_and_spa_fallback(base):
     status, headers, body = _get(base, "/")
     assert status == 200
     assert "text/html" in headers["Content-Type"]
-    assert b"<div id=\"root\">" in body
-    fallback_status, _, fallback_body = _get(base, "/supply-chain/blast")
+    assert b'<div id="root">' in body
+    fallback_status, _, fallback_body = _get(base, "/dependency/axios")
     assert fallback_status == 200
-    assert b"<div id=\"root\">" in fallback_body
+    assert b'<div id="root">' in fallback_body
 
 
 def test_unknown_api_returns_json_404(base):

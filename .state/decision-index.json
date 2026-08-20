@@ -1,18 +1,67 @@
 {
   "decisions": [
-    {"id": "ADR-0001", "title": "Track 02A (supply chain blast radius)", "status": "accepted", "date": "2026-08-19"},
-    {"id": "ADR-0002", "title": "Python + Streamlit + Plotly stack", "status": "accepted", "date": "2026-08-19"},
-    {"id": "ADR-0003", "title": "Primarily HTTPS query API", "status": "accepted", "date": "2026-08-19"},
-    {"id": "ADR-0004", "title": "Temporal model via properties + sentinels", "status": "accepted", "date": "2026-08-19"},
-    {"id": "ADR-0005", "title": "Deterministic synthetic dataset + ground truth", "status": "accepted", "date": "2026-08-19"},
-    {"id": "ADR-0006", "title": "Deterministic intent router, optional LLM refine", "status": "accepted", "date": "2026-08-19"},
-    {"id": "ADR-0007", "title": "Bounded traversals *1..6", "status": "accepted", "date": "2026-08-19"}
+    {
+      "id": "ADR-0001",
+      "title": "Track 02A (supply chain blast radius)",
+      "status": "accepted",
+      "date": "2026-08-19"
+    },
+    {
+      "id": "ADR-0002",
+      "title": "Python + Streamlit + Plotly stack",
+      "status": "accepted",
+      "date": "2026-08-19"
+    },
+    {
+      "id": "ADR-0003",
+      "title": "Primarily HTTPS query API",
+      "status": "accepted",
+      "date": "2026-08-19"
+    },
+    {
+      "id": "ADR-0004",
+      "title": "Temporal model via properties + sentinels",
+      "status": "accepted",
+      "date": "2026-08-19"
+    },
+    {
+      "id": "ADR-0005",
+      "title": "Deterministic synthetic dataset + ground truth",
+      "status": "superseded by ADR-0015",
+      "date": "2026-08-19"
+    },
+    {
+      "id": "ADR-0006",
+      "title": "Deterministic intent router, optional LLM refine",
+      "status": "accepted",
+      "date": "2026-08-19"
+    },
+    {
+      "id": "ADR-0007",
+      "title": "Bounded traversals *1..6",
+      "status": "accepted",
+      "date": "2026-08-19"
+    },
+    {
+      "id": "ADR-0010",
+      "title": "Domain lenses: one query engine",
+      "status": "accepted",
+      "date": "2026-08-19"
+    },
+    {
+      "id": "ADR-0015",
+      "title": "Real-data corpus (supersedes ADR-0005)",
+      "status": "accepted",
+      "date": "2026-08-20"
+    }
   ],
-  "confirmed": ["Track 02A will be pursued for this repository."],
+  "confirmed": [
+    "Track 02A will be pursued for this repository."
+  ],
   "open": [
-    "Enable optional LLM augmentation? (default: no) — needs user/team approval",
-    "Deployed link via Docker Compose — nice-to-have",
-    "Real SBOM ingest adapter (C1) — only if time"
+    "Enable optional LLM augmentation? (default: no) \u2014 needs user/team approval",
+    "Deployed link via Docker Compose \u2014 nice-to-have",
+    "Real SBOM ingest adapter (C1) \u2014 only if time"
   ],
-  "updated_at": "2026-08-19T00:00:00Z"
+  "updated_at": "2026-08-20T00:00:00Z"
 }

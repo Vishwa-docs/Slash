@@ -4,6 +4,94 @@ All notable changes. Format follows [Keep a Changelog](https://keepachangelog.co
 
 ## [Unreleased]
 ### Added
+- **Console default project picks the newest real repo.** The React console no longer snaps
+  back to the seeded demo project on refresh — it lands on the most recently added non-demo
+  project (falling back to the demo repo only on a demo-only clone), so "add a repo" now
+  visibly takes over the screen.
+- **Onboarding tips (QTips) in the console.** A dismissible tip strip under the topbar walks a
+  first-time user through «add» → «exposure scan» → "ask the graph", plus tooltip hints on both
+  buttons; dismissed state is kept in localStorage and a "?" button reopens it.
+- **TEAMMATES/teammates committed as a third project.** Real repo snapshot
+  (`data/projects/teammates-teammates/`, OSV cache, 1,157 nodes / 1,053 versions / 51 advisories),
+  registered in `data/projects.json` and synced on boot like the other projects.
+### Fixed
+- **Deterministic ground truth over the full committed graph, refreshed.** After adding
+  TEAMMATES, `scripts/refresh_ground_truth.py` (the same computation `fetch_github.py --offline`
+  runs) regenerated `ground_truth.json` over corpus + all project snapshots:
+  **277 advisory records · 74 with live exposure · 12 distinct exposed services**. New pinned
+  raw md5 `b7ab74be80e110c55abc55212e64023c`, verified byte-identical across repeated runs and
+  identical after a second `refresh_ground_truth.py` invocation.
+- **Live graph reconciles with truth after the new project.** Re-verified against the running
+  HydraDB store: **0 exposure mismatches** across all 74 exposed advisory records; `debug@4.4.3`
+  now correctly exposes **10** service records (TEAMMATES + demo repo + conf + 7 corpus services),
+  blast radius **86** dependant versions. `tests/unit/test_ui_smoke.py` expectation updated to
+  the regenerated truth (no test deleted or weakened).
+- **Fresh demo numbers.** `.evidence/runs/product/` regenerated: exposure report
+  **277 present · 12 services · 12 apps · 1124 live resolutions**; eval holds out the newest
+  real exposed advisories (CVE-2025-24964, MAL-2025-46983) scoring **F1 1.00**, p95 ≈ 592 ms;
+  scan/report/monitor/sbom/demo-qa refreshed; `vk/DEMO.md` narration updated so every number
+  matches the screen.
+- **GROQ key input removed from the console UI.** The console no longer asks for an LLM API key
+  at first run; the backend still degrades to `GROQ_API_KEY` when present, keeping every path
+  deterministic. The "dependency console" wording was dropped from the brand, tab title, and
+  breadcrumb in favour of `slash / hydradb`.
+- **Graph resets cleanly.** `.hydradb/store` wipe + `src/infra/hydradb-up.sh` + `python scripts/ingest.py`
+  now yields a store whose live exposures EXACTLY match ground truth (0 of 33 advisory exposures
+  disagree), after removing stale `DEPENDS_ON` debris left behind by superseded project
+  generations. Evidence under `.evidence/runs/phase-6/`.
+### Fixed
+- **Fresh measured demo numbers.** After reconciling the graph with committed truth and
+  re-verifying against the live store (see `.evidence/runs/product/demo-qa.txt` and
+  `.evidence/runs/phase-6/eval.txt`): `debug@4.4.3` exposes **9** services (not 7) and has a
+  **37**-dependant blast radius (not 15); console stats are **2,230 nodes · 217 malicious ·
+  9 service repos · 238 advisory records**; eval p95 latency ≈ **200 ms** on held-out
+  CVE-2026-47429 / CVE-2025-24964 (F1 1.00, 0 tokens). `vk/DEMO.md` narration updated so every
+  number matches the screen.
+- **README quick start matches the shipped console.** The documented console command is now
+  `python scripts/serve.py --port 8501` (React SPA + product API), not `streamlit run app.py`,
+  and the corpus is described as **9** real npm projects (was 12).
+### Changed
+- **Demo/launch hardening (React console).** Presentable state: stats row shows
+  `services` (9) instead of the misleading `typosquats 0`; initial API load failures render a
+  dedicated banner with a **retry** button instead of a raw `TypeError: Load failed`; health
+  label degrades to "hydradb offline"; sidebar shows "resolving corpus…" while the overview loads;
+  page title is now "Slash — dependency console on HydraDB".
+- **Auth-token self-heal in the HTTP client.** `HydraDBClient` re-reads `.hydradb/auth.token`
+  once on a 401 and retries — a stale server process can no longer wedge the demo after a
+  HydraDB container/token refresh (observed live: `HTTP 401 unauthenticated` + client `Load failed`).
+### Fixed
+- **Honest OSV ground truth (demo-hardening).** `write_ground_truth` in `scripts/fetch_github.py`
+  now filters each OSV advisory's `affected` list by the package name, matching the build path —
+  killing false positives where a sibling package's range (e.g. `lodash.trimend` for
+  GHSA-29mw-wpgm-hmr9) wrongly flagged the main package. Advisories drop 233 → 217, and the
+  `lodash@4.18.1` chip is gone.
+- **Deterministic demo chips.** `src/examples.py` sorts advisory chips by real exposed-service
+  fan-out (debug@4.4.3 → 7, chalk@6.0.0 → 5) and the static blast chip now asks
+  `What is the blast radius of debug@4.4.3?` (15 dependants) instead of the previously-abstaining
+  `What depends on axios?`. `app.py` fallback chips match.
+- **Offline manifest truthfulness.** `fetch_github.py --offline` now records the 9 real service
+  repos in `manifest.repos` (was `[]`).
+### Changed
+- **Real-data pivot: the corpus is now the live GitHub/OSV supply chain, not synthetic.** All
+  fabricated records (`scripts/gen_dataset.py`/`gen_fraud_dataset.py`, `data/generated/`,
+  `data/fraud/`, `seed.toml`, the fake `oslo`/`sync@adv-*` advisories) are deleted.
+  - `scripts/fetch_github.py` builds the graph from **real sources** for 12 well-known npm
+    projects: npm registry versions, git-dependency names+versions+publish dates, lockfile
+    pins + consumers (real repos), GitHub maintainers (via commit history from live clones),
+    and real OSV advisory ranges for the actual package versions in those repos.
+  - `data/github/{dataset.json,ground_truth.json,osv/}` is committed — full offline
+    reproducibility via `passive --offline`, and honest advisory-derived labels
+    (`malicious`, `exposed_services`, `resolved_while_live`) per snapshot version.
+  - `scripts/ingest.py` defaults to the GitHub corpus (was: generated); `--offline` variants
+    run with zero network; `scripts/scan.py` unused-file pruning of the corpus is retained.
+  - `tests/integration/test_queries.py` and `test_product_api.py` are corpus-derived
+    (assert vs `data/github/ground_truth.json`); `tests/integration/test_fraud_lens.py`
+    replaced by `tests/unit/test_lens.py`; scan fixtures regenerated from real vulnerable
+    pins (`data/scan-fixtures/` via `scripts/gen_scan_fixtures.py`).
+  - Docs: README quick-start, this changelog. ADR-0005 (synthetic dataset) is superseded by
+    ADR-0015 (real-data corpus); lens flag for the supply-chain vertical remapped to
+    `dependency-graph`.
+### Added
 - **Domain lenses: one query engine, many connected graphs (ADR-0010).** The five
   primitives now run on any graph shape parameterized by `src/lens.py` — a fresh
   vertical is a Lens + dataset, not another query engine.

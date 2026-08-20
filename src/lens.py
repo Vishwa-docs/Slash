@@ -52,8 +52,8 @@ class Lens:
 
 
 SUPPLY_CHAIN = Lens(
-    id="supply-chain",
-    title="Supply chain",
+    id="dependency-graph",
+    title="Dependency graph",
     entity_node="Package",
     version_node="PackageVersion",
     resource_node="Service",

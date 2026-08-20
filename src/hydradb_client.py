@@ -43,6 +43,34 @@ class HydraDBClient:
             self.token = ""
         self.namespace = namespace
         self.cell_id = cell_id
+        self.token_file = Path(token_file)
+
+    def _reload_token(self) -> None:
+        try:
+            self.token = self.token_file.read_text().strip()
+        except OSError:
+            self.token = ""
+
+    def _authed_request(self, body: dict, retry_on_401: bool = True):
+        """POST a query, re-reading the auth token once on 401 (401 = token
+        out of sync with the running node — e.g. container restart)."""
+        req = urllib.request.Request(
+            f"{self.base_url}/v1/graphs/default/query",
+            data=json.dumps(body).encode(),
+            headers={
+                "Authorization": f"Bearer {self.token}",
+                "X-Graph-Namespace": self.namespace,
+                "Content-Type": "application/json",
+            },
+            method="POST",
+        )
+        try:
+            return urllib.request.urlopen(req, timeout=30)
+        except urllib.error.HTTPError as e:
+            if e.code == 401 and retry_on_401:
+                self._reload_token()
+                return self._authed_request(body, retry_on_401=False)
+            raise
 
     def healthz(self) -> bool:
         try:
@@ -59,19 +87,9 @@ class HydraDBClient:
         }
         if params:
             body["parameters"] = params
-        req = urllib.request.Request(
-            f"{self.base_url}/v1/graphs/default/query",
-            data=json.dumps(body).encode(),
-            headers={
-                "Authorization": f"Bearer {self.token}",
-                "X-Graph-Namespace": self.namespace,
-                "Content-Type": "application/json",
-            },
-            method="POST",
-        )
         start = time.monotonic()
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
+            with self._authed_request(body) as resp:
                 payload = json.loads(resp.read())
         except urllib.error.HTTPError as e:
             raise HydraDBError(

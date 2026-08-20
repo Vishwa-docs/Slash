@@ -5,7 +5,7 @@ Segment timings are targets; the whole thing must fit in 180 seconds.
 
 ## 0:00–0:35 — Problem
 
-> 09:00. A maintainer account gets phished and a poisoned `oslo` version ships to your internal
+> 09:00. A maintainer account gets phished and a poisoned `chalk` version ships to your internal
 > registry. At 09:06 your security team asks: *which services are exposed?* — and they need the
 > answer in seconds, with evidence, or they are guessing.
 >
@@ -32,14 +32,14 @@ Segment timings are targets; the whole thing must fit in 180 seconds.
 
 ## 1:30–2:30 — Live demo (on screen)
 
-> `streamlit run app.py`. We ask: *which services are exposed by oslo@adv-2026-01-1.0.0?*
+> `streamlit run app.py`. We ask: *which services are exposed by chalk@6.0.0?*
 >
 > - Left panel: verdict pill `EXPOSED` → `gateway, notifications`, and the evidence chain — each
 >   expander shows the parameterized Cypher, the rows, row count and latency.
 > - Right panel: the live query console streaming each traversal step, the thought process
 >   (Researcher → Auditor → Adjudicator), and the Plotly subgraph with the seed marked red.
 > - *what is the blast radius?* → the closed set with hop levels.
-> - *was oslo resolved while live?* → forensics: the app that resolved it inside the advisory window.
+> - *was lodash@4.17.20 resolved while live?* → forensics: the app that resolved it inside the advisory window.
 > - A nonsense question → the system says it can't answer, instead of making something up.
 
 ## 2:30–3:00 — Why HydraDB + close

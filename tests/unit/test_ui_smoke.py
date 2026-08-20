@@ -50,12 +50,17 @@ def test_app_answers_demo_questions_via_session():
     assert _history(_new_app()) == []
 
     # exposed services
-    at = _new_app("which services are exposed by oslo@adv-2026-01-1.0.0")
+    at = _new_app("which services are exposed by debug@4.4.3")
     hist = _history(at)
     assert hist, "no history after seeded question"
     v = hist[-1]["verdict"]
     assert not v.abstain
-    assert v.answer == "gateway, notifications"
+    assert (
+        v.answer
+        == "TEAMMATES/teammates, Vishwa-docs/reefguard-coral-hackathon, axios/axios, "
+        "expressjs/express, fastify/fastify, jaredhanson/passport, markedjs/marked, "
+        "sindresorhus/conf, typicode/lowdb, websockets/ws"
+    )
     assert len(v.evidence_chain) >= 4
 
     # abstention for nonsense

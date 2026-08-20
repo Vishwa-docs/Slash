@@ -1,13 +1,14 @@
 """Optional LLM layer for Slash — Groq, OpenAI-compatible chat, zero new deps.
 
-Everything here is best-effort and strictly optional (ADR-0006, ADR-0011):
-the deterministic pipeline never requires a key. When ``GROQ_API_KEY`` is unset
-or a call fails, every function degrades to the deterministic behaviour, so a
-video/demo run without network produces identical output to one with it.
+Everything here is best-effort and strictly optional (ADR-0006, ADR-0011): the
+graph is always the ground truth. The caller may supply a Groq API key per
+request (the console sends the key the user typed; it is never persisted). When
+no key is given or a call fails, every function degrades to the base graph
+behaviour, so a demo run without a key produces the same answers.
 
 Three capabilities, used only when the caller opts in:
-  - ``refine_plan``   normalize entities/intent the deterministic classifier may miss
-  - ``summarize``     turn a deterministic verdict into a 2-3 sentence executive summary
+  - ``refine_plan``   normalize entities/intent the base classifier may miss
+  - ``summarize``     turn a base verdict into a 2-3 sentence executive summary
   - ``pick_repos``    suggest notable open-source GitHub repos for a target ecosystem dep
 """
 
@@ -19,10 +20,13 @@ import ssl
 import urllib.request
 
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
+GROQ_MODELS_URL = "https://api.groq.com/openai/v1/models"
 UA = "Mozilla/5.0 (Slash; hack-hydra-2026) urllib"
 
 
-def api_key() -> str | None:
+def api_key(explicit: str | None = None) -> str | None:
+    if explicit and explicit.strip():
+        return explicit.strip()
     return os.environ.get("GROQ_API_KEY") or None
 
 
@@ -30,13 +34,36 @@ def model_name() -> str:
     return os.environ.get("GROQ_MODEL") or "openai/gpt-oss-120b"
 
 
-def available() -> bool:
-    return api_key() is not None
+def available(explicit: str | None = None) -> bool:
+    return api_key(explicit) is not None
 
 
-def chat(messages: list[dict], json_mode: bool = True, timeout: int = 45) -> str | None:
+def check_key(explicit: str | None = None) -> bool:
+    """Validate a Groq key against the free /models endpoint (no tokens used)."""
+    token = api_key(explicit)
+    if not token:
+        return False
+    req = urllib.request.Request(
+        GROQ_MODELS_URL,
+        method="GET",
+        headers={"Authorization": f"Bearer {token}", "User-Agent": UA},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            return resp.status == 200
+    except Exception:  # noqa: BLE001 - an invalid key is just an invalid key
+        return False
+
+
+def chat(
+    messages: list[dict],
+    json_mode: bool = True,
+    timeout: int = 45,
+    key: str | None = None,
+) -> str | None:
     """Single chat-completions round-trip; returns the assistant message text."""
-    if not available():
+    token = api_key(key)
+    if not token:
         return None
     body: dict = {
         "model": model_name(),
@@ -58,7 +85,7 @@ def chat(messages: list[dict], json_mode: bool = True, timeout: int = 45) -> str
         method="POST",
         data=json.dumps(body).encode(),
         headers={
-            "Authorization": f"Bearer {api_key()}",
+            "Authorization": f"Bearer {token}",
             "Content-Type": "application/json",
             "User-Agent": UA,
             "Accept": "application/json",
@@ -68,7 +95,7 @@ def chat(messages: list[dict], json_mode: bool = True, timeout: int = 45) -> str
         with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
             data = json.loads(resp.read().decode())
         return data["choices"][0]["message"]["content"]
-    except Exception:  # noqa: BLE001 - best-effort: fall back to deterministic
+    except Exception:  # noqa: BLE001 - best-effort: fall back to the base path
         return None
 
 
@@ -92,8 +119,8 @@ INTENTS = (
 )
 
 
-def refine_plan(question: str, current: dict) -> dict:
-    """Best-effort normalization of a deterministic QueryPlan.
+def refine_plan(question: str, current: dict, key: str | None = None) -> dict:
+    """Best-effort normalization of a base QueryPlan.
 
     ``current`` is the plan's ``model_dump()``; we never invent names — the prompt
     forces nulls over guesses. Any failure returns ``current`` unchanged.
@@ -108,15 +135,19 @@ def refine_plan(question: str, current: dict) -> dict:
     text = chat(
         [
             {"role": "system", "content": system},
-            {"role": "user", "content": json.dumps({"question": question, "plan": current})},
-        ]
+            {
+                "role": "user",
+                "content": json.dumps({"question": question, "plan": current}),
+            },
+        ],
+        key=key,
     )
     parsed = _json(text)
     if parsed is None or not isinstance(parsed, dict):
         return current
     out = dict(current)
-    for key in ("package", "version", "developer"):
-        val = parsed.get(key)
+    for k in ("package", "version", "developer"):
+        val = parsed.get(k)
         if isinstance(val, str) and val.strip():
             out[key] = val.strip()
     if isinstance(parsed.get("seed_names"), list):
@@ -129,7 +160,7 @@ def refine_plan(question: str, current: dict) -> dict:
     return out
 
 
-def summarize(question: str, verdict: dict, lens: str) -> str:
+def summarize(question: str, verdict: dict, lens: str, key: str | None = None) -> str:
     """2-3 sentence executive summary of a verdict; '' on any failure."""
     text = chat(
         [
@@ -157,7 +188,8 @@ def summarize(question: str, verdict: dict, lens: str) -> str:
                     }
                 ),
             },
-        ]
+        ],
+        key=key,
     )
     parsed = _json(text)
     if not parsed or not isinstance(parsed.get("summary"), str):
@@ -165,15 +197,20 @@ def summarize(question: str, verdict: dict, lens: str) -> str:
     return parsed["summary"].strip()
 
 
-def pick_repos(ecosystem_name: str, count: int = 12, ecosystem: str = "npm") -> list[str]:
+def pick_repos(
+    ecosystem_name: str,
+    count: int = 12,
+    ecosystem: str = "npm",
+    key: str | None = None,
+) -> list[str]:
     """Top ``count`` repo full-names the model guesses for a given ecosystem package."""
     text = chat(
         [
             {
                 "role": "system",
                 "content": (
-                    "You curate a real-world demo corpus for a supply-chain tool. "
-                    f"Return ONLY JSON {{\"repos\": [string GitHub full-names]}} with "
+                    "You curate a real-world demo corpus for a dependency-intelligence tool. "
+                    f'Return ONLY JSON {{"repos": [string GitHub full-names]}} with '
                     f"{count} notable open-source JavaScript/{ecosystem} projects "
                     "that plausibly depend on the given package. Use only well-known "
                     "real repositories (e.g. vercel/next.js)."
@@ -183,7 +220,8 @@ def pick_repos(ecosystem_name: str, count: int = 12, ecosystem: str = "npm") -> 
                 "role": "user",
                 "content": ecosystem_name,
             },
-        ]
+        ],
+        key=key,
     )
     parsed = _json(text)
     if not parsed or not isinstance(parsed.get("repos"), list):

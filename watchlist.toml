@@ -6,22 +6,24 @@
 #
 # Thresholds: score 0-1 for name similarity (0.75+ is suspicious), plus up to
 # +0.25 for "orphan + deprecated" signals. Raise min_score to cut noise.
+#
+# Real corpus targets — all names exist in data/github (GitHub/npm/OSV).
 
 [monitor]
 watchlist = "core"
 
 [[watch]]
-name = "oslo"
+name = "axios"
 min_score = 0.75
 
 [[watch]]
-name = "base"
+name = "ws"
 min_score = 0.80
 
 [[watch]]
-name = "ioauth"
+name = "lodash"
 min_score = 0.80
 
 [[watch]]
-name = "sync"
+name = "express"
 min_score = 0.80

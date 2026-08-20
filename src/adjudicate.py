@@ -1,8 +1,9 @@
-"""Auditor + Adjudicator personas. Deterministic evidence checks -> Verdict.
+"""Auditor + Adjudicator personas. Evidence checks -> Verdict.
 
 Auditor consumes a `run_*` result dict from src.graph_service and scores
 subgraph density + temporal consistency + contradictions. Adjudicator maps the
-audit to a first-class Verdict (answer with evidence chain, or abstention).
+audit to a first-class Verdict (answer with evidence chain, or a gap that the
+pipeline's Healer will try to close before reporting).
 """
 
 from __future__ import annotations
@@ -92,8 +93,8 @@ class Adjudicator:
                 intent=plan.intent,
                 abstain=True,
                 reason=(
-                    "I can answer blast-radius, exposed-services, resolved-while-live, "
-                    "maintainer-contagion, typosquat, and package-lookup questions."
+                    "I can answer exposure, resolved-while-live, shared-maintainer, "
+                    "typosquat, and package-lookup questions about the graph."
                 ),
                 evidence_chain=[],
             )

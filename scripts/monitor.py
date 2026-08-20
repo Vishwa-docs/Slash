@@ -15,8 +15,9 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-import tomllib
 from pathlib import Path
+
+import tomllib
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -31,7 +32,11 @@ def load_watchlist(path: Path) -> list[dict]:
     watches = doc.get("watch", [])
     if not isinstance(watches, list) or not watches:
         raise SystemExit(f"watchlist {path} has no [[watch]] entries")
-    return [{"name": w["name"], "min_score": float(w.get("min_score", 0.75))} for w in watches if w.get("name")]
+    return [
+        {"name": w["name"], "min_score": float(w.get("min_score", 0.75))}
+        for w in watches
+        if w.get("name")
+    ]
 
 
 def monitor(client: HydraDBClient, watches: list[dict]) -> dict:
@@ -50,7 +55,8 @@ def monitor(client: HydraDBClient, watches: list[dict]) -> dict:
                 "deprecated": c["deprecated"],
             }
             for c in tp["candidates"]
-            if c["name"].lower() != name.lower() and c["typosquat_score"] >= w["min_score"]
+            if c["name"].lower() != name.lower()
+            and c["typosquat_score"] >= w["min_score"]
         ]
         violations.extend(lookalikes)
         own = run_package_lookup(client, name, None)  # latest version
@@ -78,7 +84,9 @@ def monitor(client: HydraDBClient, watches: list[dict]) -> dict:
 
 
 def render_digest(report: dict) -> str:
-    lines = [f"slash monitor: {len(report['watches'])} watch(es), {len(report['violations'])} violation(s)"]
+    lines = [
+        f"slash monitor: {len(report['watches'])} watch(es), {len(report['violations'])} violation(s)"
+    ]
     for v in report["violations"]:
         if v["kind"] == "typosquat":
             lines.append(
@@ -86,9 +94,13 @@ def render_digest(report: dict) -> str:
                 f"{v['nearest_seed']} — protects watch '{v['watch']}'"
             )
         else:
-            lines.append(f"  ! {v['kind']}: {v['name']}@{v['version']} — watch '{v['watch']}'")
+            lines.append(
+                f"  ! {v['kind']}: {v['name']}@{v['version']} — watch '{v['watch']}'"
+            )
     if not report["violations"]:
-        lines.append("  clean: no lookalikes or own-version degradation on watched packages")
+        lines.append(
+            "  clean: no lookalikes or own-version degradation on watched packages"
+        )
     return "\n".join(lines)
 
 

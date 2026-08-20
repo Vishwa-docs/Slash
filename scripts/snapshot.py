@@ -29,7 +29,9 @@ def snapshot_manifest(corpus: str, label: str | None = None) -> dict:
 
     dataset_path = ROOT / "data" / corpus / "dataset.json"
     if not dataset_path.exists():
-        raise SystemExit(f"no dataset at {dataset_path} (run scripts/ingest.py {corpus} first?)")
+        raise SystemExit(
+            f"no dataset at {dataset_path} (run scripts/ingest.py {corpus} first?)"
+        )
     nodes = json.loads(dataset_path.read_text()).get("nodes", [])
     edges = json.loads(dataset_path.read_text()).get("edges", {})
     versions_by_name: dict[str, list[str]] = {}
@@ -43,7 +45,11 @@ def snapshot_manifest(corpus: str, label: str | None = None) -> dict:
             versions_by_name.setdefault(p.get("name"), []).append(p.get("version"))
             if p.get("malicious"):
                 malicious.append(
-                    {"name": p["name"], "version": p["version"], "advisory_id": p.get("advisory_id")}
+                    {
+                        "name": p["name"],
+                        "version": p["version"],
+                        "advisory_id": p.get("advisory_id"),
+                    }
                 )
             if p.get("is_typosquat"):
                 typosquat_names.append(p.get("name"))
@@ -52,8 +58,11 @@ def snapshot_manifest(corpus: str, label: str | None = None) -> dict:
         elif n["label"] == "Lockfile" and p.get("app"):
             lockfile_apps.append(p["app"])
     return {
-        "label": label or datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%MZ"),
-        "snapshot_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+        "label": label
+        or datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%MZ"),
+        "snapshot_at": datetime.datetime.now(datetime.timezone.utc).isoformat(
+            timespec="seconds"
+        ),
         "corpus": corpus,
         "stats": {
             "nodes": len(nodes),
@@ -68,13 +77,17 @@ def snapshot_manifest(corpus: str, label: str | None = None) -> dict:
         "package_names": sorted(versions_by_name),
         "malicious": sorted(malicious, key=lambda m: (m["name"], m["version"])),
         "typosquat_names": sorted(set(typosquat_names)),
-        "deprecated_versions": sorted(deprecated_versions, key=lambda m: (m["name"], m["version"])),
+        "deprecated_versions": sorted(
+            deprecated_versions, key=lambda m: (m["name"], m["version"])
+        ),
         "lockfile_apps": sorted(lockfile_apps),
     }
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Snapshot the Slash corpus for time-diff reports")
+    ap = argparse.ArgumentParser(
+        description="Snapshot the Slash corpus for time-diff reports"
+    )
     ap.add_argument("--corpus", default="generated", help="generated | real")
     ap.add_argument("--name", help="snapshot label (default: timestamp)")
     args = ap.parse_args()
@@ -84,8 +97,10 @@ def main() -> int:
     path = SNAP_DIR / f"{snap['label']}.json"
     path.write_text(json.dumps(snap, indent=2))
     print(f"snapshot -> {path}")
-    print(f"  {snap['stats']['packages']} packages, {snap['stats']['package_versions']} versions, "
-          f"{snap['stats']['malicious']} malicious, {snap['stats']['typosquat_names']} typosquat names")
+    print(
+        f"  {snap['stats']['packages']} packages, {snap['stats']['package_versions']} versions, "
+        f"{snap['stats']['malicious']} malicious, {snap['stats']['typosquat_names']} typosquat names"
+    )
     return 0
 
 

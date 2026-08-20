@@ -1,19 +1,28 @@
-"""Slash product API — a small stdlib JSON HTTP server over the deterministic pipeline.
+"""Slash product API — a small stdlib JSON HTTP server over the pipeline.
 
 Endpoints (all JSON):
-    GET  /api/health               HydraDB liveness + corpus summary
-    GET  /api/overview             dataset stats + curated demo examples
-    POST /api/ask {question}       run the agent pipeline, return verdict + evidence
-    POST /api/subgraph {name,version}  nearby subgraph for the graph panel
+    GET  /api/health               HydraDB liveness
+    GET  /api/overview             global corpus stats + curated demo examples
+    GET  /api/projects             registered repositories (projects)
+    POST /api/projects {url}       add a GitHub repo as a project (real graph)
+    GET  /api/projects/{id}        project overview + sessions + example chips
+    POST /api/projects/{id}/sessions {title}   open a chat session for a project
+    POST /api/projects/{id}/ask {question, session_id, llm_key}
+         run the pipeline scoped to the project; persists the turn
+    POST /api/projects/{id}/scan   per-project exposure report
+    POST /api/ask {question, llm_key}      global pipeline run (corpus lens)
+    POST /api/subgraph {name,version}      nearby subgraph for the graph panel
+    POST /api/keycheck {llm_key}   validate a Groq key via the free /models call
 
 Static files from assets/app/dist/ are served with an SPA fallback so scripts/serve.py
-can run the whole product from one process (matches the winners' single-deploy pattern).
-Runs fully without an LLM key; every answer is computed from the graph.
+can run the whole product from one process. The graph is always the ground truth;
+a Groq key (per-request, never persisted) only adds a plan-normalizer + a summary.
 """
 
 from __future__ import annotations
 
 import json
+import re
 import sys
 import time
 import urllib.parse
@@ -23,9 +32,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+from src import projects
 from src.examples import overview
 from src.hydradb_client import HydraDBClient
 from src.lens import SUPPLY_CHAIN, lens_by_id
+from src.llm import check_key
 from src.models import IntentClass
 from src.pipeline import answer_with_result
 from src.report import exposure_report
@@ -219,6 +230,11 @@ class Handler(BaseHTTPRequestHandler):
             return self._json(200, overview())
         if url.path == "/api/report":
             return self._report()
+        if url.path == "/api/projects":
+            return self._json(200, {"projects": projects.list_projects()})
+        m = re.fullmatch(r"/api/projects/([A-Za-z0-9._-]+)", url.path)
+        if m:
+            return self._json(200, projects.overview(m.group(1)))
         if url.path.startswith("/api/"):
             return self._json(404, {"error": "no such endpoint"})
         return self._static(url.path.lstrip("/") or "index.html")
@@ -227,13 +243,43 @@ class Handler(BaseHTTPRequestHandler):
         url = urllib.parse.urlparse(self.path)
         body = self._body()
         if url.path == "/api/ask":
-            return self._ask(body.get("question", ""), body.get("lens"), bool(body.get("llm")))
+            return self._ask(
+                body.get("question", ""),
+                body.get("lens"),
+                bool(body.get("llm")),
+                body.get("llm_key"),
+            )
         if url.path == "/api/subgraph":
             return self._subgraph(
                 body.get("name", ""), body.get("version", ""), body.get("lens")
             )
         if url.path == "/api/sbom":
             return self._sbom(body.get("app", ""))
+        if url.path == "/api/projects":
+            return self._add_project(body.get("url", ""))
+        if url.path == "/api/keycheck":
+            return self._json(200, {"ok": check_key(body.get("llm_key"))})
+        m = re.fullmatch(r"/api/projects/([A-Za-z0-9._-]+)/([a-z]+)", url.path)
+        if m:
+            pid, action = m.group(1), m.group(2)
+            if action == "sessions":
+                return self._json(
+                    200,
+                    projects.new_session(pid, body.get("title"))
+                    or {"error": "project not found"},
+                )
+            if action == "ask":
+                return self._json(
+                    200,
+                    projects.ask(
+                        pid,
+                        body.get("question", ""),
+                        body.get("session_id"),
+                        body.get("llm_key"),
+                    ),
+                )
+            if action == "scan":
+                return self._json(200, projects.scan(pid))
         return self._json(404, {"error": "no such endpoint"})
 
     # -- handlers ----------------------------------------------------------
@@ -251,14 +297,20 @@ class Handler(BaseHTTPRequestHandler):
         except Exception as e:  # noqa: BLE001
             self._json(503, {"error": f"report failed: {e}"})
 
-    def _ask(self, question: str, lens_id: str | None = None, llm: bool = False) -> None:
+    def _ask(
+        self,
+        question: str,
+        lens_id: str | None = None,
+        llm: bool = False,
+        llm_key: str | None = None,
+    ) -> None:
         if not question or not question.strip():
             return self._json(400, {"error": "question is required"})
         lens = lens_by_id(lens_id)
         t0 = time.time()
         try:
             verdict, result = answer_with_result(
-                self.server.client, question, lens, llm=llm
+                self.server.client, question, lens, llm=llm, llm_key=llm_key
             )
         except Exception as e:  # noqa: BLE001
             return self._json(503, {"error": f"pipeline failed: {e}"})
@@ -271,6 +323,7 @@ class Handler(BaseHTTPRequestHandler):
                 "answer": verdict.answer,
                 "summary": verdict.summary,
                 "abstain": verdict.abstain,
+                "reported": verdict.reported,
                 "reason": verdict.reason,
                 "latency_ms": round(verdict.latency_ms, 2),
                 "query_count": verdict.query_count,
@@ -340,6 +393,26 @@ class Handler(BaseHTTPRequestHandler):
             },
         )
 
+    def _add_project(self, url: str) -> None:
+        if not url or not url.strip():
+            return self._json(
+                400, {"error": "a GitHub URL (or owner/name) is required"}
+            )
+        try:
+            record = projects.generate_project(url.strip())
+        except ValueError as e:
+            return self._json(400, {"error": str(e)})
+        except Exception as e:  # noqa: BLE001
+            return self._json(502, {"error": f"project generation failed: {e}"})
+        self._json(
+            200,
+            {
+                "id": record["id"],
+                "repo": record["repo"],
+                "stats": record["stats"],
+            },
+        )
+
 
 def make_server(
     client: HydraDBClient,
@@ -347,6 +420,7 @@ def make_server(
     port: int = 8501,
     lens: object = SUPPLY_CHAIN,
 ) -> SlashServer:
+    projects.sync_all()
     server = SlashServer((host, port), Handler)
     server.client = client
     server.lens = lens

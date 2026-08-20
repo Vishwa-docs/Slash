@@ -1,0 +1,15 @@
+| advisory | query_precision | query_recall | query_f1 | resolved_while_live_f1 | recompute_agrees | latency_ms | queries |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| CVE-2025-24964 | 1.00 | 1.00 | 1.00 | - | true | 437 | 14 |
+| MAL-2025-46983 | 1.00 | 1.00 | 1.00 | - | true | 521 | 57 |
+
+Summary: {
+  "advisories_evaluated": 2,
+  "precision_mean": "1.00",
+  "recall_mean": "1.00",
+  "f1_mean": "1.00",
+  "latency_p95_ms": "592",
+  "queries_total": 71,
+  "queries_per_question": "35.5",
+  "token_cost": 0
+}

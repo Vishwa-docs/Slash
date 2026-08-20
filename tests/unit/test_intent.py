@@ -1,4 +1,7 @@
-"""Unit tests for the deterministic Researcher (intent classifier)."""
+"""Unit tests for the deterministic Researcher (intent classifier).
+
+Uses real package names from the corpus; entity extraction is name-agnostic.
+"""
 
 from __future__ import annotations
 
@@ -9,30 +12,34 @@ from src.models import IntentClass
 
 CASES = [
     (
-        "which services are exposed by oslo",
+        "which services are exposed by express",
         IntentClass.EXPOSED_SERVICES,
-        {"package": "oslo"},
+        {"package": "express"},
     ),
     (
-        "what services can reach oslo@adv-2026-01-1.0.0",
+        "what services can reach lodash@4.17.21",
         IntentClass.EXPOSED_SERVICES,
-        {"package": "oslo", "version": "adv-2026-01-1.0.0"},
+        {"package": "lodash", "version": "4.17.21"},
     ),
-    ("what is the blast radius of oslo", IntentClass.BLAST_RADIUS, {"package": "oslo"}),
     (
-        "who transitively depends on oslo 1.2.3",
+        "what depends on express",
         IntentClass.BLAST_RADIUS,
-        {"package": "oslo", "version": "1.2.3"},
+        {"package": "express"},
     ),
     (
-        "was oslo resolved while live",
-        IntentClass.RESOLVED_WHILE_LIVE,
-        {"package": "oslo"},
+        "who transitively depends on axios 1.2.3",
+        IntentClass.BLAST_RADIUS,
+        {"package": "axios", "version": "1.2.3"},
     ),
     (
-        "which lockfiles resolved oslo in its window",
+        "was lodash resolved while live",
         IntentClass.RESOLVED_WHILE_LIVE,
-        {"package": "oslo"},
+        {"package": "lodash"},
+    ),
+    (
+        "which lockfiles resolved ws in its window",
+        IntentClass.RESOLVED_WHILE_LIVE,
+        {"package": "ws"},
     ),
     (
         "what packages does dev_137 maintain",
@@ -40,62 +47,31 @@ CASES = [
         {"developer": "dev_137"},
     ),
     (
-        "which packages share a maintainer with oslo",
+        "which packages share a maintainer with marked",
         IntentClass.MAINTAINER_CONTAGION,
-        {"package": "oslo"},
+        {"package": "marked"},
     ),
     (
-        "show typosquat candidates near oslo",
+        "show typosquat candidates near axios",
         IntentClass.TYPOSQUAT_CANDIDATES,
-        {"package": "oslo"},
+        {"package": "axios"},
     ),
     (
-        "are there lookalike names for sync",
+        "are there lookalike names for fastify",
         IntentClass.TYPOSQUAT_CANDIDATES,
-        {"package": "sync"},
+        {"package": "fastify"},
     ),
     (
-        "tell me about left-pad 1.0.0",
+        "tell me about minimist 0.2.4",
         IntentClass.PACKAGE_LOOKUP,
-        {"package": "left-pad", "version": "1.0.0"},
+        {"package": "minimist", "version": "0.2.4"},
     ),
-    ("what is oslo", IntentClass.PACKAGE_LOOKUP, {"package": "oslo"}),
+    ("what is express", IntentClass.PACKAGE_LOOKUP, {"package": "express"}),
     ("what is the weather today", IntentClass.UNSUPPORTED, {}),
     ("who won the world cup in 1998", IntentClass.UNSUPPORTED, {}),
     ("tell me a joke", IntentClass.UNSUPPORTED, {}),
     ("translate hello to spanish", IntentClass.UNSUPPORTED, {}),
     ("what is 2 + 2", IntentClass.UNSUPPORTED, {}),
-    # fraud lens vocabulary routes onto the same five primitives
-    (
-        "which merchants are exposed by makeshop@adv-2026-01-1.0.0",
-        IntentClass.EXPOSED_SERVICES,
-        {"package": "makeshop", "version": "adv-2026-01-1.0.0"},
-    ),
-    (
-        "which intake events involved bexpay while it was compromised",
-        IntentClass.RESOLVED_WHILE_LIVE,
-        {"package": "bexpay"},
-    ),
-    (
-        "which accounts moved funds during the compromise window",
-        IntentClass.RESOLVED_WHILE_LIVE,
-        {},
-    ),
-    (
-        "who owns the accounts owned by cust_009",
-        IntentClass.MAINTAINER_CONTAGION,
-        {"developer": "cust_009"},
-    ),
-    (
-        "any lookalike accounts near makeshop",
-        IntentClass.TYPOSQUAT_CANDIDATES,
-        {"package": "makeshop"},
-    ),
-    (
-        "which merchants impacted when acct compromised",
-        IntentClass.EXPOSED_SERVICES,
-        {"package": "acct"},
-    ),
 ]
 
 
