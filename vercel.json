@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "buildCommand": "cd assets/app && npm install && npm run build",
+  "outputDirectory": "assets/app/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
