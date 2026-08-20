@@ -104,6 +104,8 @@ VERSION_RE = re.compile(r"\d+\.\d+\.\d+(?:[-+][\w.-]+)?")
 ADV_VERSION_RE = re.compile(r"adv-\d{4}-\d{2}[-_][\d.]+")
 HANDLE_RE = re.compile(r"dev_[\w]+")
 CUSTOMER_HANDLE_RE = re.compile(r"cust_[\w]+")
+# Scoped npm packages: @scope/name or @scope/name@version
+SCOPED_PKG_RE = re.compile(r"@[\w-]+/[\w.-]+")
 
 INTENT_KEYWORDS: list[tuple[set[str], IntentClass]] = [
     (
@@ -274,14 +276,28 @@ def classify(question: str) -> QueryPlan:
     developer: str | None = None
     seed_names: list[str] = []
 
-    # split package@version composites first
-    for tok in list(tokens):
-        if "@" in raw.lower():
-            for part in re.findall(r"[\w-]+@[\w.-]+", raw.lower()):
-                p, v = part.split("@", 1)
-                package = package or p
-                if VERSION_RE.fullmatch(v) or ADV_VERSION_RE.fullmatch(v):
-                    version = v
+    # Handle scoped npm packages (@scope/name@version) first
+    scoped_match = SCOPED_PKG_RE.search(raw)
+    if scoped_match:
+        scoped = scoped_match.group(0)
+        # Check if there's a @version suffix after the scoped name
+        rest = raw[scoped_match.end():]
+        if rest.startswith("@"):
+            ver_match = VERSION_RE.match(rest[1:])
+            if ver_match:
+                version = ver_match.group(0)
+        package = scoped.split("@")[-1].split("/")[-1]  # temp fallback
+        package = scoped  # use the full scoped name
+
+    # split package@version composites (unscoped packages)
+    if package is None:
+        for tok in list(tokens):
+            if "@" in raw.lower():
+                for part in re.findall(r"[\w-]+@[\w.-]+", raw.lower()):
+                    p, v = part.split("@", 1)
+                    package = package or p
+                    if VERSION_RE.fullmatch(v) or ADV_VERSION_RE.fullmatch(v):
+                        version = v
 
     adv = ADV_VERSION_RE.search(raw.lower())
     if version is None and adv:

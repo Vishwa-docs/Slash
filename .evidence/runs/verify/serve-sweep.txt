@@ -1,0 +1,16 @@
+=== served UI ===
+<title>Slash — hydradb</title>
+index-BwrU5QRG.js
+
+=== global ask (real LLM summary) ===
+intent: EXPOSED_SERVICES | abstain: False
+answer: TEAMMATES/teammates, Vishwa-docs/reefguard-coral-hackathon, axios/axios, expressjs/express, fastify/
+summary: 'The debug@4.4.3 package exposes ten services: TEAMMATES/teammates, Vishwa-docs/reefguard-coral-hackathon, axios/axios, expressjs/express, fastify/fastify, jare
+latency_ms: 612.06
+
+=== project-scoped ask (env key fallback) ===
+summary: 'The debug service exposes ten services: TEAMMATES/teammates, Vishwa-docs/reefguard-coral-hackathon, axios/axios, expressjs/express, fastify/fastify, 
+
+=== keycheck ===
+{"ok": true}
+=== titles ===

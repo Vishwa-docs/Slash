@@ -1,7 +1,6 @@
 # Roadmap
 
-> Source of truth: `vk/PROMPT.md` phases. Dates are the real build window (Aug 12–20, 2026);
-> the plan compresses to the remaining hours if we start late.
+> Project roadmap and milestone schedule across the build window (Aug 12–20, 2026).
 
 | Phase | Window | Deliverable | Evidence |
 |---|---|---|---|

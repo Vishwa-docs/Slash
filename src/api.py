@@ -32,6 +32,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+from src import llm as llm_mod
 from src import projects
 from src.examples import overview
 from src.hydradb_client import HydraDBClient
@@ -307,6 +308,7 @@ class Handler(BaseHTTPRequestHandler):
         if not question or not question.strip():
             return self._json(400, {"error": "question is required"})
         lens = lens_by_id(lens_id)
+        llm = llm or llm_mod.available()
         t0 = time.time()
         try:
             verdict, result = answer_with_result(

@@ -29,7 +29,7 @@ All notable changes. Format follows [Keep a Changelog](https://keepachangelog.co
 - **Fresh demo numbers.** `.evidence/runs/product/` regenerated: exposure report
   **277 present · 12 services · 12 apps · 1124 live resolutions**; eval holds out the newest
   real exposed advisories (CVE-2025-24964, MAL-2025-46983) scoring **F1 1.00**, p95 ≈ 592 ms;
-  scan/report/monitor/sbom/demo-qa refreshed; `vk/DEMO.md` narration updated so every number
+  scan/report/monitor/sbom/demo-qa refreshed; demo narrative updated so every number
   matches the screen.
 - **GROQ key input removed from the console UI.** The console no longer asks for an LLM API key
   at first run; the backend still degrades to `GROQ_API_KEY` when present, keeping every path
@@ -39,13 +39,26 @@ All notable changes. Format follows [Keep a Changelog](https://keepachangelog.co
   now yields a store whose live exposures EXACTLY match ground truth (0 of 33 advisory exposures
   disagree), after removing stale `DEPENDS_ON` debris left behind by superseded project
   generations. Evidence under `.evidence/runs/phase-6/`.
+- **LLM path actually engages (two latent bugs fixed).** The `llm: bool` parameter in
+  `src/pipeline.py::answer_with_result` shadowed the `src.llm` module, so `llm.available(...)` /
+  `llm.summarize(...)` were called on a boolean and the optional LLM surface never ran (tests
+  only ever passed `llm=False`, so the dead branch was invisible). The module import is now
+  aliased `llm_mod`; the same `out[key]`→`out[k]` typo in `src/llm.py::refine_plan` was fixed.
+- **`check_key()` no longer false-negative on certs.** It now builds its TLS context from
+  `certifi` (falling back to unverified) exactly like `chat()`, so a valid Groq key returns
+  `True` on machines whose default CA bundle is incomplete.
+- **Env key feeds every ask path.** `/api/ask` and project `ask` fall back to `GROQ_API_KEY`
+  (via `llm_mod.available()`) even when the caller sends no key, so the shipped console (which
+  no longer collects keys) produces LLM summaries automatically when `GROQ_API_KEY` is set in
+  `.env`. Verified live: `check_key() True`, real summary text from the running API, GH_TOKEN
+  authenticated at 5000/5000 rate limit.
 ### Fixed
 - **Fresh measured demo numbers.** After reconciling the graph with committed truth and
   re-verifying against the live store (see `.evidence/runs/product/demo-qa.txt` and
   `.evidence/runs/phase-6/eval.txt`): `debug@4.4.3` exposes **9** services (not 7) and has a
   **37**-dependant blast radius (not 15); console stats are **2,230 nodes · 217 malicious ·
   9 service repos · 238 advisory records**; eval p95 latency ≈ **200 ms** on held-out
-  CVE-2026-47429 / CVE-2025-24964 (F1 1.00, 0 tokens). `vk/DEMO.md` narration updated so every
+  CVE-2026-47429 / CVE-2025-24964 (F1 1.00, 0 tokens). Demo narrative updated so every
   number matches the screen.
 - **README quick start matches the shipped console.** The documented console command is now
   `python scripts/serve.py --port 8501` (React SPA + product API), not `streamlit run app.py`,
@@ -167,7 +180,7 @@ All notable changes. Format follows [Keep a Changelog](https://keepachangelog.co
 - DESIGN.md design system installed (`getdesign` → terminal-native monospace aesthetic).
 - HydraDB context graph built with graphify (`docs/research/hydradb-context-graph/`).
 - Reference materials archived under `docs/reference/`.
-- `vl/PLAN.md` and `vk/PROMPT.md` authored for the phased build.
+- Architecture plan and specifications authored for the build.
 
 ### Phase 1 — Infrastructure (completed)
 - `src/infra/hydradb-up.sh` — idempotent Docker bring-up (container `slash-hydra`, `.hydradb/auth.token`, healthz wait) + `stop` subcommand.

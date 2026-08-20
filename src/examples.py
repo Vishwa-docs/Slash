@@ -30,18 +30,39 @@ def _load(path: Path) -> dict:
         return {}
 
 
+def _dataset_versions() -> set[tuple[str, str]]:
+    """Return set of (name, version) tuples that exist in the dataset."""
+    ds = _load(DATASET)
+    return {
+        (n["properties"]["name"], n["properties"]["version"])
+        for n in ds.get("nodes", [])
+        if n.get("label") == "PackageVersion"
+        and n.get("properties", {}).get("name")
+        and n.get("properties", {}).get("version")
+    }
+
+
 def demo_examples() -> list[dict]:
     """Chips anchored to what actually exists in the real corpus.
 
     Advisory-driven questions are generated from the ground truth the same run
-    produced, so the chips and the graph always agree.
+    produced, so the chips and the graph always agree. Only advisories whose
+    (name, version) exist in the committed dataset are surfaced — this prevents
+    chips that always fail with "not found".
     """
     gt = _load(GROUND_TRUTH)
     advisories = gt.get("advisories", [])
+    ds_versions = _dataset_versions()
     # lead with advisories that actually have live exposures in the corpus,
-    # most-consequential first (largest exposed-service fan-out)
+    # most-consequential first (largest exposed-service fan-out), but only
+    # if the package version actually exists in the ingested dataset
     ordered = sorted(
-        (a for a in advisories if a.get("exposed_services")),
+        (
+            a
+            for a in advisories
+            if a.get("exposed_services")
+            and (a.get("name"), a.get("version")) in ds_versions
+        ),
         key=lambda a: (-len(a.get("exposed_services", [])), a.get("advisory_id", "")),
     )
     examples: list[dict] = []

@@ -12,15 +12,14 @@ Everything below is written for the **small-context coding agent**. Read AGENTS.
 once (it is short), then follow the task packet exactly. Do **not** scan the whole repo.
 
 ## Source Of Truth
-1. `vk/PROMPT.md` — the phased task packet. Perform **only the phase you are told to perform**.
-2. `vl/PLAN.md` — product + engineering plan (read the section relevant to your phase).
-3. `DESIGN.md` — UI design tokens (Streamlit implementation must follow it).
-4. `docs/architecture/hydradb-notes.md` — verified facts about HydraDB's API surface.
-5. `docs/reference/hack-hydra-participant-guide.txt` — the official rules (read once, skim).
-6. `AGENTS.md` — this contract.
-7. Existing implementation + tests.
+1. `README.md` — project overview, architecture, and quickstart.
+2. `DESIGN.md` — UI design tokens and visual system.
+3. `docs/architecture/hydradb-notes.md` — verified facts about HydraDB's API surface.
+4. `docs/reference/hack-hydra-participant-guide.txt` — the official rules (read once, skim).
+5. `AGENTS.md` — this contract.
+6. Existing implementation + tests.
 
-Stop and report conflicts. Do not silently choose between the plan and the code.
+Stop and report conflicts. Do not silently choose between documentation and the code.
 
 ## Context Diet (very important for a small context window)
 Do **not** read these unless a phase tells you to:
@@ -38,14 +37,13 @@ When in doubt about HydraDB behavior, prefer **empirical verification** (run a q
 the live container) over reading source.
 
 ## Required Workflow
-1. Read your task packet (`vk/PROMPT.md`, the phase you were asked to run).
-2. Map affected files, queries, data, contracts, tests, and docs for your phase.
-3. Search for existing reusable behavior in `src/` and `scripts/` before adding code.
-4. State a small file-by-file plan before editing.
-5. Implement one reviewable vertical slice. Keep the diff small.
-6. Run the required checks for the phase and **save command output under `.evidence/runs/<phase>/`**.
-7. Review your diff: no unnecessary code, no duplication, no drift from DESIGN.md/PLAN.md.
-8. Append to `CHANGELOG.md` and update `.state/task-graph.json`. Do not modify other phases' records.
+1. Map affected files, queries, data, contracts, tests, and docs for your task.
+2. Search for existing reusable behavior in `src/` and `scripts/` before adding code.
+3. State a small file-by-file plan before editing.
+4. Implement one reviewable vertical slice. Keep the diff small.
+5. Run the required checks and **save command output under `.evidence/runs/`**.
+6. Review your diff: no unnecessary code, no duplication, no drift from DESIGN.md.
+7. Append to `CHANGELOG.md` and update `.state/task-graph.json`.
 
 ## Commands (intended, fill in as the project is built)
 - Setup: `python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt`
@@ -55,7 +53,7 @@ the live container) over reading source.
 - HydraDB up: `docker run --rm -d --name slash-hydra ...` (exact flags: `src/infra/hydradb-up.sh`)
 - Ingest: `python scripts/ingest.py`
 - Eval: `python scripts/eval.py`
-- App: `streamlit run app.py`
+- App: `python scripts/serve.py`
 - Local run: see `docs/operations/service.md`
 
 ## Constraints
@@ -78,5 +76,4 @@ Stop and reopen design when:
 - HydraDB stops responding and the runbook (`docs/operations/service.md`) does not cover recovery.
 
 ## Completion
-Never claim completion without fresh verification evidence stored under `.evidence/runs/<phase>/`.
-Each phase's Definition of Done is listed at the end of that phase in `vk/PROMPT.md`.
+Never claim completion without fresh verification evidence stored under `.evidence/runs/`.

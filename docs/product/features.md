@@ -59,7 +59,6 @@ in `tests/integration/test_queries.py` (7 tests green, `.evidence/runs/phase-3/`
 | F2 Exposed services | `MATCH (s:Service {name:$svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id, lf.app, lf.resolved_at, v.id, v.name, v.version, v.published_at, v.valid_until, r.at, r.was_resolved_while_live` per service, intersected with the blast-radius closure in Python | 15 services ⇒ ≤16 queries |
 | F3 Resolved-while-live | Same edge scan; list = rows where `bad.published_at <= lf.resolved_at <= bad.valid_until`; recompute flag = `v.published_at <= r.at <= v.valid_until` compared to stored `r.was_resolved_while_live` | Recompute agrees with ingest-time flag (tested) |
 | F4 Maintainer contagion | `MATCH (d:Developer {handle:$dev})<-[:MAINTAINED_BY]-(p:PackageVersion) RETURN DISTINCT p.name` | `dev_137` → 5 packages incl. all 3 planted `shared_packages` |
-| F5 Typosquat candidates | Pool: `MATCH (v:PackageVersion) WHERE v.popular = false AND (v.deprecated = true OR v.published_at >= $since) RETURN v.id, v.name, v.published_at, v.deprecated`; in-degree per candidate: `MATCH (u)-[:DEPENDS_ON]->(v {id:$id}) RETURN count(u.id)`; scored in Python | `typosquat_score = SequenceMatcher_ratio(nearest popular seed) + 0.15·orphan + 0.10·deprecated`; recall ≥ 0.8 in top-15 (tested) |
 | F7 Evidence chain | Every `run_*` returns `steps: [(QueryStep, QueryResult)]` with `elapsed_ms` per query | Rendered verbatim in the UI console panel |
 
-Recorded back here per `vk/PROMPT.md` Phase 3 so README and docs stay truthful.
+Recorded back here so README and docs stay truthful.

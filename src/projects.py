@@ -678,6 +678,7 @@ def ask(
     a compromised package anywhere threatens every dependant in the graph.
     The turn is persisted onto the project's session.
     """
+    from src import llm as llm_mod
     from src.api import payload_for
     from src.models import IntentClass
     from src.pipeline import answer_with_result
@@ -686,10 +687,11 @@ def ask(
     if not p:
         return {"error": "project not found"}
     client = HydraDBClient()
+    llm_enabled = bool(llm_key) or llm_mod.available()
     verdict, result = answer_with_result(
         client,
         question,
-        llm=bool(llm_key),
+        llm=llm_enabled,
         llm_key=llm_key,
     )
     if (

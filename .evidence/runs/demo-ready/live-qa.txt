@@ -1,0 +1,31 @@
+Q: Which services are exposed by debug@4.4.3?
+   intent=EXPOSED_SERVICES  abstain=False  reported=False  queries=95  latency=468.08ms
+   A: TEAMMATES/teammates, Vishwa-docs/reefguard-coral-hackathon, axios/axios, expressjs/express, fastify/fastify, jaredhanson/passport, markedjs/marked, sindresorhus/conf, typicode/lowdb, websockets/ws
+
+Q: Which repos resolved debug@4.4.3 while it was live?
+   intent=RESOLVED_WHILE_LIVE  abstain=False  reported=False  queries=95  latency=487.72ms
+   A: 108 lockfile(s) resolved while live
+
+Q: Which services are exposed by chalk@6.0.0?
+   intent=EXPOSED_SERVICES  abstain=False  reported=False  queries=15  latency=359.40ms
+   A: axios/axios, fastify/fastify, lodash/lodash, markedjs/marked, processing/p5.js
+
+Q: What is the blast radius of debug@4.4.3?
+   intent=BLAST_RADIUS  abstain=False  reported=False  queries=82  latency=124.63ms
+   A: Blast radius of debug@4.4.3: 86 dependant version(s) in <=6 hops
+
+Q: Is there a typosquat near axios?
+   intent=TYPOSQUAT_CANDIDATES  abstain=False  reported=False  queries=2  latency=88.37ms
+   A: avvio (score 0.75)
+
+Q: What is the latest version of express?
+   intent=PACKAGE_LOOKUP  abstain=False  reported=False  queries=1  latency=1.71ms
+   A: express@5.2.1, published 1764622183, malicious=False, is_typosquat=False
+
+Q: Which services are exposed by @pkgr/core@0.3.6?
+   intent=EXPOSED_SERVICES  abstain=False  reported=False  queries=17  latency=358.47ms
+   A: sindresorhus/conf, websockets/ws
+
+Q: tell me about the weather in jakarta
+   intent=PACKAGE_LOOKUP  abstain=True  reported=True  queries=1  latency=1.49ms
+   reason: Not enough evidence in the graph for this question. The gap was written to the support report (self-heal could not construct it).

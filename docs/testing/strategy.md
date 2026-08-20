@@ -27,5 +27,4 @@ python scripts/eval.py            # scoring table -> docs/research/scoring.md
 
 ## Traceability
 - F1–F8 (features) map to at least one test.
-- Each phase in `vk/PROMPT.md` ends with a Definition of Done that includes specific test evidence
-  stored under `.evidence/runs/<phase>/`.
+- Every deliverable includes specific test evidence stored under `.evidence/runs/`.

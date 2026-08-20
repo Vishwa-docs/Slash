@@ -101,6 +101,2056 @@
    ],
    "sessions": [
     {
+     "id": "s6",
+     "title": "exposed_serv \u00b7 Which services are exposed by debug?",
+     "created_at": 1787233492,
+     "turns": [
+      {
+       "answer": {
+        "question": "Which services are exposed by debug?",
+        "intent": "EXPOSED_SERVICES",
+        "answer": "TEAMMATES/teammates, Vishwa-docs/reefguard-coral-hackathon, axios/axios, expressjs/express, fastify/fastify, jaredhanson/passport, markedjs/marked, sindresorhus/conf, typicode/lowdb, websockets/ws",
+        "summary": "The debug service exposes ten services: TEAMMATES/teammates, Vishwa-docs/reefguard-coral-hackathon, axios/axios, expressjs/express, fastify/fastify, jaredhanson/passport, markedjs/marked, sindresorhus/conf, typicode/lowdb, and websockets/ws.",
+        "abstain": false,
+        "healed": false,
+        "reported": false,
+        "reason": "",
+        "latency_ms": 574.24,
+        "query_count": 95,
+        "evidence_chain": [
+         {
+          "purpose": "locate package version",
+          "cypher": "MATCH (v:PackageVersion {name: $name, version: $version}) RETURN v.id AS id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, v.malicious AS malicious, v.advisory_id AS advisory_id, v.is_typosquat AS is_typosquat",
+          "params": {
+           "name": "debug",
+           "version": "4.4.3"
+          },
+          "row_count": 1,
+          "elapsed_ms": 6.47
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v149381962773754617",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 149381962773754617
+          },
+          "row_count": 42,
+          "elapsed_ms": 15.01
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v2959945544860393",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 2959945544860393
+          },
+          "row_count": 4,
+          "elapsed_ms": 4.52
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v4312318882138689",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 4312318882138689
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.62
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v34750840607946180",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 34750840607946180
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.66
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v57277830496840135",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 57277830496840135
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.63
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v123975052503131813",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 123975052503131813
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.47
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v140059367458447695",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 140059367458447695
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.51
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v141602287211247217",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 141602287211247217
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.74
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v150721575247714729",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 150721575247714729
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.43
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v161584776160073395",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 161584776160073395
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.28
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v269417961548565106",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 269417961548565106
+          },
+          "row_count": 7,
+          "elapsed_ms": 6.81
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v297162343545610953",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 297162343545610953
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.35
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v339543151857749247",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 339543151857749247
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.8
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v348426668284022614",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 348426668284022614
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.6
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v391995324558433202",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 391995324558433202
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.67
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v392369887266236206",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 392369887266236206
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.62
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v406137268028377589",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 406137268028377589
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.27
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v415068496718555782",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 415068496718555782
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.04
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v451039157301751701",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 451039157301751701
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.49
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v453917561284000732",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 453917561284000732
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.7
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v524447001749726898",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 524447001749726898
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.26
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v533750546382294226",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 533750546382294226
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.4
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v540459578044833952",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 540459578044833952
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.37
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v605803990881502815",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 605803990881502815
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.71
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v609070958784827261",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 609070958784827261
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.52
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v612680870038760191",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 612680870038760191
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.93
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v658918042363645896",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 658918042363645896
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.69
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v662987753900955193",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 662987753900955193
+          },
+          "row_count": 3,
+          "elapsed_ms": 3.14
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v680209150383022090",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 680209150383022090
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.71
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v719870242086978251",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 719870242086978251
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.59
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v742683225134408997",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 742683225134408997
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.6
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v839985459053650923",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 839985459053650923
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.36
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v849315288168731530",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 849315288168731530
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.09
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v889651338556952466",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 889651338556952466
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.77
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v902986802653656486",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 902986802653656486
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.17
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v906266739890528722",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 906266739890528722
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.75
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v952435644537058455",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 952435644537058455
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.11
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v993356471477328241",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 993356471477328241
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.22
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1009409288229557089",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1009409288229557089
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.75
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1094096261782148251",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1094096261782148251
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.85
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1098932759727020681",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1098932759727020681
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.91
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1127309751866973533",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1127309751866973533
+          },
+          "row_count": 4,
+          "elapsed_ms": 2.57
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1128392479248887395",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1128392479248887395
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.39
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v424811415310696230",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 424811415310696230
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.4
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1149342144203249678",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1149342144203249678
+          },
+          "row_count": 5,
+          "elapsed_ms": 3.43
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v676063398789179094",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 676063398789179094
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.61
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v61667760034874919",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 61667760034874919
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.77
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v256458144063779495",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 256458144063779495
+          },
+          "row_count": 5,
+          "elapsed_ms": 2.73
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v277463415306424166",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 277463415306424166
+          },
+          "row_count": 6,
+          "elapsed_ms": 3.12
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v324222633735912667",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 324222633735912667
+          },
+          "row_count": 0,
+          "elapsed_ms": 4.39
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v594437620460786465",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 594437620460786465
+          },
+          "row_count": 3,
+          "elapsed_ms": 4.54
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v754296843942345474",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 754296843942345474
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.72
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v998066125287336999",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 998066125287336999
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.18
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1079302280491374596",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1079302280491374596
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.64
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v40789656936975037",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 40789656936975037
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.95
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v200106198986827601",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 200106198986827601
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.96
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v544341705866898650",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 544341705866898650
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.75
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v31361058038709377",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 31361058038709377
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.98
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v916405343104758495",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 916405343104758495
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.03
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v370935520567373790",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 370935520567373790
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.07
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1078982089947121358",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1078982089947121358
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.08
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1070868543583792398",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1070868543583792398
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.47
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v661897846811986381",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 661897846811986381
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.81
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v8839786392339890",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 8839786392339890
+          },
+          "row_count": 4,
+          "elapsed_ms": 2.71
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v243132097291816415",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 243132097291816415
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.22
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v209536914311410768",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 209536914311410768
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.66
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1124650314669070023",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1124650314669070023
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.09
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v136550410931330289",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 136550410931330289
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.58
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v10908389289905029",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 10908389289905029
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.92
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v53558818777525163",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 53558818777525163
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.61
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v81856778683320586",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 81856778683320586
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.41
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v118173600846170658",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 118173600846170658
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.22
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v871281912045407482",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 871281912045407482
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.4
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v257793383470507553",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 257793383470507553
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.98
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1034983951176875011",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1034983951176875011
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.61
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v39778582543628074",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 39778582543628074
+          },
+          "row_count": 2,
+          "elapsed_ms": 3.02
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v861171778910887061",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 861171778910887061
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.87
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v344012468854164955",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 344012468854164955
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.7
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v747934752799232697",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 747934752799232697
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.09
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1076785059344298905",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1076785059344298905
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.27
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v183755728676082671",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 183755728676082671
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.79
+         },
+         {
+          "purpose": "service catalog",
+          "cypher": "MATCH (s:Service) RETURN s.name AS name",
+          "params": {},
+          "row_count": 12,
+          "elapsed_ms": 3.59
+         },
+         {
+          "purpose": "service processing/p5.js lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "processing/p5.js"
+          },
+          "row_count": 33,
+          "elapsed_ms": 17.31
+         },
+         {
+          "purpose": "service websockets/ws lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "websockets/ws"
+          },
+          "row_count": 11,
+          "elapsed_ms": 8.7
+         },
+         {
+          "purpose": "service typicode/lowdb lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "typicode/lowdb"
+          },
+          "row_count": 18,
+          "elapsed_ms": 8.25
+         },
+         {
+          "purpose": "service fastify/fastify lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "fastify/fastify"
+          },
+          "row_count": 49,
+          "elapsed_ms": 17.5
+         },
+         {
+          "purpose": "service lodash/lodash lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "lodash/lodash"
+          },
+          "row_count": 26,
+          "elapsed_ms": 10.78
+         },
+         {
+          "purpose": "service expressjs/express lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "expressjs/express"
+          },
+          "row_count": 43,
+          "elapsed_ms": 14.43
+         },
+         {
+          "purpose": "service Vishwa-docs/reefguard-coral-hackathon lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "Vishwa-docs/reefguard-coral-hackathon"
+          },
+          "row_count": 478,
+          "elapsed_ms": 60.8
+         },
+         {
+          "purpose": "service TEAMMATES/teammates lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "TEAMMATES/teammates"
+          },
+          "row_count": 1024,
+          "elapsed_ms": 125.42
+         },
+         {
+          "purpose": "service axios/axios lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "axios/axios"
+          },
+          "row_count": 43,
+          "elapsed_ms": 13.68
+         },
+         {
+          "purpose": "service jaredhanson/passport lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "jaredhanson/passport"
+          },
+          "row_count": 9,
+          "elapsed_ms": 4.47
+         },
+         {
+          "purpose": "service markedjs/marked lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "markedjs/marked"
+          },
+          "row_count": 24,
+          "elapsed_ms": 9.57
+         },
+         {
+          "purpose": "service sindresorhus/conf lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "sindresorhus/conf"
+          },
+          "row_count": 468,
+          "elapsed_ms": 59.39
+         }
+        ],
+        "payload": {
+         "found": true,
+         "node_id": 149381962773754617,
+         "name": "debug",
+         "version": "4.4.3",
+         "services": [
+          "Vishwa-docs/reefguard-coral-hackathon"
+         ],
+         "paths": [
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@eslint/config-array",
+           "version": "0.21.2",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@eslint/eslintrc",
+           "version": "3.3.6",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/eslint-plugin",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/parser",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/project-service",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/type-utils",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/typescript-estree",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/utils",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "debug",
+           "version": "4.4.3",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint",
+           "version": "9.39.5",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint-config-next",
+           "version": "15.5.23",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint-import-resolver-node",
+           "version": "0.3.10",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint-import-resolver-typescript",
+           "version": "3.10.1",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint-module-utils",
+           "version": "2.14.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint-plugin-import",
+           "version": "2.32.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "vite-node",
+           "version": "2.1.9",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "vitest",
+           "version": "2.1.9",
+           "resolved_at": 1787219314,
+           "flag": true
+          }
+         ]
+        }
+       },
+       "t": 1787233492735
+      }
+     ]
+    },
+    {
+     "id": "s5",
+     "title": "exposed_serv \u00b7 Which services are exposed by debug?",
+     "created_at": 1787233351,
+     "turns": [
+      {
+       "answer": {
+        "question": "Which services are exposed by debug?",
+        "intent": "EXPOSED_SERVICES",
+        "answer": "TEAMMATES/teammates, Vishwa-docs/reefguard-coral-hackathon, axios/axios, expressjs/express, fastify/fastify, jaredhanson/passport, markedjs/marked, sindresorhus/conf, typicode/lowdb, websockets/ws",
+        "summary": "The debug component exposes ten services. They are TEAMMATES/teammates, Vishwa-docs/reefguard-coral-hackathon, axios/axios, expressjs/express, fastify/fastify, jaredhanson/passport, markedjs/marked, sindresorhus/conf, typicode/lowdb, and websockets/ws.",
+        "abstain": false,
+        "healed": false,
+        "reported": false,
+        "reason": "",
+        "latency_ms": 590.6,
+        "query_count": 95,
+        "evidence_chain": [
+         {
+          "purpose": "locate package version",
+          "cypher": "MATCH (v:PackageVersion {name: $name, version: $version}) RETURN v.id AS id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, v.malicious AS malicious, v.advisory_id AS advisory_id, v.is_typosquat AS is_typosquat",
+          "params": {
+           "name": "debug",
+           "version": "4.4.3"
+          },
+          "row_count": 1,
+          "elapsed_ms": 5.55
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v149381962773754617",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 149381962773754617
+          },
+          "row_count": 42,
+          "elapsed_ms": 14.05
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v2959945544860393",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 2959945544860393
+          },
+          "row_count": 4,
+          "elapsed_ms": 4.3
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v4312318882138689",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 4312318882138689
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.21
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v34750840607946180",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 34750840607946180
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.55
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v57277830496840135",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 57277830496840135
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.28
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v123975052503131813",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 123975052503131813
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.23
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v140059367458447695",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 140059367458447695
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.89
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v141602287211247217",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 141602287211247217
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.36
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v150721575247714729",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 150721575247714729
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.65
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v161584776160073395",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 161584776160073395
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.94
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v269417961548565106",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 269417961548565106
+          },
+          "row_count": 7,
+          "elapsed_ms": 3.8
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v297162343545610953",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 297162343545610953
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.09
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v339543151857749247",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 339543151857749247
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.6
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v348426668284022614",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 348426668284022614
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.65
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v391995324558433202",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 391995324558433202
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.02
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v392369887266236206",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 392369887266236206
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.83
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v406137268028377589",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 406137268028377589
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.7
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v415068496718555782",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 415068496718555782
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.11
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v451039157301751701",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 451039157301751701
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.19
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v453917561284000732",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 453917561284000732
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.98
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v524447001749726898",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 524447001749726898
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.46
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v533750546382294226",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 533750546382294226
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.16
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v540459578044833952",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 540459578044833952
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.39
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v605803990881502815",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 605803990881502815
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.6
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v609070958784827261",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 609070958784827261
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.31
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v612680870038760191",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 612680870038760191
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.3
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v658918042363645896",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 658918042363645896
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.16
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v662987753900955193",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 662987753900955193
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.49
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v680209150383022090",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 680209150383022090
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.44
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v719870242086978251",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 719870242086978251
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.59
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v742683225134408997",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 742683225134408997
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.22
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v839985459053650923",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 839985459053650923
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.98
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v849315288168731530",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 849315288168731530
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.08
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v889651338556952466",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 889651338556952466
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.79
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v902986802653656486",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 902986802653656486
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.11
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v906266739890528722",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 906266739890528722
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.44
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v952435644537058455",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 952435644537058455
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.08
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v993356471477328241",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 993356471477328241
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.56
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1009409288229557089",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1009409288229557089
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.87
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1094096261782148251",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1094096261782148251
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.38
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1098932759727020681",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1098932759727020681
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.23
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1127309751866973533",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1127309751866973533
+          },
+          "row_count": 4,
+          "elapsed_ms": 3.0
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1128392479248887395",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1128392479248887395
+          },
+          "row_count": 2,
+          "elapsed_ms": 3.34
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v424811415310696230",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 424811415310696230
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.57
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1149342144203249678",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1149342144203249678
+          },
+          "row_count": 5,
+          "elapsed_ms": 3.62
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v676063398789179094",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 676063398789179094
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.33
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v61667760034874919",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 61667760034874919
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.93
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v256458144063779495",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 256458144063779495
+          },
+          "row_count": 5,
+          "elapsed_ms": 2.69
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v277463415306424166",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 277463415306424166
+          },
+          "row_count": 6,
+          "elapsed_ms": 3.31
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v324222633735912667",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 324222633735912667
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.7
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v594437620460786465",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 594437620460786465
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.98
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v754296843942345474",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 754296843942345474
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.6
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v998066125287336999",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 998066125287336999
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.86
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1079302280491374596",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1079302280491374596
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.79
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v40789656936975037",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 40789656936975037
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.27
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v200106198986827601",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 200106198986827601
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.25
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v544341705866898650",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 544341705866898650
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.43
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v31361058038709377",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 31361058038709377
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.0
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v916405343104758495",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 916405343104758495
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.61
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v370935520567373790",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 370935520567373790
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.27
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1078982089947121358",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1078982089947121358
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.52
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1070868543583792398",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1070868543583792398
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.24
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v661897846811986381",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 661897846811986381
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.48
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v8839786392339890",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 8839786392339890
+          },
+          "row_count": 4,
+          "elapsed_ms": 3.23
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v243132097291816415",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 243132097291816415
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.96
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v209536914311410768",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 209536914311410768
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.07
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1124650314669070023",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1124650314669070023
+          },
+          "row_count": 0,
+          "elapsed_ms": 2.03
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v136550410931330289",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 136550410931330289
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.21
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v10908389289905029",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 10908389289905029
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.59
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v53558818777525163",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 53558818777525163
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.55
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v81856778683320586",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 81856778683320586
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.45
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v118173600846170658",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 118173600846170658
+          },
+          "row_count": 2,
+          "elapsed_ms": 4.73
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v871281912045407482",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 871281912045407482
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.44
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v257793383470507553",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 257793383470507553
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.82
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1034983951176875011",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1034983951176875011
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.29
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v39778582543628074",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 39778582543628074
+          },
+          "row_count": 2,
+          "elapsed_ms": 3.07
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v861171778910887061",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 861171778910887061
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.0
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v344012468854164955",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 344012468854164955
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.73
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v747934752799232697",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 747934752799232697
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.99
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1076785059344298905",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1076785059344298905
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.97
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v183755728676082671",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 183755728676082671
+          },
+          "row_count": 3,
+          "elapsed_ms": 3.69
+         },
+         {
+          "purpose": "service catalog",
+          "cypher": "MATCH (s:Service) RETURN s.name AS name",
+          "params": {},
+          "row_count": 12,
+          "elapsed_ms": 4.28
+         },
+         {
+          "purpose": "service processing/p5.js lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "processing/p5.js"
+          },
+          "row_count": 33,
+          "elapsed_ms": 16.54
+         },
+         {
+          "purpose": "service websockets/ws lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "websockets/ws"
+          },
+          "row_count": 11,
+          "elapsed_ms": 7.7
+         },
+         {
+          "purpose": "service typicode/lowdb lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "typicode/lowdb"
+          },
+          "row_count": 18,
+          "elapsed_ms": 8.35
+         },
+         {
+          "purpose": "service fastify/fastify lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "fastify/fastify"
+          },
+          "row_count": 49,
+          "elapsed_ms": 15.32
+         },
+         {
+          "purpose": "service lodash/lodash lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "lodash/lodash"
+          },
+          "row_count": 26,
+          "elapsed_ms": 10.47
+         },
+         {
+          "purpose": "service expressjs/express lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "expressjs/express"
+          },
+          "row_count": 43,
+          "elapsed_ms": 14.7
+         },
+         {
+          "purpose": "service Vishwa-docs/reefguard-coral-hackathon lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "Vishwa-docs/reefguard-coral-hackathon"
+          },
+          "row_count": 478,
+          "elapsed_ms": 60.36
+         },
+         {
+          "purpose": "service TEAMMATES/teammates lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "TEAMMATES/teammates"
+          },
+          "row_count": 1024,
+          "elapsed_ms": 130.2
+         },
+         {
+          "purpose": "service axios/axios lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "axios/axios"
+          },
+          "row_count": 43,
+          "elapsed_ms": 15.01
+         },
+         {
+          "purpose": "service jaredhanson/passport lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "jaredhanson/passport"
+          },
+          "row_count": 9,
+          "elapsed_ms": 5.2
+         },
+         {
+          "purpose": "service markedjs/marked lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "markedjs/marked"
+          },
+          "row_count": 24,
+          "elapsed_ms": 9.94
+         },
+         {
+          "purpose": "service sindresorhus/conf lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "sindresorhus/conf"
+          },
+          "row_count": 468,
+          "elapsed_ms": 62.31
+         }
+        ],
+        "payload": {
+         "found": true,
+         "node_id": 149381962773754617,
+         "name": "debug",
+         "version": "4.4.3",
+         "services": [
+          "Vishwa-docs/reefguard-coral-hackathon"
+         ],
+         "paths": [
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@eslint/config-array",
+           "version": "0.21.2",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@eslint/eslintrc",
+           "version": "3.3.6",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/eslint-plugin",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/parser",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/project-service",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/type-utils",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/typescript-estree",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "@typescript-eslint/utils",
+           "version": "8.67.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "debug",
+           "version": "4.4.3",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint",
+           "version": "9.39.5",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint-config-next",
+           "version": "15.5.23",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint-import-resolver-node",
+           "version": "0.3.10",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint-import-resolver-typescript",
+           "version": "3.10.1",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint-module-utils",
+           "version": "2.14.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "eslint-plugin-import",
+           "version": "2.32.0",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "vite-node",
+           "version": "2.1.9",
+           "resolved_at": 1787219314,
+           "flag": true
+          },
+          {
+           "service": "Vishwa-docs/reefguard-coral-hackathon",
+           "app": "Vishwa-docs/reefguard-coral-hackathon",
+           "name": "vitest",
+           "version": "2.1.9",
+           "resolved_at": 1787219314,
+           "flag": true
+          }
+         ]
+        }
+       },
+       "t": 1787233351236
+      }
+     ]
+    },
+    {
      "id": "s4",
      "title": "session 4",
      "created_at": 1787232378,
@@ -3252,6 +5302,1721 @@
     }
    ],
    "sessions": [
+    {
+     "id": "s5",
+     "title": "session 5",
+     "created_at": 1787238172,
+     "turns": []
+    },
+    {
+     "id": "s4",
+     "title": "session 4",
+     "created_at": 1787238153,
+     "turns": [
+      {
+       "answer": {
+        "question": "Which apps resolved @pkgr/core@0.3.6 while it was live?",
+        "intent": "RESOLVED_WHILE_LIVE",
+        "answer": "5 lockfile(s) resolved while live",
+        "summary": "",
+        "abstain": false,
+        "healed": false,
+        "reported": false,
+        "reason": "",
+        "latency_ms": 423.19,
+        "query_count": 17,
+        "evidence_chain": [
+         {
+          "purpose": "locate package version",
+          "cypher": "MATCH (v:PackageVersion {name: $name, version: $version}) RETURN v.id AS id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, v.malicious AS malicious, v.advisory_id AS advisory_id, v.is_typosquat AS is_typosquat",
+          "params": {
+           "name": "@pkgr/core",
+           "version": "0.3.6"
+          },
+          "row_count": 1,
+          "elapsed_ms": 7.84
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v526063109979864650",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 526063109979864650
+          },
+          "row_count": 1,
+          "elapsed_ms": 4.9
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v250851677358333615",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 250851677358333615
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.51
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v391923611685649211",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 391923611685649211
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.17
+         },
+         {
+          "purpose": "service catalog",
+          "cypher": "MATCH (s:Service) RETURN s.name AS name",
+          "params": {},
+          "row_count": 12,
+          "elapsed_ms": 3.27
+         },
+         {
+          "purpose": "service processing/p5.js lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "processing/p5.js"
+          },
+          "row_count": 33,
+          "elapsed_ms": 19.56
+         },
+         {
+          "purpose": "service websockets/ws lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "websockets/ws"
+          },
+          "row_count": 11,
+          "elapsed_ms": 7.95
+         },
+         {
+          "purpose": "service typicode/lowdb lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "typicode/lowdb"
+          },
+          "row_count": 18,
+          "elapsed_ms": 10.24
+         },
+         {
+          "purpose": "service fastify/fastify lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "fastify/fastify"
+          },
+          "row_count": 49,
+          "elapsed_ms": 20.6
+         },
+         {
+          "purpose": "service lodash/lodash lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "lodash/lodash"
+          },
+          "row_count": 26,
+          "elapsed_ms": 11.64
+         },
+         {
+          "purpose": "service expressjs/express lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "expressjs/express"
+          },
+          "row_count": 43,
+          "elapsed_ms": 18.5
+         },
+         {
+          "purpose": "service Vishwa-docs/reefguard-coral-hackathon lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "Vishwa-docs/reefguard-coral-hackathon"
+          },
+          "row_count": 478,
+          "elapsed_ms": 71.92
+         },
+         {
+          "purpose": "service TEAMMATES/teammates lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "TEAMMATES/teammates"
+          },
+          "row_count": 1024,
+          "elapsed_ms": 143.52
+         },
+         {
+          "purpose": "service axios/axios lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "axios/axios"
+          },
+          "row_count": 43,
+          "elapsed_ms": 15.55
+         },
+         {
+          "purpose": "service jaredhanson/passport lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "jaredhanson/passport"
+          },
+          "row_count": 9,
+          "elapsed_ms": 5.0
+         },
+         {
+          "purpose": "service markedjs/marked lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "markedjs/marked"
+          },
+          "row_count": 24,
+          "elapsed_ms": 10.71
+         },
+         {
+          "purpose": "service sindresorhus/conf lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "sindresorhus/conf"
+          },
+          "row_count": 468,
+          "elapsed_ms": 65.33
+         }
+        ],
+        "payload": {
+         "found": true,
+         "node_id": 526063109979864650,
+         "name": "@pkgr/core",
+         "version": "0.3.6",
+         "services": [
+          "sindresorhus/conf"
+         ],
+         "paths": [],
+         "lockfiles": [
+          {
+           "app": "sindresorhus/conf",
+           "service": "sindresorhus/conf",
+           "name": "@pkgr/core",
+           "version": "0.3.6",
+           "resolved_at": 1787219543
+          },
+          {
+           "app": "sindresorhus/conf",
+           "service": "sindresorhus/conf",
+           "name": "eslint-plugin-prettier",
+           "version": "5.5.6",
+           "resolved_at": 1787219543
+          },
+          {
+           "app": "sindresorhus/conf",
+           "service": "sindresorhus/conf",
+           "name": "synckit",
+           "version": "0.11.13",
+           "resolved_at": 1787219543
+          },
+          {
+           "app": "sindresorhus/conf",
+           "service": "sindresorhus/conf",
+           "name": "xo",
+           "version": "1.2.3",
+           "resolved_at": 1787219543
+          }
+         ],
+         "recompute_agrees": true,
+         "contradictions": []
+        }
+       },
+       "t": 1787238158092
+      },
+      {
+       "answer": {
+        "question": "What is the blast radius of debug@4.4.3",
+        "intent": "BLAST_RADIUS",
+        "answer": "Blast radius of debug@4.4.3: 86 dependant version(s) in <=6 hops",
+        "summary": "",
+        "abstain": false,
+        "healed": false,
+        "reported": false,
+        "reason": "",
+        "latency_ms": 165.58,
+        "query_count": 82,
+        "evidence_chain": [
+         {
+          "purpose": "locate package version",
+          "cypher": "MATCH (v:PackageVersion {name: $name, version: $version}) RETURN v.id AS id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, v.malicious AS malicious, v.advisory_id AS advisory_id, v.is_typosquat AS is_typosquat",
+          "params": {
+           "name": "debug",
+           "version": "4.4.3"
+          },
+          "row_count": 1,
+          "elapsed_ms": 7.05
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v149381962773754617",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 149381962773754617
+          },
+          "row_count": 42,
+          "elapsed_ms": 17.71
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v2959945544860393",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 2959945544860393
+          },
+          "row_count": 4,
+          "elapsed_ms": 4.31
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v4312318882138689",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 4312318882138689
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.72
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v34750840607946180",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 34750840607946180
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.65
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v57277830496840135",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 57277830496840135
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.36
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v123975052503131813",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 123975052503131813
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.34
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v140059367458447695",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 140059367458447695
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.18
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v141602287211247217",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 141602287211247217
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.07
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v150721575247714729",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 150721575247714729
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.97
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v161584776160073395",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 161584776160073395
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.7
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v269417961548565106",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 269417961548565106
+          },
+          "row_count": 7,
+          "elapsed_ms": 3.32
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v297162343545610953",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 297162343545610953
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.16
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v339543151857749247",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 339543151857749247
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.23
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v348426668284022614",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 348426668284022614
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.31
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v391995324558433202",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 391995324558433202
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.21
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v392369887266236206",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 392369887266236206
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.51
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v406137268028377589",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 406137268028377589
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.8
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v415068496718555782",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 415068496718555782
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.89
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v451039157301751701",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 451039157301751701
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.76
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v453917561284000732",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 453917561284000732
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.33
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v524447001749726898",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 524447001749726898
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.97
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v533750546382294226",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 533750546382294226
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.79
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v540459578044833952",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 540459578044833952
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.32
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v605803990881502815",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 605803990881502815
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.99
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v609070958784827261",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 609070958784827261
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.25
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v612680870038760191",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 612680870038760191
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.52
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v658918042363645896",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 658918042363645896
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.76
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v662987753900955193",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 662987753900955193
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.23
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v680209150383022090",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 680209150383022090
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.58
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v719870242086978251",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 719870242086978251
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.59
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v742683225134408997",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 742683225134408997
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.96
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v839985459053650923",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 839985459053650923
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.8
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v849315288168731530",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 849315288168731530
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.78
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v889651338556952466",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 889651338556952466
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.26
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v902986802653656486",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 902986802653656486
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.48
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v906266739890528722",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 906266739890528722
+          },
+          "row_count": 3,
+          "elapsed_ms": 2.04
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v952435644537058455",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 952435644537058455
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.5
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v993356471477328241",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 993356471477328241
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.7
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1009409288229557089",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1009409288229557089
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.6
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1094096261782148251",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1094096261782148251
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.7
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1098932759727020681",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1098932759727020681
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.65
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1127309751866973533",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1127309751866973533
+          },
+          "row_count": 4,
+          "elapsed_ms": 2.64
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1128392479248887395",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1128392479248887395
+          },
+          "row_count": 2,
+          "elapsed_ms": 2.17
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v424811415310696230",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 424811415310696230
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.29
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1149342144203249678",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1149342144203249678
+          },
+          "row_count": 5,
+          "elapsed_ms": 2.16
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v676063398789179094",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 676063398789179094
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.7
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v61667760034874919",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 61667760034874919
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.41
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v256458144063779495",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 256458144063779495
+          },
+          "row_count": 5,
+          "elapsed_ms": 2.19
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v277463415306424166",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 277463415306424166
+          },
+          "row_count": 6,
+          "elapsed_ms": 2.38
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v324222633735912667",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 324222633735912667
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.78
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v594437620460786465",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 594437620460786465
+          },
+          "row_count": 3,
+          "elapsed_ms": 1.85
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v754296843942345474",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 754296843942345474
+          },
+          "row_count": 2,
+          "elapsed_ms": 1.46
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v998066125287336999",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 998066125287336999
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.04
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1079302280491374596",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1079302280491374596
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.4
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v40789656936975037",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 40789656936975037
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.37
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v200106198986827601",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 200106198986827601
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.46
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v544341705866898650",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 544341705866898650
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.23
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v31361058038709377",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 31361058038709377
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.36
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v916405343104758495",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 916405343104758495
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.21
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v370935520567373790",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 370935520567373790
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.37
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1078982089947121358",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1078982089947121358
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.22
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1070868543583792398",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1070868543583792398
+          },
+          "row_count": 2,
+          "elapsed_ms": 1.42
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v661897846811986381",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 661897846811986381
+          },
+          "row_count": 2,
+          "elapsed_ms": 1.38
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v8839786392339890",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 8839786392339890
+          },
+          "row_count": 4,
+          "elapsed_ms": 1.85
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v243132097291816415",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 243132097291816415
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.29
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v209536914311410768",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 209536914311410768
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.08
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1124650314669070023",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1124650314669070023
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.11
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v136550410931330289",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 136550410931330289
+          },
+          "row_count": 3,
+          "elapsed_ms": 1.51
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v10908389289905029",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 10908389289905029
+          },
+          "row_count": 2,
+          "elapsed_ms": 1.42
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v53558818777525163",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 53558818777525163
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.41
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v81856778683320586",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 81856778683320586
+          },
+          "row_count": 3,
+          "elapsed_ms": 1.7
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v118173600846170658",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 118173600846170658
+          },
+          "row_count": 2,
+          "elapsed_ms": 1.69
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v871281912045407482",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 871281912045407482
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.35
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v257793383470507553",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 257793383470507553
+          },
+          "row_count": 2,
+          "elapsed_ms": 1.37
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1034983951176875011",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1034983951176875011
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.68
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v39778582543628074",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 39778582543628074
+          },
+          "row_count": 2,
+          "elapsed_ms": 1.33
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v861171778910887061",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 861171778910887061
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.47
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v344012468854164955",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 344012468854164955
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.38
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v747934752799232697",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 747934752799232697
+          },
+          "row_count": 0,
+          "elapsed_ms": 1.04
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v1076785059344298905",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 1076785059344298905
+          },
+          "row_count": 1,
+          "elapsed_ms": 1.57
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v183755728676082671",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 183755728676082671
+          },
+          "row_count": 3,
+          "elapsed_ms": 1.79
+         }
+        ],
+        "payload": {
+         "found": true,
+         "node_id": 149381962773754617,
+         "name": "debug",
+         "version": "4.4.3",
+         "services": [],
+         "paths": [],
+         "dependant_count": 86,
+         "levels": [
+          [
+           {
+            "id": 2959945544860393,
+            "name": "@typescript-eslint/typescript-estree",
+            "version": "8.59.4"
+           },
+           {
+            "id": 4312318882138689,
+            "name": "@semantic-release/github",
+            "version": "12.0.9"
+           },
+           {
+            "id": 34750840607946180,
+            "name": "body-parser",
+            "version": "2.2.2"
+           },
+           {
+            "id": 57277830496840135,
+            "name": "https-proxy-agent",
+            "version": "9.1.0"
+           },
+           {
+            "id": 123975052503131813,
+            "name": "@typescript-eslint/project-service",
+            "version": "8.59.4"
+           },
+           {
+            "id": 140059367458447695,
+            "name": "@typescript-eslint/parser",
+            "version": "8.59.4"
+           },
+           {
+            "id": 141602287211247217,
+            "name": "socks-proxy-agent",
+            "version": "8.0.5"
+           },
+           {
+            "id": 150721575247714729,
+            "name": "http-proxy-agent",
+            "version": "7.0.2"
+           },
+           {
+            "id": 161584776160073395,
+            "name": "semantic-release",
+            "version": "26.0.0-beta.1"
+           },
+           {
+            "id": 269417961548565106,
+            "name": "@babel/core",
+            "version": "7.29.0"
+           },
+           {
+            "id": 297162343545610953,
+            "name": "@eslint/eslintrc",
+            "version": "3.3.6"
+           },
+           {
+            "id": 339543151857749247,
+            "name": "vite-node",
+            "version": "2.1.9"
+           },
+           {
+            "id": 348426668284022614,
+            "name": "istanbul-lib-source-maps",
+            "version": "5.0.6"
+           },
+           {
+            "id": 391995324558433202,
+            "name": "body-parser",
+            "version": "2.3.0"
+           },
+           {
+            "id": 392369887266236206,
+            "name": "@semantic-release/git",
+            "version": "11.0.1"
+           },
+           {
+            "id": 406137268028377589,
+            "name": "eslint-plugin-import-x",
+            "version": "4.17.1"
+           },
+           {
+            "id": 415068496718555782,
+            "name": "@eslint/config-array",
+            "version": "0.23.5"
+           },
+           {
+            "id": 451039157301751701,
+            "name": "mocha",
+            "version": "12.0.0-alpha-issue-5899.1"
+           },
+           {
+            "id": 453917561284000732,
+            "name": "stylelint",
+            "version": "17.11.1"
+           },
+           {
+            "id": 524447001749726898,
+            "name": "@typescript-eslint/project-service",
+            "version": "8.67.0"
+           },
+           {
+            "id": 533750546382294226,
+            "name": "tuf-js",
+            "version": "4.1.0"
+           },
+           {
+            "id": 540459578044833952,
+            "name": "eslint-import-resolver-node",
+            "version": "0.3.10"
+           },
+           {
+            "id": 605803990881502815,
+            "name": "@semantic-release/release-notes-generator",
+            "version": "15.0.0-beta.1"
+           },
+           {
+            "id": 609070958784827261,
+            "name": "express-session",
+            "version": "1.19.0"
+           },
+           {
+            "id": 612680870038760191,
+            "name": "@typescript-eslint/type-utils",
+            "version": "8.59.4"
+           },
+           {
+            "id": 658918042363645896,
+            "name": "express",
+            "version": "5.2.1"
+           },
+           {
+            "id": 662987753900955193,
+            "name": "@babel/traverse",
+            "version": "7.29.0"
+           },
+           {
+            "id": 680209150383022090,
+            "name": "eslint-module-utils",
+            "version": "2.14.0"
+           },
+           {
+            "id": 719870242086978251,
+            "name": "router",
+            "version": "2.2.0"
+           },
+           {
+            "id": 742683225134408997,
+            "name": "@eslint/config-array",
+            "version": "0.21.2"
+           },
+           {
+            "id": 839985459053650923,
+            "name": "eslint",
+            "version": "10.4.0"
+           },
+           {
+            "id": 849315288168731530,
+            "name": "finalhandler",
+            "version": "2.1.1"
+           },
+           {
+            "id": 889651338556952466,
+            "name": "eslint",
+            "version": "10.8.1"
+           },
+           {
+            "id": 902986802653656486,
+            "name": "@typescript-eslint/type-utils",
+            "version": "8.67.0"
+           },
+           {
+            "id": 906266739890528722,
+            "name": "@typescript-eslint/parser",
+            "version": "8.67.0"
+           },
+           {
+            "id": 952435644537058455,
+            "name": "vitest",
+            "version": "2.1.9"
+           },
+           {
+            "id": 993356471477328241,
+            "name": "eslint-import-resolver-typescript",
+            "version": "3.10.1"
+           },
+           {
+            "id": 1009409288229557089,
+            "name": "eslint",
+            "version": "9.39.5"
+           },
+           {
+            "id": 1094096261782148251,
+            "name": "eslint-plugin-import",
+            "version": "2.32.0"
+           },
+           {
+            "id": 1098932759727020681,
+            "name": "@semantic-release/commit-analyzer",
+            "version": "14.0.0-beta.1"
+           },
+           {
+            "id": 1127309751866973533,
+            "name": "@typescript-eslint/typescript-estree",
+            "version": "8.67.0"
+           },
+           {
+            "id": 1128392479248887395,
+            "name": "send",
+            "version": "1.2.1"
+           }
+          ],
+          [
+           {
+            "id": 424811415310696230,
+            "name": "typescript-eslint",
+            "version": "8.59.4"
+           },
+           {
+            "id": 1149342144203249678,
+            "name": "@typescript-eslint/utils",
+            "version": "8.59.4"
+           },
+           {
+            "id": 676063398789179094,
+            "name": "@npmcli/agent",
+            "version": "4.0.0"
+           },
+           {
+            "id": 61667760034874919,
+            "name": "@angular/build",
+            "version": "21.2.11"
+           },
+           {
+            "id": 256458144063779495,
+            "name": "jest-snapshot",
+            "version": "30.4.1"
+           },
+           {
+            "id": 277463415306424166,
+            "name": "@jest/transform",
+            "version": "30.4.1"
+           },
+           {
+            "id": 324222633735912667,
+            "name": "@angular/compiler-cli",
+            "version": "21.2.13"
+           },
+           {
+            "id": 594437620460786465,
+            "name": "istanbul-lib-instrument",
+            "version": "6.0.3"
+           },
+           {
+            "id": 754296843942345474,
+            "name": "jest-config",
+            "version": "30.4.2"
+           },
+           {
+            "id": 998066125287336999,
+            "name": "@angular/localize",
+            "version": "21.2.13"
+           },
+           {
+            "id": 1079302280491374596,
+            "name": "@jest/reporters",
+            "version": "30.4.1"
+           },
+           {
+            "id": 40789656936975037,
+            "name": "xo",
+            "version": "1.2.3"
+           },
+           {
+            "id": 200106198986827601,
+            "name": "@sigstore/tuf",
+            "version": "4.0.2"
+           },
+           {
+            "id": 544341705866898650,
+            "name": "eslint-config-next",
+            "version": "15.5.23"
+           },
+           {
+            "id": 31361058038709377,
+            "name": "@typescript-eslint/eslint-plugin",
+            "version": "8.59.4"
+           },
+           {
+            "id": 916405343104758495,
+            "name": "@modelcontextprotocol/sdk",
+            "version": "1.26.0"
+           },
+           {
+            "id": 370935520567373790,
+            "name": "@babel/helper-module-imports",
+            "version": "7.28.6"
+           },
+           {
+            "id": 1078982089947121358,
+            "name": "@babel/helper-module-transforms",
+            "version": "7.28.6"
+           },
+           {
+            "id": 1070868543583792398,
+            "name": "@typescript-eslint/eslint-plugin",
+            "version": "8.67.0"
+           },
+           {
+            "id": 661897846811986381,
+            "name": "typescript-eslint",
+            "version": "8.67.0"
+           },
+           {
+            "id": 8839786392339890,
+            "name": "@typescript-eslint/utils",
+            "version": "8.67.0"
+           },
+           {
+            "id": 243132097291816415,
+            "name": "serve-static",
+            "version": "2.2.1"
+           }
+          ],
+          [
+           {
+            "id": 209536914311410768,
+            "name": "angular-eslint",
+            "version": "21.4.0"
+           },
+           {
+            "id": 1124650314669070023,
+            "name": "@vitest/eslint-plugin",
+            "version": "1.6.17"
+           },
+           {
+            "id": 136550410931330289,
+            "name": "make-fetch-happen",
+            "version": "15.0.5"
+           },
+           {
+            "id": 10908389289905029,
+            "name": "@jest/expect",
+            "version": "30.4.1"
+           },
+           {
+            "id": 53558818777525163,
+            "name": "jest-circus",
+            "version": "30.4.2"
+           },
+           {
+            "id": 81856778683320586,
+            "name": "jest-runtime",
+            "version": "30.4.2"
+           },
+           {
+            "id": 118173600846170658,
+            "name": "@jest/core",
+            "version": "30.4.2"
+           },
+           {
+            "id": 871281912045407482,
+            "name": "jest-resolve-dependencies",
+            "version": "30.4.2"
+           },
+           {
+            "id": 257793383470507553,
+            "name": "jest-runner",
+            "version": "30.4.2"
+           },
+           {
+            "id": 1034983951176875011,
+            "name": "babel-jest",
+            "version": "30.4.1"
+           },
+           {
+            "id": 39778582543628074,
+            "name": "babel-plugin-istanbul",
+            "version": "7.0.1"
+           },
+           {
+            "id": 861171778910887061,
+            "name": "jest-cli",
+            "version": "30.4.2"
+           },
+           {
+            "id": 344012468854164955,
+            "name": "sigstore",
+            "version": "4.1.0"
+           },
+           {
+            "id": 747934752799232697,
+            "name": "@angular/cli",
+            "version": "21.2.11"
+           },
+           {
+            "id": 1076785059344298905,
+            "name": "eslint-config-xo-typescript",
+            "version": "7.0.0"
+           },
+           {
+            "id": 183755728676082671,
+            "name": "@stylistic/eslint-plugin",
+            "version": "4.4.1"
+           }
+          ],
+          [
+           {
+            "id": 159855687459661951,
+            "name": "npm-registry-fetch",
+            "version": "19.1.1"
+           },
+           {
+            "id": 371195474654127977,
+            "name": "@sigstore/sign",
+            "version": "4.1.1"
+           },
+           {
+            "id": 331964252843842323,
+            "name": "@jest/globals",
+            "version": "30.4.1"
+           },
+           {
+            "id": 453712296565043018,
+            "name": "jest",
+            "version": "30.4.2"
+           },
+           {
+            "id": 121475118911628037,
+            "name": "pacote",
+            "version": "21.3.1"
+           },
+           {
+            "id": 822031142907346773,
+            "name": "eslint-config-xo",
+            "version": "0.46.0"
+           }
+          ]
+         ]
+        }
+       },
+       "t": 1787238212461
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "title": "session 3",
+     "created_at": 1787237719,
+     "turns": [
+      {
+       "answer": {
+        "question": "Which services are exposed by @pkgr/core@0.3.6?",
+        "intent": "EXPOSED_SERVICES",
+        "answer": "",
+        "summary": "The query for services exposed by @pkgr/core@0.3.6 could not be answered because the graph lacks sufficient evidence. The system therefore abstains from providing an answer.",
+        "abstain": true,
+        "healed": false,
+        "reported": true,
+        "reason": "Not enough evidence in the graph for this question. The gap was written to the support report (self-heal could not construct it).",
+        "latency_ms": 13.6,
+        "query_count": 1,
+        "evidence_chain": [
+         {
+          "purpose": "locate package version",
+          "cypher": "MATCH (v:PackageVersion {name: $name, version: $version}) RETURN v.id AS id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, v.malicious AS malicious, v.advisory_id AS advisory_id, v.is_typosquat AS is_typosquat",
+          "params": {
+           "name": "pkgr/core",
+           "version": "0.3.6"
+          },
+          "row_count": 0,
+          "elapsed_ms": 13.6
+         }
+        ],
+        "payload": {
+         "found": false
+        }
+       },
+       "t": 1787237724912
+      },
+      {
+       "answer": {
+        "question": "Which services are exposed by @pkgr/core@0.3.6?",
+        "intent": "EXPOSED_SERVICES",
+        "answer": "sindresorhus/conf, websockets/ws",
+        "summary": "",
+        "abstain": false,
+        "healed": false,
+        "reported": false,
+        "reason": "",
+        "latency_ms": 384.13,
+        "query_count": 17,
+        "evidence_chain": [
+         {
+          "purpose": "locate package version",
+          "cypher": "MATCH (v:PackageVersion {name: $name, version: $version}) RETURN v.id AS id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, v.malicious AS malicious, v.advisory_id AS advisory_id, v.is_typosquat AS is_typosquat",
+          "params": {
+           "name": "@pkgr/core",
+           "version": "0.3.6"
+          },
+          "row_count": 1,
+          "elapsed_ms": 7.85
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v526063109979864650",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 526063109979864650
+          },
+          "row_count": 1,
+          "elapsed_ms": 5.01
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v250851677358333615",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 250851677358333615
+          },
+          "row_count": 1,
+          "elapsed_ms": 3.57
+         },
+         {
+          "purpose": "incoming DEPENDS_ON hop for v391923611685649211",
+          "cypher": "MATCH (u:PackageVersion)-[:DEPENDS_ON]->(v:PackageVersion {id: $id}) RETURN DISTINCT u.id AS id, u.name AS name, u.version AS version",
+          "params": {
+           "id": 391923611685649211
+          },
+          "row_count": 1,
+          "elapsed_ms": 2.46
+         },
+         {
+          "purpose": "service catalog",
+          "cypher": "MATCH (s:Service) RETURN s.name AS name",
+          "params": {},
+          "row_count": 12,
+          "elapsed_ms": 3.01
+         },
+         {
+          "purpose": "service processing/p5.js lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "processing/p5.js"
+          },
+          "row_count": 33,
+          "elapsed_ms": 17.89
+         },
+         {
+          "purpose": "service websockets/ws lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "websockets/ws"
+          },
+          "row_count": 11,
+          "elapsed_ms": 7.49
+         },
+         {
+          "purpose": "service typicode/lowdb lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "typicode/lowdb"
+          },
+          "row_count": 18,
+          "elapsed_ms": 9.72
+         },
+         {
+          "purpose": "service fastify/fastify lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "fastify/fastify"
+          },
+          "row_count": 49,
+          "elapsed_ms": 15.9
+         },
+         {
+          "purpose": "service lodash/lodash lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "lodash/lodash"
+          },
+          "row_count": 26,
+          "elapsed_ms": 9.84
+         },
+         {
+          "purpose": "service expressjs/express lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "expressjs/express"
+          },
+          "row_count": 43,
+          "elapsed_ms": 14.53
+         },
+         {
+          "purpose": "service Vishwa-docs/reefguard-coral-hackathon lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "Vishwa-docs/reefguard-coral-hackathon"
+          },
+          "row_count": 478,
+          "elapsed_ms": 63.47
+         },
+         {
+          "purpose": "service TEAMMATES/teammates lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "TEAMMATES/teammates"
+          },
+          "row_count": 1024,
+          "elapsed_ms": 133.49
+         },
+         {
+          "purpose": "service axios/axios lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "axios/axios"
+          },
+          "row_count": 43,
+          "elapsed_ms": 13.16
+         },
+         {
+          "purpose": "service jaredhanson/passport lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "jaredhanson/passport"
+          },
+          "row_count": 9,
+          "elapsed_ms": 5.07
+         },
+         {
+          "purpose": "service markedjs/marked lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "markedjs/marked"
+          },
+          "row_count": 24,
+          "elapsed_ms": 9.51
+         },
+         {
+          "purpose": "service sindresorhus/conf lockfile resolutions",
+          "cypher": "MATCH (s:Service {name: $svc})-[:USES_LOCKFILE]->(lf:Lockfile)-[r:RESOLVES_TO]->(v:PackageVersion) RETURN lf.id AS lockfile_id, lf.app AS app, lf.resolved_at AS resolved_at, v.id AS version_id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, r.at AS at, r.was_resolved_while_live AS flag",
+          "params": {
+           "svc": "sindresorhus/conf"
+          },
+          "row_count": 468,
+          "elapsed_ms": 62.16
+         }
+        ],
+        "payload": {
+         "found": true,
+         "node_id": 526063109979864650,
+         "name": "@pkgr/core",
+         "version": "0.3.6",
+         "services": [
+          "sindresorhus/conf"
+         ],
+         "paths": [
+          {
+           "service": "sindresorhus/conf",
+           "app": "sindresorhus/conf",
+           "name": "@pkgr/core",
+           "version": "0.3.6",
+           "resolved_at": 1787219543,
+           "flag": true
+          },
+          {
+           "service": "sindresorhus/conf",
+           "app": "sindresorhus/conf",
+           "name": "eslint-plugin-prettier",
+           "version": "5.5.6",
+           "resolved_at": 1787219543,
+           "flag": true
+          },
+          {
+           "service": "sindresorhus/conf",
+           "app": "sindresorhus/conf",
+           "name": "synckit",
+           "version": "0.11.13",
+           "resolved_at": 1787219543,
+           "flag": true
+          },
+          {
+           "service": "sindresorhus/conf",
+           "app": "sindresorhus/conf",
+           "name": "xo",
+           "version": "1.2.3",
+           "resolved_at": 1787219543,
+           "flag": true
+          }
+         ]
+        }
+       },
+       "t": 1787238064065
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "title": "session 2",
+     "created_at": 1787236309,
+     "turns": [
+      {
+       "answer": {
+        "question": "Which services are exposed by @pkgr/core@0.3.6?",
+        "intent": "EXPOSED_SERVICES",
+        "answer": "",
+        "summary": "The query for services exposed by @pkgr/core@0.3.6 could not be answered because the graph lacks sufficient evidence. The system therefore abstains from providing an answer. Query count: 1.",
+        "abstain": true,
+        "healed": false,
+        "reported": true,
+        "reason": "Not enough evidence in the graph for this question. The gap was written to the support report (self-heal could not construct it).",
+        "latency_ms": 26.08,
+        "query_count": 1,
+        "evidence_chain": [
+         {
+          "purpose": "locate package version",
+          "cypher": "MATCH (v:PackageVersion {name: $name, version: $version}) RETURN v.id AS id, v.name AS name, v.version AS version, v.published_at AS published_at, v.valid_until AS valid_until, v.malicious AS malicious, v.advisory_id AS advisory_id, v.is_typosquat AS is_typosquat",
+          "params": {
+           "name": "pkgr/core",
+           "version": "0.3.6"
+          },
+          "row_count": 0,
+          "elapsed_ms": 26.08
+         }
+        ],
+        "payload": {
+         "found": false
+        }
+       },
+       "t": 1787236315256
+      }
+     ]
+    },
     {
      "id": "s1",
      "title": "session 1",

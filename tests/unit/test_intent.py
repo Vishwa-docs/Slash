@@ -67,6 +67,22 @@ CASES = [
         {"package": "minimist", "version": "0.2.4"},
     ),
     ("what is express", IntentClass.PACKAGE_LOOKUP, {"package": "express"}),
+    # Scoped npm packages (@scope/name@version)
+    (
+        "which services are exposed by @pkgr/core@0.3.6",
+        IntentClass.EXPOSED_SERVICES,
+        {"package": "@pkgr/core", "version": "0.3.6"},
+    ),
+    (
+        "what is the blast radius of @babel/core@7.29.0",
+        IntentClass.BLAST_RADIUS,
+        {"package": "@babel/core", "version": "7.29.0"},
+    ),
+    (
+        "which services are exposed by @cacheable/memory@2.0.9",
+        IntentClass.EXPOSED_SERVICES,
+        {"package": "@cacheable/memory", "version": "2.0.9"},
+    ),
     ("what is the weather today", IntentClass.UNSUPPORTED, {}),
     ("who won the world cup in 1998", IntentClass.UNSUPPORTED, {}),
     ("tell me a joke", IntentClass.UNSUPPORTED, {}),

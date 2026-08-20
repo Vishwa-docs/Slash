@@ -1,0 +1,13 @@
+=== ruff format/check ===
+Found 1 error.
+[*] 1 fixable with the `--fix` option.
+
+=== unit tests ===
+39 passed in 8.50s
+
+=== integration tests (HydraDB live) ===
+10 passed in 71.19s (0:01:11)
+
+=== key verification ===
+GROQ check_key(): True
+GH_TOKEN rate_limit: 5000 remaining: 5000 used: 0

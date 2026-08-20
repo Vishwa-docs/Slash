@@ -31,7 +31,8 @@ import time
 import fetch_real
 
 import src.graph_service as gs
-from src import adjudicate, intent, llm
+from src import adjudicate, intent
+from src import llm as llm_mod
 from src.hydradb_client import HydraDBClient
 from src.lens import SUPPLY_CHAIN, Lens
 from src.models import IntentClass, QueryPlan, Verdict
@@ -183,12 +184,12 @@ def _paper_plan(question: str, plan: QueryPlan, key: str | None = None) -> Query
     Intent is only overridden when the base parser abstained
     (UNSUPPORTED) — the graph query engine never trusts a model for ground truth.
     """
-    refined = llm.refine_plan(question, plan.model_dump(), key=key)
+    refined = llm_mod.refine_plan(question, plan.model_dump(), key=key)
     updates: dict = {}
     for k in ("package", "version", "developer"):
         val = refined.get(k)
         if isinstance(val, str) and val.strip():
-            updates[key] = val.strip()
+            updates[k] = val.strip()
     seeds = refined.get("seed_names")
     if isinstance(seeds, list):
         names = [s.strip() for s in seeds if isinstance(s, str) and s.strip()]
@@ -218,14 +219,14 @@ def answer_with_result(
     llm_key: str | None = None,
 ) -> tuple[Verdict, dict | None]:
     plan = intent.classify(question)
-    if llm and llm.available(llm_key):
+    if llm and llm_mod.available(llm_key):
         plan = _paper_plan(question, plan, key=llm_key)
     if plan.intent == IntentClass.UNSUPPORTED:
         verdict = adjudicate.Adjudicator().verdict(adjudicate.Audit(plan=plan), lens)
         verdict.reported = True
         _record_unresolved(question, verdict.reason)
-        if llm and llm.available(llm_key):
-            verdict.summary = llm.summarize(
+        if llm and llm_mod.available(llm_key):
+            verdict.summary = llm_mod.summarize(
                 question, verdict.model_dump(), lens.id, key=llm_key
             )
         return verdict, None
@@ -276,8 +277,8 @@ def answer_with_result(
                 }
             )
             _record_unresolved(question, verdict.reason)
-    if llm and llm.available(llm_key):
-        verdict.summary = llm.summarize(
+    if llm and llm_mod.available(llm_key):
+        verdict.summary = llm_mod.summarize(
             question, verdict.model_dump(), lens.id, key=llm_key
         )
     return verdict, result

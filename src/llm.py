@@ -49,10 +49,20 @@ def check_key(explicit: str | None = None) -> bool:
         headers={"Authorization": f"Bearer {token}", "User-Agent": UA},
     )
     try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=10, context=_context()) as resp:
             return resp.status == 200
     except Exception:  # noqa: BLE001 - an invalid key is just an invalid key
         return False
+
+
+def _context():
+    """A TLS context that prefers certifi and degrades to unverified locally."""
+    try:
+        import certifi  # type: ignore
+
+        return ssl.create_default_context(cafile=certifi.where())
+    except (ImportError, OSError, ssl.SSLError):
+        return ssl._create_unverified_context()
 
 
 def chat(
@@ -73,13 +83,6 @@ def chat(
     }
     if json_mode:
         body["response_format"] = {"type": "json_object"}
-    ctx = None
-    try:
-        import certifi  # type: ignore
-
-        ctx = ssl.create_default_context(cafile=certifi.where())
-    except ImportError:
-        ctx = ssl._create_unverified_context()
     req = urllib.request.Request(
         GROQ_URL,
         method="POST",
@@ -92,7 +95,7 @@ def chat(
         },
     )
     try:
-        with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
+        with urllib.request.urlopen(req, timeout=timeout, context=_context()) as resp:
             data = json.loads(resp.read().decode())
         return data["choices"][0]["message"]["content"]
     except Exception:  # noqa: BLE001 - best-effort: fall back to the base path
@@ -149,7 +152,7 @@ def refine_plan(question: str, current: dict, key: str | None = None) -> dict:
     for k in ("package", "version", "developer"):
         val = parsed.get(k)
         if isinstance(val, str) and val.strip():
-            out[key] = val.strip()
+            out[k] = val.strip()
     if isinstance(parsed.get("seed_names"), list):
         names = [s for s in parsed["seed_names"] if isinstance(s, str) and s.strip()]
         if names:
